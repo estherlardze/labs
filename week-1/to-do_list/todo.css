@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    background-color: #ebe5fd;
+
+}
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    min-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.addtask{
+   background-color: rgb(193, 191, 191, 0.5);
+    padding: 10px;
+    color: rgb(102, 101, 101);
+    border-radius: 4px;
+    width: 80%;
+    outline: none;
+    border: 0;
+    box-shadow: 10px 10px 10px rgba(119, 115, 115, 0.02);
+}
+#sort{
+    background-color: rgba(182, 9, 182, 0.8);
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    width: 40px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
