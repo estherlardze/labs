@@ -1,3 +1,8 @@
+:root{
+    --color-pink: rgb(171, 4, 90);
+}
+
+
 *{
     margin: 0;
     padding: 0;
@@ -5,34 +10,60 @@
     font-family: "Poppins", sans-serif;
 }
 body{
-    background-color: #8c68e8;
+    background-color: #0a031e;
 
+}
+.heading{
+    color: var(--color-pink);
+    font-size: 30px;
+    text-align: center;
+    font-weight: 800;
+    margin-bottom: 20px;
 }
 .main{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    padding: 10px 20px;
 }
-.container{
-    width: 400px;
+#container{
     padding: 20px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
+    background-color: white ;
+    gap: 5px;
 }
-.addtask{
-   background-color: rgb(193, 191, 191, 0.5);
-    padding: 5px 10px;
-    color: rgb(102, 101, 101);
+.header input{
+    padding: 3px 5px;
     border-radius: 4px;
-    width: 80%;
+    border: none;
+    font-size: 14px;
+    background-color: rgb(0, 0, 0, 0.02);
     outline: none;
-    border: 0;
-    box-shadow: 10px 10px 10px rgba(119, 115, 115, 0.02);
+    border: 1px solid rgb(198, 193, 193);
+}
+.header button{
+    padding: 3px 5px;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+    background-color: var(--color-pink);
+    color: white;
+    outline: none;
+    cursor: pointer;
 }
 #sort{
     background-color: rgba(43, 177, 16, 0.8);
@@ -45,11 +76,12 @@ body{
     align-items: center;
     justify-content: center;
 }
-.todo-container{
+#todo-container{
     margin-top: 30px;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
+    width: 400px;
 }
 .todo-item{
     background-color: white;
@@ -84,3 +116,29 @@ body{
     gap: 10px;
     margin-top: 10px;
 }
+
+/* ========= header =======*/
+
+
+/* ==== todo description========*/
+
+.todo-description{
+    margin-block: 10px;
+}
+
+.icon{
+    width: 18px;
+    height: 18px;
+}
+
+.delete:hover{
+  fill: red;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.edit:hover{
+    color: red;
+    cursor: pointer;
+    transition: all 0.1s ease;
+  }
