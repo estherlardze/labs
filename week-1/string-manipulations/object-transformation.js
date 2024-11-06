@@ -1,7 +1,6 @@
 // function to return full name
 const fullName = (person) => {
     const fullname = `${person.firstName} ${person.lastName}`
-    
     const age = person.age 
     
     if(age === 18){
@@ -14,8 +13,7 @@ const fullName = (person) => {
       console.log("Enter 18 or above ")
     }
     
-    console.log(fullname)
-  
+    return fullname  
     }
   
   
@@ -23,9 +21,9 @@ const fullName = (person) => {
   const filterByAge = (person, minAge) => {
      const filteredArr = person.filter((person) => person.age >= minAge)
     
-    console.log(filteredArr)
+    return filteredArr
   }
   
   
-  filterByAge([{firstName: "Esther", lastName: "Lardze", age: 19}, {firstName: "Esther", lastName: "Lardze", age: 12}], 18)
-  fullName({firstName: "Esther", lastName: "Lardze", age: 19})
+  console.log(filterByAge([{firstName: "Esther", lastName: "Lardze", age: 19}, {firstName: "Esther", lastName: "Lardze", age: 12}], 18))
+  console.log(fullName({firstName: "Esther", lastName: "Lardze", age: 19}))
