@@ -22,7 +22,7 @@ function createTodo() {
   const description = descriptionInput.value.trim();
   const date = dateInput.value;
 
-  let todo = { title, description, date};
+  let todo = { title, description, date, completed: false };
 
   if(title && date){
     allTodos.push(todo);
@@ -37,10 +37,11 @@ function createTodo() {
   saveTodos();
 }
 
+// load todos
 function addTodo(todo) {
 const div = document.createElement("div");
-div.innerHTML = `<div class="todo-item">
-                    <article class="todo-header">
+div.classList.add("todo-item");
+div.innerHTML = `  <article class="todo-header">
                     <h4>${todo.title}</h4>
                     <div class="todo-icons">
                         <img src="./delete.svg" alt="delete icon" class="icon delete">
@@ -52,47 +53,52 @@ div.innerHTML = `<div class="todo-item">
                     <div class="todo-date">
                     <p class="">${todo.date}</p>
                     <p class="todo-time">2:00 pm</p>
-                    </div>
                     </div>`;
 container.appendChild(div);     
 }
 
-// mark todo as done
 
 
-  check.addEventListener("click", function(event) {
-    const checkbox = event.target;
-    const todoItem = checkbox.closest(".todo-item");
-    const todo = allTodos.find(todo => todoItem.dataset.id === todo.title);
-    todo.completed = checkbox.checked;
-    console.log(todo);
-  });
 
-  container.addEventListener("click", function(event) {
-    const target = event.target;
-    const todoItem = target.closest(".todo-item");
-    const todo = allTodos.find(todo => todoItem.dataset.id === todo.title);
-    if (target.classList.contains("delete")) {
-      allTodos = allTodos.filter(todo => todo.title !== todo.title);
-      todoItem.remove();
-    } else if (target.classList.contains("edit")) {
-      titleInput.value = todo.title;
-      descriptionInput.value = todo.description;
-      dateInput.value = todo.date;
-      allTodos = allTodos.filter(todo => todo.title !== todo.title);
-      todoItem.remove();
+// update todo
+
+container.addEventListener("click", function(event) {
+  const target = event.target;
+
+  if (target.classList.contains("delete")) {
+    const todo = target.closest(".todo-item"); 
+    if (todo) {
+      todo.remove(); 
     }
-    saveTodos();
-  });
+  } 
+  else if (target.classList.contains("edit")) {
+    const todo = target.closest(".todo-item");
+    
+    if (todo) {
+      const todoTitle = todo.querySelector("h4");
+      const todoDescription = todo.querySelector(".todo-description");
+      const todoDate = todo.querySelector(".todo-date");
+
+      if (todoTitle && todoDescription && todoDate) {
+        titleInput.value = todoTitle.innerText;
+        descriptionInput.value = todoDescription.innerText || ""; 
+        dateInput.value = todoDate.innerText;
+      } else {
+        console.error("Some elements are missing in the todo item.");
+      }
+    }
+  }
+  
+  saveTodos();
+});
+
 
   // save todo
-
   function saveTodos(){
     localStorage.setItem("todos", container.innerHTML);
   }
 
   // load todos
-
   function loadTodos(){
     container.innerHTML = localStorage.getItem("todos");
    
