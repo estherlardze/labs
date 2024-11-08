@@ -167,3 +167,17 @@ body{
   .sort:hover{
     background-color: var(--color-pink);
   }
+
+  input[type="checkbox"]{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: all 0.1s ease;
+  }
+  .completed{
+    text-decoration: line-through;
+    background-color: ccc;
+    color: #ccc;
+  }

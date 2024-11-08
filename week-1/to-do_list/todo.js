@@ -6,13 +6,18 @@ const add = document.querySelector(".submit");
 const container = document.querySelector("#todo-container");
 
 const check = document.querySelector(".checkbox");
+const ascendButton = document.querySelector(".ascending")
+const descButton = document.querySelector(".descending")
 
 
-let allTodos = [];
+let allTodos =  JSON.parse(localStorage.getItem("todos")) || [];
+
+document.addEventListener("DOMContentLoaded", loadContent);
 
 todoForm.addEventListener("submit", function(event) {
     event.preventDefault();
     createTodo();
+    saveTodos()
 })
 
 
@@ -26,7 +31,6 @@ function createTodo() {
 
   if(title && date){
     allTodos.push(todo);
-    console.log(allTodos);
     addTodo(todo)
 
     titleInput.value = "";
@@ -37,30 +41,42 @@ function createTodo() {
   saveTodos();
 }
 
+function loadContent() {
+  
+  if(allTodos.length > 0) {
+  allTodos.forEach((todo)=>{
+    addTodo(todo)
+  })
+}
+}
+
 // load todos
 function addTodo(todo) {
+  console.log("todo")
 const div = document.createElement("div");
+const dateTime = new Date(todo.date);
+const date = dateTime.toISOString().split("T")[0];
+const time  = dateTime.toISOString().split("T")[1].slice(0, 5);
+
 div.classList.add("todo-item");
 div.innerHTML = `  <article class="todo-header">
                     <h4>${todo.title}</h4>
                     <div class="todo-icons">
                         <img src="./delete.svg" alt="delete icon" class="icon delete">
                         <img src="./edit.svg" alt="edit icon" class="icon edit">
-                        <input type="checkbox" name="" id="">
+                        <input type="checkbox" name="" id="checkbox" class="checkbox">
                     </article>
                     <p class="todo-description">${todo.description || ""}</p>
                     
                     <div class="todo-date">
-                    <p class="">${todo.date}</p>
-                    <p class="todo-time">2:00 pm</p>
+                    <p class="">${date}</p>
+                    <p class="todo-time">${time}</p>
                     </div>`;
 container.appendChild(div);     
 }
 
 
-
-
-// update todo
+// update todo and delete todo list
 
 container.addEventListener("click", function(event) {
   const target = event.target;
@@ -71,6 +87,14 @@ container.addEventListener("click", function(event) {
       todo.remove(); 
     }
   } 
+  else if(target.classList.contains("checkbox")) {
+      const todo = target.closest(".todo-item");
+      if (todo) {
+        todo.classList.toggle("completed");
+      }
+     saveTodos(); 
+  }
+
   else if (target.classList.contains("edit")) {
     const todo = target.closest(".todo-item");
     
@@ -87,22 +111,31 @@ container.addEventListener("click", function(event) {
         console.error("Some elements are missing in the todo item.");
       }
     }
+    saveTodos()
+
   }
   
-  saveTodos();
 });
 
 
+// sort todos based on date
+
+ascendButton.addEventListener("click", function() {
+  allTodos.sort((a, b) => new Date(a.date) - new Date(b.date));
+  container.innerHTML = "";
+  allTodos.forEach(addTodo);
+});
+
+descButton.addEventListener("click", function() {
+  allTodos.sort((a, b) => new Date(b.date) - new Date(a.date));
+  container.innerHTML = ""; 
+  allTodos.forEach(addTodo);
+});
+
   // save todo
   function saveTodos(){
-    localStorage.setItem("todos", container.innerHTML);
+    localStorage.setItem("todos", JSON.stringify(allTodos));
   }
 
-  // load todos
-  function loadTodos(){
-    container.innerHTML = localStorage.getItem("todos");
-   
-  }
-
-  loadTodos()
+  
 
