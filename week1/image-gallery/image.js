@@ -139,7 +139,6 @@ function navigateImage(newIndex){
     
   closeLightbox();  
   openLightbox(newIndex);
-
 }
 
 createImage();

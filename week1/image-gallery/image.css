@@ -16,6 +16,7 @@
 }
 .images-container img {
   width: 300px;
+  max-width: 280px;
   height: 200px;
   border-radius: 4px;
 }
@@ -74,18 +75,27 @@
 
 
 
-
-@media screen and (max-width:1000px) {
+@media screen and (max-width:1200){
+  .images-container img {
+    width: 250px;
+  }
+}
+@media screen and (max-width:1180px) {
     .images-container {
       grid-template-columns: repeat(3, 1fr);
      
     }
+    
   }
 
-@media screen and (max-width:750px) {
+@media screen and (max-width:880px) {
   .images-container {
-    grid-template-columns: repeat(3, 1fr);
-   
+    grid-template-columns: repeat(2, 1fr); 
+  }
+  .images-container img {
+    width: 400px;
+    max-width: 100%;
+
   }
 }
 
