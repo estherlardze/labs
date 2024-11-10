@@ -1,5 +1,6 @@
 :root{
     --color-pink: rgb(171, 4, 90);
+    --color-green: #009c08;
 }
 
 
@@ -10,61 +11,159 @@
     font-family: "Poppins", sans-serif;
 }
 body{
-    background-color: #0a031e;
+    background-color: white;
+} 
+
+/* =======heading========*/
+.heading{
+    background-image: url('./banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: 100%;
+}
+.heading h1{
+    font-size: 50px;
+    text-align: center;
 
 }
-.heading{
-    color: var(--color-pink);
-    font-size: 30px;
-    text-align: center;
-    font-weight: 800;
-    margin-bottom: 20px;
+
+.todo-head{
+ display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
+  max-width: 96%;
+  margin: 0 auto;
 }
+.todo-head h1{
+    font-size: 30px;
+    font-weight: 800;
+}
+.add-task{
+    background-color: var(--color-green);
+    display: flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.add-task img{
+    width: 16px;
+    height: 16px;
+    color: white;
+    fill: white;
+}
+.add-task button{
+    border: none;
+    background-color: transparent;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/*==========main==========*/
 .main{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: 0 auto;
     flex-direction: column;
-    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+    align-items: center;
 }
 #container{
-    padding: 20px;
     border-radius: 10px;
+    width: 500px;
+    max-width: 96%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    margin: 0 auto;
+    align-items: left;
 }
+
+/*==========form============*/
 .form{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    width: 60%;
-    padding: 5px;
+    align-items: left;
+    width: 400px;
+    max-width: 100%;
+    padding: 10px;
+    margin: 0 20px;
     border-radius: 5px;
     box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
     background-color: white ;
     gap: 5px;
+
 }
 .form input{
-    padding: 3px 5px;
+    padding: 5px 10px;
     border-radius: 4px;
     border: none;
     width: 100%;
     font-size: 14px;
-    background-color: rgb(0, 0, 0, 0.02);
     outline: none;
     border: 1px solid rgb(198, 193, 193);
 }
 .form button{
-    padding: 3px 5px;
+    padding: 5px 5px;
     border-radius: 4px;
+    margin-top: 10px;
     border: none;
     font-size: 14px;
-    background-color: var(--color-pink);
+    background-color: var(--color-green);
     color: white;
     outline: none;
     cursor: pointer;
+}
+
+.form-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.form-head h1{
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.form-head p{
+    font-size: 30px;
+    margin-left: 5px;
+}
+
+.task-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+}
+.hidden{
+    display: none;
+}
+.task-description{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+#description{
+    outline: none;
+    border: 1px solid gray;
+    padding: 10px;
 }
 #sort{
     background-color: rgba(43, 177, 16, 0.8);
@@ -81,28 +180,32 @@ body{
     margin-top: 30px;
     border-radius: 4px;
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
     width: 400px;
+    max-width: 100%;
 }
 .todo-item{
-    background-color: white;
+    background-color:white;
     padding: 10px;
     box-shadow: 10px 10px 10px rgba(119, 115, 115, 0.02);
     border-radius: 4px;
     margin: 10px 0;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
     height: fit-content;
-    border-left: 4px solid rgba(23, 231, 20, 0.5);
+    border-left: 4px solid var(--color-green);
 }
 .todo-description{
     font-size: 14px;
-    color: rgb(71, 69, 69);
 }
 .todo-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 .todo-icons{
     display: flex;
@@ -116,6 +219,11 @@ body{
     align-items: center;
     gap: 10px;
     margin-top: 10px;
+    width: 100%;
+}
+.close{
+    color: var(--color-green);
+    cursor: pointer;
 }
 
 /* ========= header =======*/
@@ -150,24 +258,29 @@ body{
 
   .todo-controls{
     display: flex;
-    justify-content: space-between;
     gap: 10px;
     margin-top: 10px;
+    justify-content: space-between;
+    padding: 8px 15px;
+    margin: 30px 0;
+    gap: 1px;
   }
 
   .sort{
-    background-color: #555;
+    outline: none;
+    border: none;
+    background-color: transparent;
     color: white;
+    background-color: #03580780;
+    padding: 8px 15px;
     cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: all 0.1s ease;
   }
 
   .sort:hover{
-    background-color: var(--color-pink);
+    background-color: #035807;
+    transition: all 0.5s ease;
   }
-
+   
   input[type="checkbox"]{
     width: 14px;
     height: 14px;
@@ -178,6 +291,13 @@ body{
   }
   .completed{
     text-decoration: line-through;
-    background-color: ccc;
     color: #ccc;
+  }
+
+  @media screen and (max-width: 350px){
+    .todo-controls{
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
   }

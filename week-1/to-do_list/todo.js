@@ -1,141 +1,185 @@
-const titleInput = document.querySelector(".title")
-const descriptionInput = document.querySelector(".description")
-const dateInput = document.querySelector("#date")
-const todoForm = document.querySelector(".form")
-const add = document.querySelector(".submit");
-const container = document.querySelector("#todo-container");
+let allTodos = [
+  {
+    title: "Research E-commerce Market Trends",
+    description:
+      "Research current trends and growth opportunities in the beauty e-commerce sector",
+      date: "2024-01-10T17:26",
+    completionStatus: false,
+  },
+  {
+    title: "Finalize Presentation on ASPIRE Project",
+    description:
+      "Complete the video presentation, ensuring it highlights the LMS, AI chatbot, mentorship management",
+      date: "2024-11-10T17:26",
+    completionStatus: false,
+  },
+];
 
-const check = document.querySelector(".checkbox");
-const ascendButton = document.querySelector(".ascending")
-const descButton = document.querySelector(".descending")
+const addTodoButton = document.querySelector(".add-task");
+const taskOverlay = document.querySelector(".task-overlay");
+const close = document.querySelector(".close");
+
+const titleInput = document.querySelector("#title");
+const descriptionInput = document.querySelector("#description");
+const dateInput = document.querySelector("#date");
+const addBtn = document.querySelector(".add-btn");
+
+let editTodoIndex = null;
+
+window.addEventListener("DOMContentLoaded", loadTodos);
 
 
-let allTodos =  JSON.parse(localStorage.getItem("todos")) || [];
-
-document.addEventListener("DOMContentLoaded", loadContent);
-
-todoForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-    createTodo();
-    saveTodos()
-})
-
-
-// function to create a new todo
-function createTodo() {
+//function to add a todo to the todos array
+function addTodo() {
   const title = titleInput.value.trim();
   const description = descriptionInput.value.trim();
-  const date = dateInput.value;
+  const date = dateInput.value.trim();
 
-  let todo = { title, description, date, completed: false };
+  const todo = { title, description, date, completionStatus: false };
 
-  if(title && date){
-    allTodos.push(todo);
-    addTodo(todo)
-
-    titleInput.value = "";
-    descriptionInput.value = "";
-    dateInput.value = "";
-  }
-
-  saveTodos();
-}
-
-function loadContent() {
-  
-  if(allTodos.length > 0) {
-  allTodos.forEach((todo)=>{
-    addTodo(todo)
-  })
-}
-}
-
-// load todos
-function addTodo(todo) {
-  console.log("todo")
-const div = document.createElement("div");
-const dateTime = new Date(todo.date);
-const date = dateTime.toISOString().split("T")[0];
-const time  = dateTime.toISOString().split("T")[1].slice(0, 5);
-
-div.classList.add("todo-item");
-div.innerHTML = `  <article class="todo-header">
-                    <h4>${todo.title}</h4>
-                    <div class="todo-icons">
-                        <img src="./delete.svg" alt="delete icon" class="icon delete">
-                        <img src="./edit.svg" alt="edit icon" class="icon edit">
-                        <input type="checkbox" name="" id="checkbox" class="checkbox">
-                    </article>
-                    <p class="todo-description">${todo.description || ""}</p>
-                    
-                    <div class="todo-date">
-                    <p class="">${date}</p>
-                    <p class="todo-time">${time}</p>
-                    </div>`;
-container.appendChild(div);     
-}
-
-
-// update todo and delete todo list
-
-container.addEventListener("click", function(event) {
-  const target = event.target;
-
-  if (target.classList.contains("delete")) {
-    const todo = target.closest(".todo-item"); 
-    if (todo) {
-      todo.remove(); 
+  if (title && date && description) {
+    if(editTodoIndex !== null) {
+      allTodos[editTodoIndex] = todo;
+      editTodoIndex = null;
+    } else{
+      allTodos.push(todo);
     }
+    saveTdos();
+    document.querySelector("#container").innerHTML = "";
+    allTodos.forEach((todo) => displayTodo(todo));
+    taskOverlay.classList.add("hidden");
   } 
-  else if(target.classList.contains("checkbox")) {
-      const todo = target.closest(".todo-item");
-      if (todo) {
-        todo.classList.toggle("completed");
-      }
-     saveTodos(); 
+  else {
+    alert("Please fill in all fields");
   }
 
-  else if (target.classList.contains("edit")) {
-    const todo = target.closest(".todo-item");
-    
-    if (todo) {
-      const todoTitle = todo.querySelector("h4");
-      const todoDescription = todo.querySelector(".todo-description");
-      const todoDate = todo.querySelector(".todo-date");
+  titleInput.value = "";
+  descriptionInput.value = "";
+  dateInput.value = "";
+}
 
-      if (todoTitle && todoDescription && todoDate) {
-        titleInput.value = todoTitle.innerText;
-        descriptionInput.value = todoDescription.innerText || ""; 
-        dateInput.value = todoDate.innerText;
-      } else {
-        console.error("Some elements are missing in the todo item.");
-      }
-    }
-    saveTodos()
+// function to disply the todo on the page
+function displayTodo(todo) {
+  const div = document.createElement("div");
+  div.classList.add("todo-item");
 
-  }
-  
-});
+  const dateTime = new Date(todo.date);
+  const date = dateTime.toISOString().split("T")[0];
+  const time = dateTime.toISOString().split("T")[1].slice(0, 5);
 
+  div.innerHTML = `
+     <article class="todo-header">
+        <h4>${todo.title}</h4>
+        <div class="todo-icons">
+            <img src="./delete.svg" alt="delete icon" class="icon delete">
+            <img src="./edit.svg" alt="edit icon" class="icon edit">
+            <input type="checkbox" name="" id="checkbox" class="checkbox">
+        </div>
+        </article>
+        <p class="todo-description">${todo.description}</p>
+        
+        <div class="todo-date">
+        <p class="">${date}</p>
+        <p class="todo-time">${time}</p>
+        </div>
+        
+    </article>`;
 
-// sort todos based on date
+  const deleteIcon = div.querySelector(".delete");
+  const editIcon = div.querySelector(".edit");
+  const checkbox = div.querySelector(".checkbox");
 
-ascendButton.addEventListener("click", function() {
+  let index = allTodos.indexOf(todo);
+
+  checkbox.addEventListener("change", () => {
+    todo.completionStatus = checkbox.checked;
+    console.log(todo);
+    div.classList.toggle('completed')
+    saveTdos();
+  })
+
+ 
+  deleteIcon.addEventListener("click", () => {
+    allTodos.splice(index, 1);
+    div.remove();
+    saveTdos();
+  });
+
+  editIcon.addEventListener("click", () => {
+    taskOverlay.classList.remove("hidden");
+    titleInput.value = todo.title;
+    descriptionInput.value = todo.description;
+    dateInput.value = todo.date;
+
+    editTodoIndex = allTodos.indexOf(todo);
+  });
+
+  document.querySelector("#container").appendChild(div);
+}
+
+// function to sort tasks in ascending and descending order
+
+const asceding = document.querySelector(".ascending")
+const descending = document.querySelector(".descending")
+const completed = document.querySelector(".showcompleted")
+
+asceding.addEventListener("click", () => {
   allTodos.sort((a, b) => new Date(a.date) - new Date(b.date));
-  container.innerHTML = "";
-  allTodos.forEach(addTodo);
-});
+  document.querySelector("#container").innerHTML = "";
+  allTodos.forEach((todo) => displayTodo(todo));
+  asceding.style.backgroundColor = "#035807";
+  descending.style.backgroundColor = "#03580780";
+  completed.style.backgroundColor = "#03580780";
+})
 
-descButton.addEventListener("click", function() {
+descending.addEventListener("click", () => {
   allTodos.sort((a, b) => new Date(b.date) - new Date(a.date));
-  container.innerHTML = ""; 
-  allTodos.forEach(addTodo);
+  document.querySelector("#container").innerHTML = "";
+  allTodos.forEach((todo) => displayTodo(todo));
+  asceding.style.backgroundColor = "#03580780";
+  descending.style.backgroundColor = "#035807";
+  completed.style.backgroundColor = "#03580780";
+})
+
+completed.addEventListener("click", () => {
+  const completedTodos = allTodos.filter((todo) => todo.completionStatus === true);
+  document.querySelector("#container").innerHTML = "";
+  if(completedTodos.length > 0) {
+    completedTodos.forEach((todo) => displayTodo(todo));
+  } else {
+      return "No completed tasks ";
+  }
+  asceding.style.backgroundColor = "#03580780";
+  descending.style.backgroundColor = "#03580780";
+  completed.style.backgroundColor = "#035807";
+})
+
+// event listeners
+addTodoButton.addEventListener("click", () => {
+  taskOverlay.classList.remove("hidden");
 });
 
-  // save todo
-  function saveTodos(){
-    localStorage.setItem("todos", JSON.stringify(allTodos));
-  }
+close.addEventListener("click", () => {
+  taskOverlay.classList.add("hidden");
+});
 
-  
+addBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  addTodo();
+});
+
+// save items to local storage
+function saveTdos(){
+  localStorage.setItem("todos", JSON.stringify(allTodos));
+}
+
+// load items from local storage
+function loadTodos(){
+  const storedTodos = JSON.parse(localStorage.getItem("todos"));
+
+  if(storedTodos) {
+    allTodos = storedTodos;
+    allTodos.forEach((todo) => displayTodo(todo));
+  }
+}
 
