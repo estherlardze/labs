@@ -1,7 +1,4 @@
 const button = document.querySelector("#button");
-const duration = document.getElementById("duration").value;
-const elementId = document.getElementById('elementId').id
-const submitButton = document.getElementById("submit");
 
 
 const Person = {
@@ -66,23 +63,34 @@ console.log("count", createCounter().getCount());
 
 // 4
 
-
 function reateTimer(duration, elementId){
-  let remainingTime = duration
-  let element = document.getElementById(elementId);
+  let remainingTime = duration  
 
-  if(!element){
-    console.error(`Element with id ${elementId} not found`)
-    return;
+  function updateTimer() {
+    if(remainingTime > 0){
+      this.textContent = `Time Remaining: ${remainingTime} seconds`;
+      remainingTime--
+    }
+    else{
+      clearInterval(timer)
+      this.textContent = "Time up"
+    }
   }
 
-  const timerId = {
-  }
-    
- 
-}
+  const element = document.getElementById("elementId")
+  const boundedElement = updateTimer.bind(element)
 
-submitButton.addEventListener("click", reateTimer())
+   const timer = setInterval(boundedElement, 1000)
+   return timer
+  }
+
+
+
+console.log(reateTimer(10, "Much Time"))
+
+
+
+
 
 
 
