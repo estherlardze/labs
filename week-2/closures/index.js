@@ -66,6 +66,7 @@ console.log("count", createCounter().getCount());
 
 // 4
 
+
 function reateTimer(duration, elementId){
   let remainingTime = duration
   let element = document.getElementById(elementId);
