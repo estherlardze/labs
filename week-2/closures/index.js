@@ -1,34 +1,36 @@
 const button = document.querySelector("#button");
+const duration = document.getElementById("duration").value;
+const elementId = document.getElementById('elementId').id
+const submitButton = document.getElementById("submit");
 
-// experimenting the this keyword with objects
+
 const Person = {
-    name: "Esther",
-    age: "12",
+    name: "Alice",
+    age: "20",
     greet() {
-      console.log(`Hello, 
-  my name is ${this.name} and I'm ${this.age} years old`);
+      console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old`);
     },
   };
   
-  // experiment with call
-  Person.greet.call({ name: "Priscilla", age: 30 });
+  Person.greet() // will output "Hello, my name is Alice and I'm 20 years old."
+
+  Person.greet.call({ name: "Priscilla", age: 30 }); // Output: "Hello, my name is Priscilla and I'm 30 years old."
   
-  // experiment with apply
-  Person.greet.apply({ name: "Ella", age: 22 }); // prints message with name and age as ella, 18
+  Person.greet.apply({ name: "Ella", age: 22 }); // "Hello, my name is Ella and I'm 22 years old."
   
   // experiment with bind, bind creates a new function and call it later
-  const newPerson = Person.greet.bind({ name: "Alice", age: 60 });
-  newPerson();
+  const newPerson = Person.greet.bind({ name: "Ruth", age:24 });
+  newPerson(); // this will log "Hello, my name is Ruth and I'm 24 years old."
 
 
-// since the arrow function inherits this from its surrounding scope, this 
+// the arrow function inherits (this keyword) from its surrounding scope, (this) 
 // inside the arrow function does not refer to the button element that triggered 
 // the event. Instead, it refers to whatever this was in the scope where button.addEventListener(...) 
 // was defined, which is often undefined in strict mode or refers to the window object in non-strict mode
 
 button.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log(this);
+    console.log(this.id);
     console.log(this.textContent);
   });
 
@@ -36,18 +38,19 @@ button.addEventListener("click", (e) => {
 // this will print out the id and the text content of the button
 // When a regular function is used as an event listener, JavaScript automatically sets this to the element that triggered the event. In this case, this is set to the button element.
 function handleClick() {
-  e.preventDefault();
-  console.log(this.id);
-  console.log(this.textContent);
+  console.log(this)  // logs the button element
+  console.log(this.id); // logs the id button
+  console.log(this.textContent); // logs click me!
 }
 
+// 3
 function createCounter() {
   let count = 0;
 
   const countObj = {
     increment() {
       count++;
-      console.log(this.count);
+      console.log(this.count); // this line returns undefined because this does not have access to the count variable
     },
 
     getCount() {
@@ -57,26 +60,29 @@ function createCounter() {
 
   return countObj;
 }
+const newCounter = createCounter();
+console.log("count", createCounter().getCount());
 
-console.log("count", createCounter());
 
+// 4
 
 function reateTimer(duration, elementId){
-    
-    const timerId =  setInterval(() => {
-       duration -- 
-       if(duration === 0){
-         console.log("Time is up!")
-         clearInterval(timerId);
-       }else{
-         elementId.textContent = duration;
-         console.log(`${duration} time remaining`)
-       }
-    }, 1000)
+  let remainingTime = duration
+  let element = document.getElementById(elementId);
 
-    return timerId;
+  if(!element){
+    console.error(`Element with id ${elementId} not found`)
+    return;
+  }
+
+  const timerId = {
+  }
+    
+ 
 }
-console.log(reateTimer(20, "Much time left"));
+
+submitButton.addEventListener("click", reateTimer())
+
 
 
 
