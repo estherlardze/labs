@@ -1,0 +1,140 @@
+:root {
+  --gray: #817d92;
+  --almostwhite: #e6e5ea;
+  --deepgray: #24232c;
+  --black: #18171f;
+  --green: #a4ffaf;
+  --tomato: #f64a4a;
+  --orange: #fb7c58;
+  --yellow: #f8cd65;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--almostwhite);
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "JetBrains Mono", monospace;
+}
+h1 {
+  font-size: 20px;
+  color: var(--gray);
+}
+
+.input-container {
+  width: 540px;
+  max-width: 100%;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--deepgray);
+  color: var(--almostwhite);
+  margin: 0 20px;
+}
+.input-container input {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  outline: none;
+  font-size: 18px;
+  width: 80%;
+}
+.input-container img {
+  cursor: pointer;
+}
+.form-container {
+  width: 540px;
+  max-width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  margin: 20px 20px 0;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--deepgray);
+  color: var(--almostwhite);
+}
+
+.character-length {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.strength {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--black);
+  margin: 20px 0;
+  padding: 0 10px;
+}
+#range {
+  width: 100%;
+  background: black;
+  height: 12px;
+  outline: none;
+  border-radius: 12px;
+  transition: background-color 0.2s;
+  margin-bottom: 10px;
+  accent-color: #a4ffaf;
+  overflow: hidden;
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: inset 0px 3px 18px rgba(0, 0, 0, 0.35);
+}
+
+#range::-webkit-slider-thumb {
+  appearance: none;
+  height: 13px;
+  width: 13px;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
+  box-shadow: -407px 0 0 400px #a4ffaf;
+}
+
+#range::-moz-range-thumb {
+  height: 13px;
+  width: 13px;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+#range::-ms-thumb {
+  height: 13px;
+  width: 13px;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+#generate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background-color: #a4ffaf;
+  color: black;
+  padding: 0 10px;
+  margin: 10px 0;
+  border: 1px solid #a4ffaf;
+  transition: all 0.5s;
+}
+#generate:hover {
+  border: 1px solid #a4ffaf;
+  background-color: transparent;
+  cursor: pointer;
+  color: #a4ffaf;
+}
+
