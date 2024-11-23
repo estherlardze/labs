@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="index.js" defer></script>
+
+    <style>
+      body {
+        display: flex;
+        font-family: Arial, sans-serif;
+        color: #333;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        width: 300px;
+        max-width: 100%;
+        height: fit-content;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+      .form {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        width: 100%;
+      }
+      .form input {
+        width: 100%;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid gray;
+        outline: none;
+        margin-right: 10px;
+      }
+      .form button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #333;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+      #button{
+        width: 100%;
+        margin-block: 10px;
+        border: 1px solid black;
+        cursor: pointer;
+        border-radius: 4px;
+        padding-block: 4px;
+        transition: all 0.4s ease-in-out; 
+      }
+      #button:hover{
+        background-color: #222;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button id="button">Click me!</button>
+      <p id="elementId">Time Remaining</p>
+    </div>
+  </body>
+</html>
