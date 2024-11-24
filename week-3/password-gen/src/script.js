@@ -120,10 +120,9 @@ function strengthIndicator() {
   if (symbols.some((char) => password.includes(char))) score += 1;
   if (numbers.some((char) => password.includes(char))) score += 1;
 
-  console.log(score); // Debugging - check the score value
+  console.log(score); 
 
-  // Update strength bars and text
-  strengthBars.forEach((bar) => bar.className = "strength-bar"); // Reset all bars
+  strengthBars.forEach((bar) => bar.className = "strength-bar"); 
   strengthText.textContent = "";
 
   if (passwordlength < 8) {
@@ -138,7 +137,7 @@ function strengthIndicator() {
     strengthBars[1].classList.add("medium");
     strengthBars[2].classList.add("medium");
     strengthText.textContent = "Medium";
-  } else if (passwordlength >= 8 && score >= 3) {
+  } else if (passwordlength >= 12 && score >= 3) {
     strengthBars[0].classList.add("strong");
     strengthBars[1].classList.add("strong");
     strengthBars[2].classList.add("strong");
