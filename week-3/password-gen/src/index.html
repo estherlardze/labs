@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Password generator app</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="password-generator__title">Password Generator</h1>
+
+    <section class="password-generator__input-container">
+      <input
+        type="text"
+        placeholder="PTx1f5DaFX!"
+        id="password"
+        class="password-generator__input"
+      />
+      <div class="password-generator__copy">
+        <p id="copy" class="password-generator__copy-text"></p>
+        <div class="password-generator__copy-icon">
+          <img src="./assets/images/icon-copy.svg" alt="copy icon" />
+        </div>
+      </div>
+    </section>
+
+    <section class="password-generator__form-container">
+      <form class="password-generator__form">
+        <div class="password-generator__character-length">
+          <p class="password-generator__character-length-label">Character Length</p>
+          <p id="password-length" class="password-generator__character-length-value"></p>
+        </div>
+        <input
+          type="range"
+          value="6"
+          min="6"
+          max="16"
+          step="1"
+          id="range"
+          class="password-generator__range"
+        />
+        <div class="password-generator__option">
+          <input
+            type="checkbox"
+            id="uppercase"
+            name="uppercase"
+            class="password-generator__checkbox"
+          />
+          <label for="uppercase" class="password-generator__label">Include Uppercase</label>
+        </div>
+
+        <div class="password-generator__option">
+          <input
+            type="checkbox"
+            id="lowercase"
+            name="lowercase"
+            class="password-generator__checkbox"
+          />
+          <label for="lowercase" class="password-generator__label">Include Lowercase</label>
+        </div>
+
+        <div class="password-generator__option">
+          <input
+            type="checkbox"
+            id="number"
+            name="number"
+            class="password-generator__checkbox"
+          />
+          <label for="number" class="password-generator__label">Include Numbers</label>
+        </div>
+
+        <div class="password-generator__option">
+          <input
+            type="checkbox"
+            id="symbol"
+            name="symbol"
+            class="password-generator__checkbox"
+          />
+          <label for="symbol" class="password-generator__label">Include Symbols</label>
+        </div>
+      </form>
+
+      <article class="password-generator__summary">
+        <div class="password-generator__strength">
+          <h3 class="password-generator__strength-title">STRENGTH</h3>
+          <div class="password-generator__strength-value">
+            <p class="password-generator__strength-value-text"></p>
+            <div class="password-generator__strength-value-indicator">
+              <div class="strength-bar"></div>
+              <div class="strength-bar"></div>
+              <div class="strength-bar"></div>
+              <div class="strength-bar"></div>
+            </div>
+          </div>
+        </div>
+
+        <button id="generate" class="password-generator__generate-btn">
+          <h3 class="password-generator__generate-text">GENERATE</h3>
+        </button>
+      </article>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
