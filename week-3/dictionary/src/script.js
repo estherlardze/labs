@@ -3,8 +3,28 @@ const searchButton = document.querySelector(".search__icon");
 const main = document.querySelector(".main");
 const notFound = document.querySelector(".notfound");
 const toggle = document.querySelector(".header__checkbox")
+const emptyString = document.querySelector(".empty")
+const selectors = document.querySelector(".header__font-selector")
+const search = document.querySelector(".search")
 
-console.log(toggle.checked)
+
+document.addEventListener("DOMContentLoaded", () => {
+  searchedWord.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const word = searchedWord.value.toLowerCase();
+
+      if(searchedWord.value === '') {
+        emptyStr()
+        return;
+      }
+
+      getaWord(word);
+      searchedWord.value = "";
+    }
+  });
+  // Default font-family
+  document.body.style.fontFamily = "sans-serif";
+});
 
 function toggleMode(){
     toggle.checked ? document.body.classList.add("darkmode") : document.body.classList.remove("darkmode")
@@ -24,15 +44,19 @@ const getaWord = async (word) => {
     }
 
     const data = await entries.json();
-    console.log(data);
     displayData(data);
+
   } catch (error) {
-    console.log(error);
+    
+    console.log(error.status, error.message);
     definitionNotFound();
   }
 };
 
 function displayData(data) {
+
+   notFound.innerHTML = ''
+   emptyStr.innerHTML = ''
 
   const audiourl =
     data[0].phonetics[0]?.audio ||
@@ -40,7 +64,7 @@ function displayData(data) {
     data[0].phonetics[2]?.audio;
 
     const phonetics = data[0].phonetics[1]?.text  || data[0].phonetic
-
+   
    
   main.innerHTML = `<article class="definition">
       <div class="definition__word-container">
@@ -49,8 +73,7 @@ function displayData(data) {
       </div>
      <div class="definition__audio-container">
   <audio class="definition__audio" src=${audiourl} ></audio>
-  <img class="play_image" src="./assets/images/icon-play.svg" alt="external link icon">
-
+  <svg xmlns="http://www.w3.org/2000/svg" class="play_image" width="75" height="75" viewBox="0 0 75 75"><g fill="#A445ED" fill-rule="evenodd"><circle cx="37.5" cy="37.5" r="37.5" opacity=".25"/><path d="M29 27v21l21-10.5z" class="triangle"/></g></svg>
 </div>
 
     </article>
@@ -58,10 +81,10 @@ function displayData(data) {
     <article class="noun">
       <div class="noun__title-container">
         <h2 class="noun__title">noun</h2>
-        <div class="noun__line"></div>
+        <div class="verb__line"></div>
       </div>
 
-      <p>Meaning</p>
+      <p class="meaning">Meaning</p>
         <ul class="noun__list">
           ${data[0].meanings[0].definitions.map(
             ({ definition }) =>
@@ -86,7 +109,7 @@ function displayData(data) {
         <div class="verb__line"></div>
       </div>
 
-      <p>Meaning</p>
+      <p class="meaning">Meaning</p>
         <ul class="verb__list">
          ${data[0].meanings[1].definitions.map(
            ({ definition }) =>
@@ -119,28 +142,46 @@ function displayData(data) {
 }
 
 function definitionNotFound(){
-
+  main.innerHTML = "";
+  emptyStr.innerHTML = "";
     notFound.innerHTML = `
       <h1>🫣</h1>
       <p class="notfound__text">No Definitions Found</p>
-      <p>Sorry pal, we couldn't find definitions for the word you were looking for. You can try the search again at later time or head to the web instead.</p>
-    `
-    
+      <p class="notfound__paragraph">Sorry pal, we couldn't find definitions for the word you were looking for. You can try the search again at later time or head to the web instead.</p>
+    `   
 }
 
-searchButton.addEventListener("click", () => {
-  const word = searchedWord.value.toLowerCase();
-  getaWord(word);
+function emptyStr(){
+  main.innerHTML = "";
+  notFound.innerHTML = "";
+  emptyString.innerHTML = `
+    <p class="empty__str">Whoops, can't be empty…</p>
+  `  
+  search.classList.add("empty__outline")
+}
+
+searchButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const word = searchedWord.value.trim().toLowerCase();
+
+  if(searchedWord.value === '') {
+    emptyStr()
+    return;
+  }
+
+  getaWord(word)
+  searchedWord.value = "";
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  searchedWord.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      const word = searchedWord.value.toLowerCase();
-      getaWord(word);
-    }
-  });
-});
+selectors.addEventListener("change", (e) => {
+  const selectedFont = e.target.value;
+  document.body.style.fontFamily = selectedFont
+})
+
+
+
+
+
 
 
 
