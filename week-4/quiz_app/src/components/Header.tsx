@@ -1,4 +1,3 @@
-import React from "react";
 
 const Header = () => {
   return (
@@ -19,9 +18,9 @@ const Header = () => {
             fill="#626C7F"
           />
         </svg>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider round"></span>
+        <label className="switch">
+          <input type="checkbox" className="checkbox"/>
+          <span className="slider round"></span>
         </label>
         <svg
           width="24"

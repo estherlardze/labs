@@ -1,39 +1,111 @@
 :root {
-  --purple: #A729F5;
-  --dark-blue-1: #313E51;
-  --dark-blue-2: #3B4D66;
-  --grayish-blue: #626C7F;
-  --light-blue: #ABC1E1;
-  --light-gray: #F4F6FA;
-  --white: #FFFFFF;
-  --green: #26D782;
-  --red: #EE5454;
+  --purple: #a729f5;
+  --dark-blue-1: #313e51;
+  --dark-blue-2: #3b4d66;
+  --grayish-blue: #626c7f;
+  --light-blue: #abc1e1;
+  --light-gray: #f4f6fa;
+  --white: #ffffff;
+  --green: #26d782;
+  --red: #ee5454;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+.darkmode{
+  --purple: #a729f5;
+  --dark-blue-1: #3b4d66;
+  --dark-blue-2: #3b4d66;
+  --grayish-blue: #626c7f;
+  --light-blue: #abc1e1;
+  --light-gray: #f4f6fa;
+  --white: #ffffff;
+  --green: #26d782;
+  --red: #ee5454;
+}
 
+body {
+  background-color: var(--light-gray);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Rubik", sans-serif;
+  color: var(--dark-blue-1);
+  background-image: url("./assets/bg-light.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 /* ======== header =========*/
-.header{
- display: flex;
- justify-content: space-between;
- align-items: center;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px;
 }
 
-.header__controls{
+.header__controls {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.App{
-
+/*==========home=========*/
+.home {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 100px;
 }
+
+.home__text h1{
+  font-size: 64px;
+  line-height: 84px;
+  font-weight: 100;
+} 
+
+.home__text .home__title-bold{
+  font-weight: 600;
+}
+.home__text .home__description{
+  font-style: italic;
+  margin-top: 50px;
+  font-size: 20px;
+  color: var(--grayish-blue);
+}
+.course-card {
+  display: flex;
+  gap: 10px;
+  background-color: var(--white);
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.04);
+  margin: 20px 0;
+  padding: 10px;
+  width: 564px;
+  max-width: 100%;
+  height: 96px;
+  align-items: center;
+  border-radius: 20px;
+}
+.course-card img {
+  width: 56px;
+  height: 56px;
+}
+.course-card p {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+/*===========dark mode===========*/
 .switch {
   position: relative;
   display: inline-block;
   width: 48px;
   height: 24px;
 }
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -46,8 +118,8 @@
   right: 0;
   bottom: 0;
   background-color: var(--purple);
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -58,8 +130,8 @@
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
