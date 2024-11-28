@@ -1,16 +1,34 @@
-import Home from "./components/Home"
-import Header from "./components/Header"
+import Home from "./components/Home";
+import { useState } from "react";
+import Quiz from "./components/Quiz";
 
+type View = "home" | "quiz";
 const App = () => {
-
- //const [changemode, setChangemode] = useState("light-mode")
+  const [currentPage, setCurrentPage] = useState<View>("home");
+  const [logo] = useState<string>("");
+  const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
 
   return (
     <main className="app">
-      <Header/>
-      <Home/>
-    </main>
-  )
-}
+      {currentPage === "home" && (
+        <Home
+          onSelectChange={(course: string) => {
+            setSelectedCourse(course);
+            setCurrentPage("quiz");
+          }}
+          logo={logo}
+        />
+      )}
 
-export default App
+      {currentPage === "quiz" && (
+        <Quiz
+          logo={logo}
+          subject={selectedCourse}
+          onGoback={() => setCurrentPage("home")}
+        />
+      )}
+    </main>
+  );
+};
+
+export default App;

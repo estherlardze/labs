@@ -1,10 +1,17 @@
 import CourseCard from "./CourseCard";
-import { html, css, js, acc } from "../utils/constants";
+import { courseInfo } from "../utils/constants"
+import Header from "./Header";
 
 
+type HomeProp = {
+  onSelectChange: (subject: string) => void 
+  logo: string
+}
 
-const Home = () => {
+const Home = ({onSelectChange}: HomeProp) => {
   return (
+    <>
+    <Header logo=""/>
     <section className="home">
       <div className="home__text">
         <h1 className="home__title-light">Welcome to the</h1>
@@ -13,12 +20,14 @@ const Home = () => {
       </div>
 
      <div className="home__cards">
-        <CourseCard icon={html} text="HTML" />
-        <CourseCard icon={css} text="CSS" />
-        <CourseCard icon={js} text="JavaScript" />
-        <CourseCard icon={acc} text="Accessibility" />
+        {
+          courseInfo.map((course) => (
+            <CourseCard icon={course.icon} text={course.text} onSelectChange={onSelectChange} key={course.text}/>
+          ))
+        }
      </div>
     </section>
+    </>
   );
 };
 

@@ -1,4 +1,25 @@
-export {default as html } from '../assets/html.png'
-export {default as css} from '../assets/css.png'
-export {default as js}  from '../assets/js.png'
-export {default as acc} from '../assets/acc.png'
+
+import html from '../assets/html.png'
+import css from '../assets/css.png'
+import js from '../assets/js.png'
+import acc from '../assets/acc.png'
+
+
+export const courseInfo = [
+   {
+     icon: html,
+    text: "HTML"
+   },
+   {
+     icon: css,
+     text: "CSS"
+   },
+   {
+     icon: js,
+     text: "JavaScript"
+   },
+   {
+     icon: acc,
+     text: "Accessibility"
+   }
+]

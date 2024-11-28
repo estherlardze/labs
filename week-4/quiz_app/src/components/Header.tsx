@@ -1,9 +1,9 @@
 
-const Header = () => {
+const Header = ({logo} : {logo: string}) => {
   return (
     <header className="header">
       <div>
-        <h5>Quiz App</h5>
+        <h5>{logo}</h5>
       </div>
       <div className="header__controls">
         <svg
