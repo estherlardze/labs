@@ -1,58 +1,76 @@
 import Header from "./Header";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import OptionCard from "./OptionCard";
+import { QuizProps, Question, QuestionsProps, QuizContextType } from "../types";
 
-type QuizProps = {
-  subject: string | null;
-  onGoback: () => void;
-  logo: string | null;
-};
+import { QuizContext } from "../context/app-context";
+import { filteredQuiz } from "../utils/helper";
 
-type Question = {
-  title: string;
-  icon: string;
-  questions: string[];
-};
 
-const Quiz = ({ subject, onGoback }: QuizProps) => {
-  const [questions, setQuestions] = useState<Question[]>([]);
+const Quiz = ({ quizTitle, onGoback }: QuizProps) => {
+  const {
+    quizzes, isCorrect, setIsCorrect, setIsButtonClicked,
+    isButtonClicked, setCheck
+  } = useContext<QuizContextType>(QuizContext)
   const [filteredQuestions, setFilteredQuestions] = useState<Question[]>([]);
-  let [currentOptionIndex, setCurrentOptionIndex] = useState(-1);
+  const [activeQuestionIndex, setActiveQuestionIndex] = useState(0)
+  const [selectedOption, setSelectedOption] = useState("")
+  const [isSelect, setIsSelect] = useState(false)
+  const [correctAnswer, setCorrectAnswer] = useState<string | null>(null)
+  
+  const [currentOptionIndex, setCurrentOptionIndex] = useState<number | null>(null);
+  
+  const [currentQuestion, setCurrentQuestion] = useState<QuestionsProps | null>(null);
+  const [score, setScore] = useState(0)
 
-  useEffect(() => {
-    if (!subject) {
-      return;
-    }
 
-    fetch("/data.json")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setQuestions(data.quizzes);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [subject]);
+useEffect(() => {
+  const quizQuestions = filteredQuiz(quizzes, quizTitle)
+  setFilteredQuestions(quizQuestions)
+}, [])
 
-  useEffect(() => {
-    if (questions.length > 0 && subject) {
-      const filteredData = questions.filter(
-        (question) => question.title === subject
-      );
-      setFilteredQuestions(filteredData);
-    }
-  }, [subject, questions]);
+const correct = filteredQuestions[0]?.questions[activeQuestionIndex]?.answer;
 
-  // console.log(filteredQuestions);
+const onSubmit = () => {
+  setCorrectAnswer(correct)
+  setIsCorrect(selectedOption === correct)
+  setIsButtonClicked(true)
 
-  const handleOptionClick = (id:number) => {
-    setCurrentOptionIndex(id);
+  if (selectedOption === correct) {
+    // update score
+    setScore((prev) => prev + 1)   
   }
+
+}
+
+console.log(score) 
+
+function onNext() {
+  setActiveQuestionIndex(prev => prev + 1)
+  setIsCorrect(null)
+  setSelectedOption("")
+  setIsButtonClicked(false)
+  setCurrentOptionIndex(null)
+}
+
+useEffect(() => {
+  if(activeQuestionIndex >= filteredQuestions[0]?.questions.length){
+    alert("quiz complete")
+    console.log("hello", score)
+    return
+  }
+}, [activeQuestionIndex])
+
+const handleOptionClick = (id:number, option: string) => {
+  setCurrentOptionIndex(id);
+  setSelectedOption(option) // -> user selected
+  setCurrentQuestion(filteredQuestions[0].questions[activeQuestionIndex])
+  setCheck(selectedOption === correctAnswer)
+}
+
+useEffect(() => console.log(selectedOption), [selectedOption])
+
+
 
   if (!filteredQuestions.length) {
     return <p>Loading...</p>;
@@ -60,25 +78,34 @@ const Quiz = ({ subject, onGoback }: QuizProps) => {
 
   return (
     <div>
-      <Header logo={subject} />
+      <Header logo={quizTitle} />
       <div className="quiz__body">
         <p className="quiz__question">
-          {filteredQuestions[0].questions[0]?.question}
+          {filteredQuestions[0]?.questions[activeQuestionIndex]?.question}
         </p>
         <div>
-          {filteredQuestions[0].questions[0]?.options.map(
+          {filteredQuestions[0]?.questions[activeQuestionIndex]?.options?.map(
             (option: string, index: number) => (
               <OptionCard
                 icon={String.fromCharCode(65 + index)}
                 text={option}
-                key={index}
                 index={index}
+                correctAnswer={correctAnswer}
+                selectedOption={selectedOption}
+                option={option}
+                key={index}
                 isSelected={index === currentOptionIndex}
                 handleOptionClick={handleOptionClick}
               />
             )
           )}
-          <button className="quiz__submit">Submit Answer</button>
+          { isButtonClicked 
+            ? (selectedOption 
+              ? <button className="quiz__submit" onClick={onNext}>Next</button>
+              : <button className="quiz__submit" onClick={onSubmit}>Submit Answer</button>)
+            : <button className="quiz__submit" onClick={onSubmit}>Submit Answer</button>
+          }
+
         </div>
       </div>
       <button onClick={onGoback}>Go Back</button>

@@ -1,5 +1,5 @@
 
-const Header = ({logo} : {logo: string}) => {
+const Header = ({logo} : {logo: string | null}) => {
   return (
     <header className="header">
       <div>
