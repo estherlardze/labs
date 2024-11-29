@@ -5,7 +5,7 @@ import Quiz from "./components/Quiz";
 type View = "home" | "quiz";
 const App = () => {
   const [currentPage, setCurrentPage] = useState<View>("home");
-  const [logo] = useState<string>("");
+  const [logo] = useState<string | null>("");
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
 
   return (

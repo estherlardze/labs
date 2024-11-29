@@ -17,9 +17,7 @@ type Question = {
 const Quiz = ({ subject, onGoback }: QuizProps) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [filteredQuestions, setFilteredQuestions] = useState<Question[]>([]);
-  // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  let [newIndex, setNewIndex] = useState(-1);
-  const [defaultBorder, setDefaultBorder] = useState("");
+  let [currentOptionIndex, setCurrentOptionIndex] = useState(-1);
 
   useEffect(() => {
     if (!subject) {
@@ -52,6 +50,10 @@ const Quiz = ({ subject, onGoback }: QuizProps) => {
 
   // console.log(filteredQuestions);
 
+  const handleOptionClick = (id:number) => {
+    setCurrentOptionIndex(id);
+  }
+
   if (!filteredQuestions.length) {
     return <p>Loading...</p>;
   }
@@ -61,28 +63,18 @@ const Quiz = ({ subject, onGoback }: QuizProps) => {
       <Header logo={subject} />
       <div className="quiz__body">
         <p className="quiz__question">
-          {filteredQuestions[0].questions[0].question}
+          {filteredQuestions[0].questions[0]?.question}
         </p>
         <div>
-          {filteredQuestions[0].questions[0].options.map(
+          {filteredQuestions[0].questions[0]?.options.map(
             (option: string, index: number) => (
               <OptionCard
                 icon={String.fromCharCode(65 + index)}
                 text={option}
                 key={index}
-                selected={`${defaultBorder}`}
-                handleSelectOption={() => {
-                  newIndex = index;
-                  setNewIndex(index);
-                  console.log(newIndex);
-                  if (newIndex === index) {
-                    setDefaultBorder("selected");
-                  }
-                  else{
-                    setDefaultBorder("");
-                  }
-                }}
                 index={index}
+                isSelected={index === currentOptionIndex}
+                handleOptionClick={handleOptionClick}
               />
             )
           )}

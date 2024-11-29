@@ -1,24 +1,35 @@
-import { useState, useEffect } from "react";
-
 type OptionProps = {
   icon: string;
   text: string;
-  handleSelectOption: () => void;
+  isSelected: boolean;
   index: number;
-  selected: string;
+  handleOptionClick: (index: number) => void;
 };
 
-const OptionCard = ({ icon, text, index, selected, handleSelectOption}: OptionProps) => {
-
-
+const OptionCard = ({
+ icon,
+  text,
+  isSelected,
+  index,
+  handleOptionClick,
+}: OptionProps) => {
   return (
     <div
-      className={`option-card ${selected}`}
-      onClick={handleSelectOption}
+      className={`option-card `}
+      onClick={() => handleOptionClick(index)}
+      style={{ border: `2px solid ${isSelected ? "#a729f5" : "white"}` }}
     >
-      <p className="option-card__question">{icon}</p>
+      <p
+        className="option-card__question"
+        style={{
+          color: `${isSelected ? "white" : "black"}`,
+          backgroundColor: `${isSelected ? "#a729f5" : ""}`,
+        }}
+      >
+        {icon}
+      </p>
       <p className="option-card__answer">{text}</p>
-    </div> 
+    </div>
   );
 };
 
