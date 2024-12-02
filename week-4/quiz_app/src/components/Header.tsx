@@ -1,17 +1,22 @@
 import { QuizContext } from "../context/app-context";
 import { QuizContextType } from "../types";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
+const Header = ({ logo }: { logo: string | null }) => {
+  // const { darkMode, setDarkMode } = useContext<QuizContextType>(QuizContext);
+  const [theme, setTheme] = useState<string>(
+    () => sessionStorage.getItem("theme") || "light"
+  );
 
-const Header = ({logo} : {logo: string | null}) => {
+  function toggleTheme() {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    // setDarkMode((prevMode) => !prevMode);
+  }
 
-const { darkMode, setDarkMode } = useContext<QuizContextType>(QuizContext);
-  
-const toggleDarkMode = () => {
-  document.body.classList.toggle("darkmode");
-  setDarkMode((prevMode) => !prevMode);
-};
-
+  useEffect(() => {
+    sessionStorage.setItem("theme", theme);
+    document.body.className = theme;
+  }, [theme]);
 
   return (
     <header className="header">
@@ -31,8 +36,14 @@ const toggleDarkMode = () => {
             fill="#626C7F"
           />
         </svg>
-        <label className="switch" onClick={toggleDarkMode}>
-          <input type="checkbox" className="checkbox"/>
+        <label className="switch" htmlFor="toggle">
+          <input
+            type="checkbox"
+            id="toggle"
+            className="checkbox"
+            checked={theme === "dark"}
+            onChange={toggleTheme}
+          />
           <span className="slider round"></span>
         </label>
         <svg

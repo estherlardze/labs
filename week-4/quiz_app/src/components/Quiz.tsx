@@ -15,6 +15,9 @@ const Quiz = ({ quizTitle, onGoback }: QuizProps) => {
     isButtonClicked,
     setCheck,
   } = useContext<QuizContextType>(QuizContext);
+
+
+  
   const [filteredQuestions, setFilteredQuestions] = useState<Question[]>([]);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
