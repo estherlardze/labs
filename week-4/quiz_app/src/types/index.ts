@@ -12,6 +12,8 @@ export type QuizContextType = {
     setIsButtonClicked: React.Dispatch<React.SetStateAction<boolean>>;
     check: boolean | null;
     setCheck: React.Dispatch<React.SetStateAction<boolean | null>>;
+    darkMode: boolean;
+    setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 
 }
 

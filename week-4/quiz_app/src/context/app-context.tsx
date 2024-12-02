@@ -11,6 +11,7 @@ export default function QuizContextProvider({ children }: { children: React.Reac
     const [quizzes, setQuizzes] = useState(Data)
     const [isButtonClicked, setIsButtonClicked] = useState(false)
     const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
+    const [darkMode, setDarkMode] = useState(false);
 
     const [check, setCheck] = useState<boolean | null>(null)
 
@@ -21,7 +22,7 @@ export default function QuizContextProvider({ children }: { children: React.Reac
             quizzes,
             isCorrect, setIsCorrect,
             isButtonClicked, setIsButtonClicked,
-            check, setCheck
+            check, setCheck, darkMode, setDarkMode
         }}>
          {children}
         </QuizContext.Provider>

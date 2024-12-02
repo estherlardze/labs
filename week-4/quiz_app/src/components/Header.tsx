@@ -1,5 +1,18 @@
+import { QuizContext } from "../context/app-context";
+import { QuizContextType } from "../types";
+import { useContext } from "react";
+
 
 const Header = ({logo} : {logo: string | null}) => {
+
+const { darkMode, setDarkMode } = useContext<QuizContextType>(QuizContext);
+
+const toggleDarkMode = () => {
+  document.body.classList.toggle("darkmode");
+  setDarkMode((prevMode) => !prevMode);
+};
+
+
   return (
     <header className="header">
       <div>
@@ -18,7 +31,7 @@ const Header = ({logo} : {logo: string | null}) => {
             fill="#626C7F"
           />
         </svg>
-        <label className="switch">
+        <label className="switch" onClick={toggleDarkMode}>
           <input type="checkbox" className="checkbox"/>
           <span className="slider round"></span>
         </label>

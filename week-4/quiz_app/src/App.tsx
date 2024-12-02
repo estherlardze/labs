@@ -7,8 +7,9 @@ import { QuizContext } from "./context/app-context";
 
 const App = () => {
   const quizContext = useContext(QuizContext)
-  const [logo] = useState<string | null>("");
-
+  const [logo, setLogo] = useState<string | null>({text: "", imgage: ""});
+  
+  
   return (
     <main className="app">
       {quizContext?.currentPage === "home" && (
@@ -17,13 +18,13 @@ const App = () => {
             quizContext.setQuizTitle(course);
             quizContext?.setCurrentPage("quiz");
           }}
-          logo={logo}
+          logo={logo} setLogo={setLogo}
         />
       )}
 
       {quizContext?.currentPage === "quiz" && (
         <Quiz
-          logo={logo}
+          logo={logo} setLogo={setLogo}
           quizTitle={quizContext.quizTitle}
           onGoback={() => quizContext.setCurrentPage("home")}
         />
