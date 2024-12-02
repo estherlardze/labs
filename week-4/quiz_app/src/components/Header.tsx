@@ -6,7 +6,7 @@ import { useContext } from "react";
 const Header = ({logo} : {logo: string | null}) => {
 
 const { darkMode, setDarkMode } = useContext<QuizContextType>(QuizContext);
-
+  
 const toggleDarkMode = () => {
   document.body.classList.toggle("darkmode");
   setDarkMode((prevMode) => !prevMode);
