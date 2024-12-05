@@ -1,0 +1,192 @@
+:root {
+  --white-color: #ffffff;
+  --light-blue-color: #abbcff; 
+  --light-blue: #ABBCFF;
+  --sky-blue-color: #bee2fd;
+  --denim-color: #022959;
+  --gray-color: #9699aa;
+  --color-red-errors: #ee374a;
+  --very-light-gray-color: #f8f9ff;
+  --purple-color: #483eff;
+  --color-bg: #eff5ff;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: ubuntu;
+  src: url("./assets/fonts/Ubuntu-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: ubuntu;
+  src: url("./assets/fonts/Ubuntu-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: ubuntu;
+  src: url("./assets/fonts/Ubuntu-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: #eff5ff;
+  font-family: ubuntu, sans-serif;
+  font-weight: 300;
+  background-color: var(--color-bg);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--white-color);
+  width: 940px;
+  height: 600px;
+  border-radius: 10px;
+}
+
+/*============sidebar=============*/
+.sidebar {
+  background-image: url("../src/assets/bg-sidebar-desktop.svg");
+  background-position: fixed;
+  background-repeat: no-repeat;
+  height: 568px;
+  width: 274px;
+  margin-left: 20px;
+}
+.sidebar-link-text{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sidebar-link{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20px;
+  margin-top: 40px;
+  gap: 20px;
+  background-color: transparent;
+}
+.sidebar-link-index{
+  color: var(--white-color);
+  border: 1px solid var(--white-color);
+  padding: 20px;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: center;
+}
+.sidebar-link-text .step{
+  color: var(--light-blue);
+  text-transform: uppercase;
+  font-size: 14px;
+}
+.sidebar-link-text .title{
+  color: var(--white-color);
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/*================header===============*/
+
+.header{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px;
+  background-color: transparent;
+}
+
+/*============main=============*/
+.main{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px;
+  height: 90%;
+}
+.user-info-name{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 25px 0;
+}
+.user-info-name input{
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-color);
+  width: 100%;
+  outline: none;
+}
+.user-info-name label{
+ color: var(--denim-color);
+ font-weight: 500;
+}
+
+
+/*============steps=============*/
+.select-plan-container{
+  display: flex;
+  gap: 10px;
+  margin: 25px 0;
+}
+.select-plan{
+  display: flex;
+  gap: 10px;
+  margin: 25px 0;
+  border: 1px solid var(--gray-color);
+  border-radius: 8px;
+  padding: 10px 20px;
+  width: 138px;
+  cursor: pointer;
+  flex-direction: column;
+  height: 160px;
+}
+.select-plan h3{
+ color: var(--denim-color);
+}
+
+/*=============footer=============*/
+.main-footer{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+}
+.main-footer button{
+  border-radius: 8px;
+  border: none;
+  color: var(--white-color);
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 90px;
+}
+.previous{
+  background-color: var(--gray-color);
+}
+.next{
+  background-color: var(--denim-color);
+}
+
+
