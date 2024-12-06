@@ -72,38 +72,73 @@ function createImage() {
     img.src = image.thumbnailURL;
     img.alt = image.caption;
     anchor.href = image.imageURL;
-    anchor.target = "_blank";
     p.textContent = image.caption;
     anchor.append(img, p);
     imageContainer.appendChild(anchor);
 
     // add event listener to anchor
-    anchor.addEventListener("click", openLightbox);
+    anchor.addEventListener("click", (event) => {
+      event.preventDefault();
+      openLightbox(index);
+    });
   });
 }
 
 function openLightbox(index) {
   const lightbox = document.createElement("article");
   const closeButton = document.createElement("div");
-
-  lightbox.classList.add("lightbox-overlay");
+  closeButton.classList.add("lightbox-close");
   closeButton.textContent = "X";
 
-  lightbox.append(closeButton);
+  lightbox.classList.add("lightbox-overlay");
+   lightbox.innerHTML = `
+        <a class="img-figure">
+          <img
+            src= ${galleryImages[index].imageURL}
+            alt=${galleryImages[index].caption}
+            class="lightbox-image"
+          />
+          <p>${galleryImages[index].caption}</p>
+        </a>
 
-  galleryImages.forEach((image, i) => {
-    const img = document.createElement("img");
-    img.src = image.imageURL;
-    img.alt = image.caption;
+        <div class="next-previous">
+          <button class="left">previous</button>
+          <button class="right">next</button>
+        </div>
+   `
 
-    if (i === index) {
-      lightbox.append(img);
-    }
-  });
-
-  document.body.append(lightbox);
+  document.body.append(closeButton, lightbox);
 
   closeButton.addEventListener("click", closeLightbox);
+
+  const next = lightbox.querySelector('.right');
+  const previous = lightbox.querySelector('.left');
+
+  next.addEventListener('click', () => navigateImage(index +  1));
+  previous.addEventListener('click', () => navigateImage(index - 1));
+}
+
+function closeLightbox() {
+  const lightbox = document.querySelector(".lightbox-overlay");
+  const closeButton = document.querySelector(".lightbox-close");
+
+  if(lightbox && closeButton){
+    lightbox.remove();
+    closeButton.remove();
+  }
+  
+}
+
+
+function navigateImage(newIndex){
+  if(newIndex > galleryImages.length - 1){
+    newIndex = 0;
+    }else if(newIndex < 0){
+    newIndex = galleryImages.length - 1;
+    }
+    
+  closeLightbox();  
+  openLightbox(newIndex);
 }
 
 createImage();
