@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do List</title>
+    <link rel="stylesheet" href="todo.css" />
+    <script src="todo.js" defer></script>
+  </head>
+
+  <body>
+
+    <main class="main">
+
+      <header class="heading">
+        <h1>Todo App</h1>
+      </header>
+
+      <div class="todo-controls">
+        <button class="sort ascending">Ascending</button>
+        <button class="sort descending">Descending</button>
+        <button class="sort showcompleted">Completed</button>
+      </div> 
+
+      <article class="todo-head">
+        <h1>Tasks</h1>
+        <div class="add-task">
+          <img src="./add.svg" alt="" /> <button>Add Task</button>
+        </div>
+      </article>
+
+      <section class="task-overlay hidden">
+        <article class="form">
+          <div class="form-head">
+            <h1>Task Details</h1>
+            <p class="close">&times;</p>
+          </div>
+          <div class="task-title">
+            <label for="title">Title</label>
+            <input
+              type="text"
+              placeholder="Add task title"
+              class="title"
+              id="title"
+            />
+          </div>
+          <div class="task-description">
+            <label for="description">Description</label>
+            <textarea name="" cols="10" rows="4" id="description"></textarea>
+          </div>
+          <div class="task-date">
+            <label for="date">Date</label>
+            <input
+              type="datetime-local"
+              placeholder="datetime-local"
+              id="date"
+            />
+          </div>
+          <button class="add-btn" type="submit">Add</button>
+        </article>
+      </section>
+      <section id="container">
+        
+      </section>
+    </main>
+
+  </body>
+</html>
