@@ -1,9 +1,10 @@
 import { formProps } from "../../types";
 import "./finishup.css";
 
+
 const FinishUp = ({ formData }: formProps) => {
   const total = formData.selectedAddOns.reduce(
-    (sum, addOn) =>
+    (sum: number, addOn: { monthlyPrice: number; yearlyPrice: number }) =>
       sum +
       (formData.selectedBilling === "Monthly"
         ? addOn.monthlyPrice
@@ -16,7 +17,7 @@ const FinishUp = ({ formData }: formProps) => {
   );
 
   const changeBilling = () => {
-    formData.setFormData((prev) => ({
+    formData.setFormData((prev: formProps) => ({
       ...prev,
       selectedBilling: prev.selectedBilling === "Monthly" ? "Yearly" : "Monthly",
     }));
@@ -39,7 +40,7 @@ const FinishUp = ({ formData }: formProps) => {
         </div>
         <div className="addon-line"></div>
         <ul>
-          {formData.selectedAddOns.map((addOn) => (
+          {formData.selectedAddOns.map((addOn: { id: string; name: string; monthlyPrice: number; yearlyPrice: number }) => (
             <li className="addon-list" key={addOn.id}>
               <span>{addOn.name}</span>
               <span>+${formData.selectedBilling === "Monthly" ? `${addOn.monthlyPrice}/mo` : `${addOn.yearlyPrice}/yr`}</span>

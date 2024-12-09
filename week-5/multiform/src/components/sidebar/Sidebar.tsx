@@ -1,11 +1,23 @@
 import { sidebarlinks } from "../../constants";
-import './sidebar.css'
-const Sidebar = ({currentStepId, handleSidebarClick} : {currentStepId: number}) => {
+import "./sidebar.css";
+import { SidebarProps } from "../../types";
+
+const Sidebar = ({ currentStepId, handleSidebarClick }: SidebarProps) => {
   return (
     <aside className="sidebar">
       {sidebarlinks.map((link) => (
-        <div className="sidebar-link" key={link.index} onClick={() =>handleSidebarClick(link.index) }>
-          <div className="sidebar-link-index" style={{background: currentStepId === link.index ? "#BEE2FD" : "", color: currentStepId === link.index ? "#022959" : ""}}>
+        <div
+          className="sidebar-link"
+          key={link.index}
+          onClick={() => handleSidebarClick(link.index)}
+        >
+          <div
+            className="sidebar-link-index"
+            style={{
+              background: currentStepId === link.index ? "#BEE2FD" : "",
+              color: currentStepId === link.index ? "#022959" : "",
+            }}
+          >
             <p>{link.index}</p>
           </div>
 
@@ -18,5 +30,5 @@ const Sidebar = ({currentStepId, handleSidebarClick} : {currentStepId: number}) 
     </aside>
   );
 };
- 
+
 export default Sidebar;

@@ -1,23 +1,30 @@
 import "./selectplan.css";
+import { Plan, SelectPlanProps } from "../../types";
 
-type SelectPlan = {
-  title: string;
-  price: string;
-  icon: string;
-}[];
+// type formProps = {
+//   selectedPlan: Plan | null;
+//   selectedBilling: string;
+//   selectedAddOns: {
+//     id: string;
+//     name: string;
+//     description: string;
+//     monthlyPrice: number;
+//     yearlyPrice: number;
+//   }[];
+// };
 
-const SelectPlan = ({ formData, setFormData, currentStep }) => {
+const SelectPlan = ({ formData, setFormData, currentStep }: SelectPlanProps) => {
   return (
     <section className="select">
       <div className="select-plan-container">
-        {currentStep.plans?.map((plan) => (
+        {currentStep.plans?.map((plan: Plan) => (
           <div
             key={plan.id}
             className={`select-plan-card ${
               formData.selectedPlan?.id === plan.id ? "active" : ""
             }`}
             onClick={() =>
-              setFormData((prev) => ({ ...prev, selectedPlan: plan }))
+              setFormData((prev: unknown) => ({...prev, selectedPlan: plan }))
             }
           >
             <div

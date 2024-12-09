@@ -1,13 +1,14 @@
-export type SelectPlan = {
-  title: string;
-  price: string;
-  icon: string;
-}[];
+
 
 export type FooterType = {
   handleNextStep: () => void;
   handlePreviousStep: () => void;
   currentStepId: number;
+};
+
+export type SidebarProps = {
+  currentStepId: number;
+  handleSidebarClick: (stepId: number) => void;
 };
 
 export type FormContextType = {
@@ -68,7 +69,7 @@ type UserInfo = {
 export type UserDataType = {
   errorMessage: UserInfo;
   setErrorMessage: React.Dispatch<React.SetStateAction<UserInfo>>;
-  currentStep: any;
+  currentStep: unknown;
   userData: UserInfo;
   setUserData: React.Dispatch<React.SetStateAction<UserInfo>>;
 };
@@ -119,3 +120,24 @@ export type InitialStateType = {
     }[]
   };
 };
+
+export type Plan = {
+  id: string,
+  name: string,
+  monthlyPrice: number,
+  yearlyPrice: number,
+  icon: string
+}
+
+export type SelectPlanProps = {
+  formData: formProps;
+  setFormData: React.Dispatch<React.SetStateAction<formProps>>
+  currentStep: {
+    id: string;
+    title: string;
+    description: string;
+    plans: Plan[]
+  };
+  }
+  
+ 

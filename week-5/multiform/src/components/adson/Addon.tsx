@@ -1,6 +1,5 @@
 import "./addson.css";
-import { AddonType } from "../../types";
-import { AddonContextType } from "../../types";
+import { AddonContextType, AddonType } from "../../types";
 import { formProps } from "../../types";
 
 const Addon = ({ currentStep, formData, setFormData }: AddonContextType) => {

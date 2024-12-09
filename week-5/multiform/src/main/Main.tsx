@@ -143,7 +143,7 @@ const Main = () => {
         ) : null}
 
         <div className="main-form">{renderStep()}</div>
-        <div>{confirm && <Thankyou />}</div>
+        <div>{confirm && currentStepId === 5 && <Thankyou />}</div>
         {currentStepId <= 4 ? (
           <Footer
             handleNextStep={handleNextStep}
