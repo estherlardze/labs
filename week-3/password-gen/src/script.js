@@ -1,5 +1,5 @@
 const passwordLength = document.querySelector(
-  ".password-generator__password-length"
+  "#password-length"
 );
 const rangeInput = document.querySelector(".password-generator__range");
 const numberInput = document.querySelector("#number");
@@ -15,11 +15,13 @@ const copyText = document.querySelector(".password-generator__copy-text");
 const strengthBars = document.querySelectorAll(".strength-bar")
 const strengthText = document.querySelector(".password-generator__strength-value-text")
 
+
+
 rangeInput.addEventListener("change", function () {
   passwordLength.textContent = rangeInput.value;
 });
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   passwordLength.textContent = rangeInput.min;
 });
 
@@ -126,13 +128,13 @@ function strengthIndicator() {
   strengthText.textContent = "";
 
   if (passwordlength < 8) {
-    strengthBars[0].classList.add("too-weak");
-    strengthText.textContent = "Too Weak";
+    strengthBars[0].classList.add("Too weak");
+    strengthText.textContent = "Strong";
   } else if (passwordlength >= 8 && score <= 1) {
     strengthBars[0].classList.add("weak");
     strengthBars[1].classList.add("weak");
     strengthText.textContent = "Weak";
-  } else if (passwordlength >= 8 && score === 2) {
+  } else if (passwordlength >= 8 && score  >= 2) {
     strengthBars[0].classList.add("medium");
     strengthBars[1].classList.add("medium");
     strengthBars[2].classList.add("medium");
