@@ -21,6 +21,7 @@ const Main = () => {
     setErrorMessage,
     setFormData,
     userData,
+    resetForm
   } = useContext(FormContext);
 
   const currentStep = multiStepFormData.steps[currentStepIndex];
@@ -118,7 +119,7 @@ const Main = () => {
         );
       case 4:
         return (
-          
+
           <FinishUp
           // @ts-ignore
             formData={formData}

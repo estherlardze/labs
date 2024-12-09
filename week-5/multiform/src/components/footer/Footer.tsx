@@ -12,7 +12,6 @@ const Footer = ({ handleNextStep, handlePreviousStep, currentStepId }: FooterTyp
           Previous Step
         </button>
       )}
-
       {currentStepId === 4 ? (
         <button type="button" className="next" onClick={() => setConFirm(true)}>
           Confirm

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { FormContextType, formProps } from "../types";
+import { FormContextType, formProps, InitialStateType } from "../types";
 import { loadStateFromStorage } from "../utils/loadState";
-import { InitialStateType } from "../types";
 import { FormContext } from "./form-context";
 
 
@@ -29,7 +28,10 @@ export default function FormContextProvider({ children }: { children: React.Reac
   
 
   // const resetForm = () => {
-  //   setCurrentState(initialState);
+  //   setFormData(initialState.formData)
+  //   setCurrentStepIndex(initialState.currentStepIndex)
+  //   setUserData(initialState.userData)
+  //   console.log(`reset form`, userData );
   //   localStorage.removeItem("form-state");
   // };
   
@@ -37,7 +39,7 @@ export default function FormContextProvider({ children }: { children: React.Reac
   const state: FormContextType = {
     currentStepIndex, setCurrentStepIndex,
     confirm, setConFirm, errorMessage, setErrorMessage,
-    formData, setFormData, userData, setUserData
+    formData, setFormData, userData, setUserData,
   }
   return (
     <FormContext.Provider value={state}>

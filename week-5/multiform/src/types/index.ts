@@ -13,6 +13,7 @@ export type SidebarProps = {
 
 export type FormContextType = {
   currentStepIndex: number;
+  resetForm: () => void;
   setCurrentStepIndex: React.Dispatch<React.SetStateAction<number>>;
   confirm: boolean;
   setConFirm: React.Dispatch<React.SetStateAction<boolean>>;
