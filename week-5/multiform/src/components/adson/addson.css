@@ -1,0 +1,25 @@
+.addon{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.addon-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 450px;
+    max-width: 100%;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.addon-card label{
+    color: #483EFF;
+}
+.addon-card:hover{
+    border: 1px solid #483EFF;
+}

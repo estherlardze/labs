@@ -1,0 +1,131 @@
+:root {
+  --white-color: #ffffff;
+  --light-blue-color: #abbcff; 
+  --light-blue: #ABBCFF;
+  --sky-blue-color: #bee2fd;
+  --denim-color: #022959;
+  --gray-color: #adafbd;
+  --color-red-errors: #ee374a;
+  --very-light-gray-color: #f8f9ff;
+  --purple-color: #483eff;
+  --color-bg: #eff5ff;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: ubuntu;
+  src: url("./assets/fonts/Ubuntu-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: ubuntu;
+  src: url("./assets/fonts/Ubuntu-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: ubuntu;
+  src: url("./assets/fonts/Ubuntu-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: var(--color-bg);
+  font-family: ubuntu, sans-serif;
+  font-weight: 300;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--white-color);
+  width: 940px;
+  height: 600px;
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/*================header===============*/
+
+.header{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px;
+  background-color: transparent;
+}
+
+/*============main=============*/
+.main{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px;
+  height: 90%;
+}
+
+/*=============footer=============*/
+.main-footer{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+}
+
+.main-footer button{
+  border-radius: 8px;
+  border: none;
+  color: var(--white-color);
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 60px;
+}
+.previous{
+  background-color: var(--gray-color);
+}
+.next{
+  background-color: var(--denim-color);
+}
+.thankyou{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px;
+  height: 90%;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 430px) {
+ 
+  .main{
+    height: fit-content;
+    width: fit-content;
+    background-color: var(--color-red-errors);
+  }
+  .container{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 940px;
+    max-width: 100%;
+    border-radius: 10px;
+    background-color: var(--color-bg);
+  }
+  
+}
+
