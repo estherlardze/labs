@@ -118,6 +118,7 @@ const Main = () => {
         );
       case 4:
         return (
+          
           <FinishUp
           // @ts-ignore
             formData={formData}
