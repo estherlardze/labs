@@ -1,9 +1,7 @@
-import Sidebar from "./components/sidebar/Sidebar";
 import Main from "./main/Main";
 function App() {
   return (
-    <main className="container">
-      <Sidebar />
+    <main >
       <Main />
     </main>
   );

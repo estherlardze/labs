@@ -1,29 +1,62 @@
-import {selectplan} from "../../constants"
-
+import "./selectplan.css";
 
 type SelectPlan = {
-    title: string,
-    price: string,
-    icon: string
-  }[]
+  title: string;
+  price: string;
+  icon: string;
+}[];
 
-
-const SelectPlan = () => {
+const SelectPlan = ({ formData, setFormData, currentStep }) => {
   return (
-    <div className="select-plan-container">
-      {selectplan.map((plan) => (
-        <div className="select-plan" key={plan.title}>
-          <div className="select-plan-icon">
-            <p>{plan.icon}</p>
+    <section className="select">
+      <div className="select-plan-container">
+        {currentStep.plans.map((plan) => (
+          <div
+            key={plan.id}
+            className={`select-plan-card ${
+              formData.selectedPlan?.id === plan.id ? "active" : ""
+            }`}
+            onClick={() =>
+              setFormData((prev) => ({ ...prev, selectedPlan: plan }))
+            }
+          >
+            <div
+              className="select-plan-icon"
+              dangerouslySetInnerHTML={{ __html: plan.icon }}
+            />
+            <div className="select-plan-title">
+              <h3 className="title">{plan.name}</h3>
+              <p className="price">
+                $
+                {formData.selectedBilling === "Monthly"
+                  ? `${plan.monthlyPrice}/mo` : `${plan.monthlyPrice}/yr` }
+              </p>
+            </div>
           </div>
-          <div className="select-plan-title">
-            
-            <p>{plan.price}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
+        ))}
+      </div>
 
-export default SelectPlan
+      <label className="select-plan-toggle">
+        <p>Monthly</p>
+        <label className="switch" htmlFor="toggle">
+          <input
+            type="checkbox"
+            id="toggle"
+            className="checkbox"
+            checked={formData.selectedBilling === "Yearly"}
+            onChange={(e) =>
+              setFormData((prev) => ({
+                ...prev,
+                selectedBilling: e.target.checked ? "Yearly" : "Monthly",
+              }))
+            }
+          />
+          <span className="slider round"></span>
+        </label>
+        <p>Yearly</p>
+      </label>
+    </section>
+  );
+};
+
+export default SelectPlan;

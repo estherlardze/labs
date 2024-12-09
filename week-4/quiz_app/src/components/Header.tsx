@@ -1,12 +1,7 @@
-import { QuizContext } from "../context/app-context";
-import { QuizContextType } from "../types";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Header = ({ logo }: { logo: string | null }) => {
-  // const { darkMode, setDarkMode } = useContext<QuizContextType>(QuizContext);
-  const [theme, setTheme] = useState<string>(
-    () => sessionStorage.getItem("theme") || "light"
-  );
+  const [theme, setTheme] = useState<string>( () => sessionStorage.getItem("theme") || "light");
 
   function toggleTheme() {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));

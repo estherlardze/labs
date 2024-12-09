@@ -6,7 +6,6 @@ export const QuizContext = createContext<QuizContextType | null>(null)
 
 
 export default function QuizContextProvider({ children }: { children: React.ReactNode }) {
-    const [currentPage, setCurrentPage] = useState<View>("home");
     const [quizTitle, setQuizTitle] = useState("")
     const [quizzes, setQuizzes] = useState(Data)
     const [isButtonClicked, setIsButtonClicked] = useState(false)
@@ -17,7 +16,6 @@ export default function QuizContextProvider({ children }: { children: React.Reac
 
     return (
         <QuizContext.Provider value={{
-            currentPage, setCurrentPage,
             quizTitle, setQuizTitle,
             quizzes,
             isCorrect, setIsCorrect,

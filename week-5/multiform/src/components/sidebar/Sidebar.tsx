@@ -1,10 +1,11 @@
 import { sidebarlinks } from "../../constants";
-const Sidebar = () => {
+import './sidebar.css'
+const Sidebar = ({currentStepId, handleSidebarClick} : {currentStepId: number}) => {
   return (
     <aside className="sidebar">
       {sidebarlinks.map((link) => (
-        <div className="sidebar-link" key={link.index}>
-          <div className="sidebar-link-index">
+        <div className="sidebar-link" key={link.index} onClick={() =>handleSidebarClick(link.index) }>
+          <div className="sidebar-link-index" style={{background: currentStepId === link.index ? "#BEE2FD" : "", color: currentStepId === link.index ? "#022959" : ""}}>
             <p>{link.index}</p>
           </div>
 
@@ -17,5 +18,5 @@ const Sidebar = () => {
     </aside>
   );
 };
-
+ 
 export default Sidebar;

@@ -1,6 +1,5 @@
 import CourseCard from "./CourseCard";
 import { courseInfo } from "../utils/constants"
-import Header from "./Header";
 
 
 type HomeProp = {
@@ -11,7 +10,6 @@ type HomeProp = {
 const Home = ({onSelectChange}: HomeProp) => {
   return (
     <>
-    <Header logo=""/>
     <section className="home">
       <div className="home__text">
         <h1 className="home__title-light">Welcome to the</h1>
