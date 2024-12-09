@@ -16,6 +16,7 @@ const FinishUp = ({ formData }: formProps) => {
       : 0
   );
 
+  // Select
   const changeBilling = () => {
     formData.setFormData((prev: formProps) => ({
       ...prev,
