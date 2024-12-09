@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import Header from "./Header";
 import UserInfo from "../components/userinfo/UserInfo";
 import Addon from "../components/adson/Addon";
@@ -6,30 +6,27 @@ import SelectPlan from "../components/selectplan/SelectPlan";
 import Footer from "../components/footer/Footer";
 import FinishUp from "../components/finishup/FinishUp";
 import Thankyou from "../components/thankyou/Thankyou";
-import multiStepFormData from "../constants";
-import { FormContext } from "../context/app-context";
+import { FormContext } from "../context/form-context";
 import Sidebar from "../components/sidebar/Sidebar";
-import { formProps } from "../types";
+import { multiStepFormData } from "../constants";
 
 const Main = () => {
-  
-  const { currentStepIndex, setCurrentStepIndex, confirm } = useContext(FormContext);
-  const [userData, setUserData] = useState({ name: "", email: "", phone: "" });
-  const [errorMessage, setErrorMessage] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
+  const {
+    currentStepIndex,
+    setCurrentStepIndex,
+    confirm,
+    errorMessage,
+    formData,
+    setUserData,
+    setErrorMessage,
+    setFormData,
+    userData,
+  } = useContext(FormContext);
+
   const currentStep = multiStepFormData.steps[currentStepIndex];
+  let currentStepId = currentStep.id
 
-  let currentStepId = currentStep.id;
-  const [formData, setFormData] = useState<formProps>({
-    selectedPlan: null,
-    selectedBilling: "Monthly",
-    selectedAddOns: [],
-  });
-
-
+  console.log("current step id", userData);
 
   const validateForm = () => {
     const newErrors = {
@@ -59,27 +56,27 @@ const Main = () => {
     return false;
   };
 
-const handleNextStep = () => {
-  if (currentStepId === 1 && !validateForm()) {
-    return;
-  }
+  const handleNextStep = () => {
+    if (currentStepId === 1 && !validateForm()) {
+      return;
+    }
 
-  if (currentStepId === 2 &&!validatrStepTwo()) {
-    return;
-  }
+    if (currentStepId === 2 && !validatrStepTwo()) {
+      return;
+    }
 
-  if (currentStepId === 3 &&!validateAddOns()) {
-    return;
-  }
+    if (currentStepId === 3 && !validateAddOns()) {
+      return;
+    }
 
-  if (currentStepIndex < multiStepFormData.steps.length - 1) {
-    setCurrentStepIndex((prev) => prev + 1);
-  }
-};
+    if (currentStepIndex < multiStepFormData.steps.length - 1) {
+      setCurrentStepIndex((prev) => prev + 1);
+    }
+  };
 
-const handleSidebarClick = (stepId: number) => {
-  setCurrentStepIndex(stepId - 1);
-};
+  const handleSidebarClick = (stepId: number) => {
+    setCurrentStepIndex(stepId - 1);
+  };
 
   const handlePreviousStep = () => {
     if (currentStepIndex > 0) {
@@ -129,9 +126,9 @@ const handleSidebarClick = (stepId: number) => {
     }
   };
 
-if(confirm){
-  currentStepId = currentStepId + 1;
-}
+  if (confirm) {
+    currentStepId = currentStepId + 1;
+  }
 
   return (
     <section className="container">

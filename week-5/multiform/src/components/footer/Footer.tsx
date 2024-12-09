@@ -1,10 +1,10 @@
 import { FooterType } from "../../types";
-import { FormContext } from "../../context/app-context";
+import { FormContext } from "../../context/form-context";
 import { useContext } from "react";
 
 const Footer = ({ handleNextStep, handlePreviousStep, currentStepId }: FooterType) => {
-  const { currentStepIndex, confirm, setConFirm} = useContext(FormContext);
-console.log(confirm)
+  const { currentStepIndex, setConFirm} = useContext(FormContext);
+
   return (
     <footer className="main-footer">
       {currentStepIndex > 0 && (

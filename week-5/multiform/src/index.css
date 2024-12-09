@@ -108,10 +108,9 @@ body {
   height: 90%;
   align-items: center;
   justify-content: center;
-  background-color: violet;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 430px) {
  
   .main{
     height: fit-content;

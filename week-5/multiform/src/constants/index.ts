@@ -20,28 +20,9 @@ export const sidebarlinks = [
     index: 4,
   },
 ];
-
-export const addons = [
-  {
-    title: "Online service",
-    price: "+$1/mo",
-    description: "Access to multiplayer games",
-  },
-  {
-    title: "Larger storage",
-    price: "+$2/mo",
-    description: "Access 1Tb of cloud save",
-  },
-  {
-    title: "Customizable profile",
-    price: "+$2/mo",
-    description: "Custom theme on your profile",
-  },
-];
-
 // multiStepFormData.js
 
-const multiStepFormData = {
+export const multiStepFormData = {
   steps: [
     {
       id: 1,
@@ -117,5 +98,3 @@ const multiStepFormData = {
     }
   ],
 };
-
-export default multiStepFormData;

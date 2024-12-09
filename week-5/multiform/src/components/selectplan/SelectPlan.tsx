@@ -10,7 +10,7 @@ const SelectPlan = ({ formData, setFormData, currentStep }) => {
   return (
     <section className="select">
       <div className="select-plan-container">
-        {currentStep.plans.map((plan) => (
+        {currentStep.plans?.map((plan) => (
           <div
             key={plan.id}
             className={`select-plan-card ${
