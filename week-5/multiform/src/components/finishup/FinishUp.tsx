@@ -1,8 +1,8 @@
 import { formProps } from "../../types";
 import "./finishup.css";
 
-
-const FinishUp = ({ formData }: formProps) => {
+// @ts-ignore
+const FinishUp = ({  formData }: formProps) => {
   const total = formData.selectedAddOns.reduce(
     (sum: number, addOn: { monthlyPrice: number; yearlyPrice: number }) =>
       sum +

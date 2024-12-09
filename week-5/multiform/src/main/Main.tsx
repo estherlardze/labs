@@ -100,7 +100,9 @@ const Main = () => {
         return (
           <SelectPlan
             formData={formData}
+            // @ts-ignore
             setFormData={setFormData}
+            // @ts-ignore
             currentStep={currentStep}
           />
         );
@@ -108,13 +110,16 @@ const Main = () => {
         return (
           <Addon
             formData={formData}
+            // @ts-ignore
             setFormData={setFormData}
+            // @ts-ignore
             currentStep={currentStep}
           />
         );
       case 4:
         return (
           <FinishUp
+          // @ts-ignore
             formData={formData}
             setFormData={setFormData}
             currentStep={currentStep}

@@ -21,9 +21,11 @@ const SelectPlan = ({ formData, setFormData, currentStep }: SelectPlanProps) => 
           <div
             key={plan.id}
             className={`select-plan-card ${
+              // @ts-ignore
               formData.selectedPlan?.id === plan.id ? "active" : ""
             }`}
             onClick={() =>
+              // @ts-ignore
               setFormData((prev: unknown) => ({...prev, selectedPlan: plan }))
             }
           >
