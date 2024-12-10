@@ -25,7 +25,6 @@
   .select-plan-card{
     display: flex;
     gap: 10px;
-    margin: 25px 0;
     border: 1px solid var(--gray-color);
     border-radius: 8px;
     padding: 10px 20px;
@@ -121,10 +120,25 @@
     .select-plan{
       flex-direction: row;
     }
-    .select-plan-card{
-      height: fit-content;
-    }
     .select-plan-container{
+     flex-direction: column;
+     gap: 10px;
+      margin: 0;
+    }
+    .select-plan-card{
+      width: 90%;
+      display: flex;
+      height: fit-content;
+      flex-direction: row;
+      padding: 20px 10px;
+      margin: 10px auto;
+    }
+    .select-plan-title{
+      display: flex;
       flex-direction: column;
+      gap: 5px;
+      position: relative;
+      left: 10px;
+      margin-top: 5px;
     }
   }

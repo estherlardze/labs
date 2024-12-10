@@ -9,7 +9,11 @@ import Thankyou from "../components/thankyou/Thankyou";
 import { FormContext } from "../context/form-context";
 import Sidebar from "../components/sidebar/Sidebar";
 import { multiStepFormData } from "../constants";
-import { validateForm, validateStepTwo, validateAddOns} from "../utils/utilfunctions";
+import {
+  validateForm,
+  validateStepTwo,
+  validateAddOns,
+} from "../utils/utilfunctions";
 
 const Main = () => {
   const {
@@ -27,38 +31,40 @@ const Main = () => {
   const currentStep = multiStepFormData.steps[currentStepIndex];
   let currentStepId = currentStep.id;
 
-
   const handleNextStep = () => {
     if (currentStepId === 1 && !validateForm(userData, setErrorMessage)) {
       return;
     }
-  
+
     if (currentStepId === 2 && !validateStepTwo(formData)) {
       return;
     }
-  
+
     if (currentStepId === 3 && !validateAddOns(formData)) {
       return;
     }
-  
+
     if (currentStepIndex < multiStepFormData.steps.length - 1) {
       setCurrentStepIndex((prev) => prev + 1);
     }
   };
 
   const handleSidebarClick = (stepId: number) => {
-    if(confirm) return
+    if (confirm) return;
     if (stepId - 1 <= currentStepIndex) {
       setCurrentStepIndex(stepId - 1);
     }
   };
-  
 
   const handlePreviousStep = () => {
     if (currentStepIndex > 0) {
       setCurrentStepIndex((prev) => prev - 1);
     }
   };
+
+  if (confirm) {
+    currentStepId = currentStepId + 1;
+  }
 
   const renderStep = () => {
     switch (currentStepId) {
@@ -107,10 +113,6 @@ const Main = () => {
     }
   };
 
-  if (confirm) {
-    currentStepId = currentStepId + 1;
-  }
-
   return (
     <section className="container">
       <Sidebar
@@ -123,7 +125,6 @@ const Main = () => {
           <Header
             title={currentStep.title}
             description={currentStep.description}
-            
           />
         ) : null}
 

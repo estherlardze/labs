@@ -1,4 +1,9 @@
+import { FormContext } from "../../context/form-context";
+import { useContext } from "react";
+import { Link } from "react-router-dom"; 
+
 const Thankyou = () => {
+  const { resetForm } = useContext(FormContext);
   return (
     <div className="thankyou">
       <svg
@@ -25,6 +30,10 @@ const Thankyou = () => {
         platform. If you ever need support, please feel free to email us at
         support@loremgaming.com.
       </p>
+      <div className="thankyou-links">
+        <button onClick={resetForm} >Reset form</button>
+        <Link href="/" >Back to Home</Link>
+      </div>
     </div>
   );
 };

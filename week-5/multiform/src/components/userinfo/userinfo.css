@@ -34,3 +34,14 @@ user-info{
     border: 2px solid var( --purple-color);
     cursor: pointer;
 }
+
+@media screen and (max-width: 730px) {
+  .user-info-name label{
+    margin-left: 5%;
+  }
+  .user-info-name input{
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+}

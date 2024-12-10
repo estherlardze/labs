@@ -1,8 +1,11 @@
 import "./selectplan.css";
 import { Plan, SelectPlanProps } from "../../types";
 
-
-const SelectPlan = ({ formData, setFormData, currentStep }: SelectPlanProps) => {
+const SelectPlan = ({
+  formData,
+  setFormData,
+  currentStep,
+}: SelectPlanProps) => {
   return (
     <section className="select">
       <div className="select-plan-container">
@@ -15,19 +18,22 @@ const SelectPlan = ({ formData, setFormData, currentStep }: SelectPlanProps) => 
             }`}
             onClick={() =>
               // @ts-ignore
-              setFormData((prev: unknown) => ({...prev, selectedPlan: plan }))
+              setFormData((prev: unknown) => ({ ...prev, selectedPlan: plan }))
             }
           >
-            <div
-              className="select-plan-icon"
-              dangerouslySetInnerHTML={{ __html: plan.icon }}
-            />
+            <div>
+              <div
+                className="select-plan-icon"
+                dangerouslySetInnerHTML={{ __html: plan.icon }}
+              />
+            </div>
             <div className="select-plan-title">
               <h3 className="title">{plan.name}</h3>
               <p className="price">
                 $
                 {formData.selectedBilling === "Monthly"
-                  ? `${plan.monthlyPrice}/mo` : `${plan.monthlyPrice}/yr` }
+                  ? `${plan.monthlyPrice}/mo`
+                  : `${plan.monthlyPrice}/yr`}
               </p>
             </div>
           </div>

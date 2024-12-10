@@ -23,3 +23,14 @@
 .addon-card:hover{
     border: 1px solid #483EFF;
 }
+.selectedAddOn{
+    border: 2px solid #483EFF;
+    background-color: #eff5ff;
+}
+@media screen and (max-width: 730px) {
+    .addon-card{
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+}

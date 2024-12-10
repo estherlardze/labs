@@ -6,7 +6,7 @@ const Addon = ({ currentStep, formData, setFormData }: AddonContextType) => {
   return (
     <section className="addon">
       {currentStep.addOns?.map((addOn: AddonType) => (
-        <div key={addOn.id} className="addon-card">
+        <div key={addOn.id} className={`addon-card ${formData.selectedAddOns.includes(addOn) ? "selectedAddOn" : ""}`}>
           <input
             type="checkbox"
             id={addOn.id}
