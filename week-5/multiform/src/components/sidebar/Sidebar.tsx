@@ -7,7 +7,7 @@ const Sidebar = ({ currentStepId, handleSidebarClick }: SidebarProps) => {
     <aside className="sidebar">
       {sidebarlinks.map((link) => (
         <div
-          className="sidebar-link"
+          className={`sidebar-link ${link.index  > currentStepId ? "disabled" : ""}`}
           key={link.index}
           onClick={() => handleSidebarClick(link.index)}
         >

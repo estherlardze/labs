@@ -51,7 +51,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: var(--white-color);
+  background-color: var(--color-red-errors);
   width: 940px;
   height: 600px;
   max-width: 100%;
@@ -110,8 +110,11 @@ body {
   justify-content: center;
 }
 
-@media screen and (max-width: 430px) {
- 
+@media screen and (max-width: 450px) {
+ body{
+  position: relative;
+  background-color: yellowgreen;
+ }
   .main{
     height: fit-content;
     width: fit-content;
@@ -126,6 +129,10 @@ body {
     border-radius: 10px;
     background-color: var(--color-bg);
   }
-  
+  .main-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
 }
 

@@ -9,6 +9,7 @@ import Thankyou from "../components/thankyou/Thankyou";
 import { FormContext } from "../context/form-context";
 import Sidebar from "../components/sidebar/Sidebar";
 import { multiStepFormData } from "../constants";
+import { validateForm, validateStepTwo, validateAddOns} from "../utils/utilfunctions";
 
 const Main = () => {
   const {
@@ -21,63 +22,37 @@ const Main = () => {
     setErrorMessage,
     setFormData,
     userData,
-    resetForm
+    resetForm,
   } = useContext(FormContext);
 
   const currentStep = multiStepFormData.steps[currentStepIndex];
-  let currentStepId = currentStep.id
+  let currentStepId = currentStep.id;
 
-  console.log("current step id", userData);
-
-  const validateForm = () => {
-    const newErrors = {
-      name: userData.name ? "" : "Name is required",
-      email: userData.email ? "" : "Email is required",
-      phone: userData.phone ? "" : "Phone number is required",
-    };
-
-    setErrorMessage(newErrors);
-
-    return Object.values(newErrors).every((error) => error === "");
-  };
-
-  const validatrStepTwo = () => {
-    if (formData.selectedPlan) {
-      return true;
-    }
-    alert("Please select a plan");
-    return false;
-  };
-
-  const validateAddOns = () => {
-    if (formData.selectedAddOns.length > 0) {
-      return true;
-    }
-    alert("Please select at least one add-on");
-    return false;
-  };
 
   const handleNextStep = () => {
-    if (currentStepId === 1 && !validateForm()) {
+    if (currentStepId === 1 && !validateForm(userData, setErrorMessage)) {
       return;
     }
-
-    if (currentStepId === 2 && !validatrStepTwo()) {
+  
+    if (currentStepId === 2 && !validateStepTwo(formData)) {
       return;
     }
-
-    if (currentStepId === 3 && !validateAddOns()) {
+  
+    if (currentStepId === 3 && !validateAddOns(formData)) {
       return;
     }
-
+  
     if (currentStepIndex < multiStepFormData.steps.length - 1) {
       setCurrentStepIndex((prev) => prev + 1);
     }
   };
 
   const handleSidebarClick = (stepId: number) => {
-    setCurrentStepIndex(stepId - 1);
+    if (stepId - 1 <= currentStepIndex) {
+      setCurrentStepIndex(stepId - 1);
+    }
   };
+  
 
   const handlePreviousStep = () => {
     if (currentStepIndex > 0) {
@@ -119,9 +94,8 @@ const Main = () => {
         );
       case 4:
         return (
-
           <FinishUp
-          // @ts-ignore
+            // @ts-ignore
             formData={formData}
             setFormData={setFormData}
             currentStep={currentStep}
@@ -139,7 +113,10 @@ const Main = () => {
 
   return (
     <section className="container">
-      <Sidebar currentStepId={currentStepId} handleSidebarClick={handleSidebarClick}/>
+      <Sidebar
+        currentStepId={currentStepId}
+        handleSidebarClick={handleSidebarClick}
+      />
 
       <div className="main">
         {currentStepId <= 4 ? (
@@ -156,6 +133,7 @@ const Main = () => {
             handleNextStep={handleNextStep}
             handlePreviousStep={handlePreviousStep}
             currentStepId={currentStepId}
+            resetForm={resetForm}
           />
         ) : null}
       </div>

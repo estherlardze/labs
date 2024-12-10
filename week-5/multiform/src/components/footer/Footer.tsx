@@ -2,7 +2,7 @@ import { FooterType } from "../../types";
 import { FormContext } from "../../context/form-context";
 import { useContext } from "react";
 
-const Footer = ({ handleNextStep, handlePreviousStep, currentStepId }: FooterType) => {
+const Footer = ({ handleNextStep, handlePreviousStep, currentStepId, resetForm }: FooterType) => {
   const { currentStepIndex, setConFirm} = useContext(FormContext);
 
   return (
@@ -12,6 +12,7 @@ const Footer = ({ handleNextStep, handlePreviousStep, currentStepId }: FooterTyp
           Previous Step
         </button>
       )}
+      <button onClick={resetForm}>reset form</button>
       {currentStepId === 4 ? (
         <button type="button" className="next" onClick={() => setConFirm(true)}>
           Confirm

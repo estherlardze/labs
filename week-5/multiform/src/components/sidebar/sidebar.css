@@ -47,8 +47,13 @@
     text-transform: uppercase;
     font-weight: bold;
   }
+  .sidebar-link.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 450px) {
     .sidebar-link-text{
       display: none;
     }
