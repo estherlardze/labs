@@ -111,3 +111,20 @@
     border-color: purple;
     background: #f0f8ff;
   }
+  .select-plan-toggle{
+    background-color: #f8f9ff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  @media screen and (max-width: 730px) {
+    .select-plan{
+      flex-direction: row;
+    }
+    .select-plan-card{
+      height: fit-content;
+    }
+    .select-plan-container{
+      flex-direction: column;
+    }
+  }

@@ -1,17 +1,6 @@
 import "./selectplan.css";
 import { Plan, SelectPlanProps } from "../../types";
 
-// type formProps = {
-//   selectedPlan: Plan | null;
-//   selectedBilling: string;
-//   selectedAddOns: {
-//     id: string;
-//     name: string;
-//     description: string;
-//     monthlyPrice: number;
-//     yearlyPrice: number;
-//   }[];
-// };
 
 const SelectPlan = ({ formData, setFormData, currentStep }: SelectPlanProps) => {
   return (

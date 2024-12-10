@@ -22,7 +22,6 @@ const Main = () => {
     setErrorMessage,
     setFormData,
     userData,
-    resetForm,
   } = useContext(FormContext);
 
   const currentStep = multiStepFormData.steps[currentStepIndex];
@@ -48,6 +47,7 @@ const Main = () => {
   };
 
   const handleSidebarClick = (stepId: number) => {
+    if(confirm) return
     if (stepId - 1 <= currentStepIndex) {
       setCurrentStepIndex(stepId - 1);
     }
@@ -123,6 +123,7 @@ const Main = () => {
           <Header
             title={currentStep.title}
             description={currentStep.description}
+            
           />
         ) : null}
 
@@ -133,7 +134,6 @@ const Main = () => {
             handleNextStep={handleNextStep}
             handlePreviousStep={handlePreviousStep}
             currentStepId={currentStepId}
-            resetForm={resetForm}
           />
         ) : null}
       </div>

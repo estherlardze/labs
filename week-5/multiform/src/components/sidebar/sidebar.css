@@ -3,7 +3,9 @@
     background-image: url("../../assets/bg-sidebar-desktop.svg");
     background-position: fixed;
     background-repeat: no-repeat;
-    height: 568px;
+    height: 558px;
+    display: flex;
+    flex-direction: column;
     width: 274px;
     max-width: 100%;
     margin-left: 20px;
@@ -53,22 +55,19 @@
   }
   
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 730px) {
     .sidebar-link-text{
       display: none;
     }
     .sidebar{
       background-image: url("../../assets/bg-sidebar-mobile.svg");
       width: 100vw;
-
       flex-direction: row;
       background-position: fixed;
-      left: 0;
-      right: 0;
       top: 0;
-      height: 172px;
       background-repeat: no-repeat;
-      height: 868px;
       margin-left: 0;
+      height: 200px;
     }
+    
   }
