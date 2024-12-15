@@ -132,7 +132,7 @@ export type Plan = {
 
 export type SelectPlanProps = {
   formData: formProps;
-  setFormData: React.Dispatch<React.SetStateAction<formProps>>
+  setFormData: React.Dispatch<formProps>
   currentStep: {
     id: string;
     title: string;

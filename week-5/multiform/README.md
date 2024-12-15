@@ -1,50 +1,85 @@
-# React + TypeScript + Vite
+# Multi-step Signup Form
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
+This project implements a multi-step signup form for Lorem Gaming's new online gaming experience. The form guides users through a series of steps with required field validation and dynamic navigation, ensuring a smooth and user-friendly registration process.
 
-Currently, two official plugins are available:
+## Features
+- **Multi-step Form Navigation**: Users can jump between stages by clicking the stage name but cannot use the "Next Step" button for skipping.
+- **Data Persistence**: Form data is retained even after page refreshes or unfinished submissions.
+- **Conditional Navigation**: Redirects users back to incomplete sections with pre-filled data.
+- **Form Reset**: Users can reset the form and cancel the signup process.
+- **Required Fields Validation**: Users must complete all required fields before submission.
+- **Responsive Design**: The skipping feature is disabled on mobile devices.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- **Frontend Framework**: React
+- **State Management**: Redux Toolkit
+- **Programming Language**: TypeScript
+- **Styling**: CSS (no external libraries used)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Folder Structure
+```
+root
+│── public
+│── src
+│   ├── assets  // Static files like images
+│   ├── components  // Reusable UI components
+│   ├── constants  // contants static data for the form 
+│   ├── features  // Redux slices and related logic
+│   ├── pages  // Application screens  
+│   ├── types  // Types of components
+│   ├── utils  // Utility functions with unit tests
+│   ├── App.tsx  // Main app component
+│   └── index.tsx  // App entry point
+│── README.md  // Project overview and documentation
+│── package.json  // Project dependencies and scripts
+└── tsconfig.json  // TypeScript configuration
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Getting Started
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Prerequisites
+- Node.js (v14+ recommended)
+- npm or yarn
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/estherlardze/labs/tree/main/week-5
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd multistep
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+### Running the Application
+```bash
+npm run dev
+# or
+yarn dev
 ```
+Access the application at `http://localhost:5173`.
+
+```
+## Project Implementation
+
+### Data Management Strategy
+- **Redux Toolkit**: Manages application state, including form data and navigation state.
+- **Local Storage**: Used for data persistence across page reloads.
+
+### Components
+- **UI Components**: Reusable UI elements such as buttons, inputs, and navigation tabs.
+- **Form Pages**: Separate pages for each signup stage.
+
+### Utility Functions
+- Validations
+- Data persistence handlers
+- Navigation logic
+
+

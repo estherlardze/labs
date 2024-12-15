@@ -2,12 +2,13 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import FormContextProvider from "./context/app-context";
+import { store } from "./store";
+import { Provider } from "react-redux";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <FormContextProvider>
+    <Provider store={store}>
       <App />
-    </FormContextProvider>
+    </Provider>
   </StrictMode>
 );
