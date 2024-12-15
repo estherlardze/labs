@@ -23,7 +23,7 @@ const SelectPlan = ({ currentStep }: SelectPlanProps) => {
       <div className="select-plan-container">
         {currentStep.plans?.map((plan: Plan) => (
           <div
-            key={plan.id}
+            key={plan.id}  
             className={`select-plan-card ${ 
               // @ts-ignore
               formData?.selectedPlan?.id === plan.id ? "active" : ""}`}
