@@ -24,7 +24,9 @@ const SelectPlan = ({ currentStep }: SelectPlanProps) => {
         {currentStep.plans?.map((plan: Plan) => (
           <div
             key={plan.id}
-            className={`select-plan-card ${formData?.selectedPlan?.id === plan.id ? "active" : ""}`}
+            className={`select-plan-card ${ 
+              // @ts-ignore
+              formData?.selectedPlan?.id === plan.id ? "active" : ""}`}
             onClick={() => handlePlanSelect(plan)}
           >
             <div>

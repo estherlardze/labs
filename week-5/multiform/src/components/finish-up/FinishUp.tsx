@@ -24,7 +24,9 @@ const FinishUp = () => {
         : addOn.yearlyPrice),
     formData.selectedPlan
       ? formData.selectedBilling === "Monthly"
+       // @ts-ignore
         ? formData.selectedPlan.monthlyPrice
+        // @ts-ignore
         : formData.selectedPlan.yearlyPrice
       : 0
   );
@@ -35,7 +37,9 @@ const FinishUp = () => {
         <div className="addon-list plan">
           <div>
             <p>
-              {formData.selectedPlan?.name} ({formData.selectedBilling})
+              { // @ts-ignore
+              formData.selectedPlan?.name
+              } ({formData.selectedBilling})
             </p>
             <p className="change-link" onClick={changeBilling}>
               Change
@@ -44,7 +48,9 @@ const FinishUp = () => {
           <p>
             $
             {formData.selectedBilling === "Monthly"
+              // @ts-ignore
               ? `${formData.selectedPlan?.monthlyPrice}/mo`
+              // @ts-ignore
               : `${formData.selectedPlan?.yearlyPrice}/yr`}
           </p>
         </div>

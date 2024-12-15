@@ -41,17 +41,7 @@ export type FormContextType = {
   >;
 };
 
-export type formProps = {
-  selectedBilling: string;
-  selectedPlan: null | string;
-  selectedAddOns: {
-    id: string;
-    name: string;
-    description: string;
-    monthlyPrice: number;
-    yearlyPrice: number;
-  }[];
-};
+
 
 export type UserInfoType = {
   id: string;
@@ -89,7 +79,17 @@ export type AddonCurrentStep = {
   description: string;
   addOns: AddonType[];
 };
-
+export type formProps = {
+  selectedBilling: string;
+  selectedPlan: null | Plan;
+  selectedAddOns: {
+    id: string;
+    name: string;
+    description: string;
+    monthlyPrice: number;
+    yearlyPrice: number;
+  }[];
+};
 export type AddonContextType = {
   currentStep: AddonCurrentStep;
   formData: formProps;

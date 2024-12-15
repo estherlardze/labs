@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Header from "../../components/header/Header";
 import UserInfo from "../../components/user-info/UserInfo";
 import Addon from "../../components/ads-on/Addon";
