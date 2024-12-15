@@ -1,14 +1,11 @@
 
 
 export type FooterType = {
-  handleNextStep: () => void;
-  handlePreviousStep: () => void;
   currentStepId: number;
 };
 
 export type SidebarProps = {
   currentStepId: number;
-  handleSidebarClick: (stepId: number) => void;
 };
 
 export type FormContextType = {
@@ -61,18 +58,9 @@ export type UserInfoType = {
   required: boolean;
 };
 
-type UserInfo = {
-  name: string;
-  email: string;
-  phone: string;
-};
 
 export type UserDataType = {
-  errorMessage: UserInfo;
-  setErrorMessage: React.Dispatch<React.SetStateAction<UserInfo>>;
   currentStep: unknown;
-  userData: UserInfo;
-  setUserData: React.Dispatch<React.SetStateAction<UserInfo>>;
 };
 
 export type AddonType = {
@@ -82,6 +70,28 @@ export type AddonType = {
   monthlyPrice: number;
   yearlyPrice: number;
 };
+
+export type Plan = {
+  id: string;
+  name: string;
+  monthlyPrice: number;
+  yearlyPrice: number;
+  icon: string;
+}
+export type Summary = {
+    selectedPlan: null | Plan,
+    selectedAddOns: AddonType[],
+    totalPrice: number, 
+}
+export type CuurentStep = {
+  id: number;
+  title: string;
+  description: string;
+  plans?: Plan[];
+  billingOptions?: string[],
+  addOns?: AddonType[]
+  summary?: Summary
+}
 
 export type AddonCurrentStep = {
   id: string;
@@ -121,14 +131,6 @@ export type InitialStateType = {
     }[]
   };
 };
-
-export type Plan = {
-  id: string,
-  name: string,
-  monthlyPrice: number,
-  yearlyPrice: number,
-  icon: string
-}
 
 export type SelectPlanProps = {
   formData: formProps;

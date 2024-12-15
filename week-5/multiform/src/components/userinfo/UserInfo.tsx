@@ -1,9 +1,11 @@
 import { UserDataType } from "../../types";
 import './userinfo.css'
+import { useContext } from "react";
+import { FormContext } from "../../context/form-context";
 
-const UserInfo = ({ userData, setUserData, errorMessage, setErrorMessage }: UserDataType) => {
+const UserInfo = ({ currentStep }: UserDataType) => {
 
-
+  const { userData, setUserData, errorMessage, setErrorMessage } = useContext(FormContext);
   const { name, email, phone } = userData;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,11 +1,18 @@
 import "./selectplan.css";
-import { Plan, SelectPlanProps } from "../../types";
+import { formProps, Plan } from "../../types";
+import { FormContext } from "../../context/form-context";
+import { useContext } from "react";
+import { CuurentStep } from "../../types";
 
-const SelectPlan = ({
-  formData,
-  setFormData,
-  currentStep,
-}: SelectPlanProps) => {
+
+interface SelectPlanProps {
+  currentStep: CuurentStep;
+}
+
+const SelectPlan = ({ currentStep }: SelectPlanProps) => {
+  const { formData, setFormData } = useContext(FormContext);
+
+  
   return (
     <section className="select">
       <div className="select-plan-container">
@@ -49,10 +56,11 @@ const SelectPlan = ({
             className="checkbox"
             checked={formData.selectedBilling === "Yearly"}
             onChange={(e) =>
-              setFormData((prev) => ({
+              // @ts-ignore
+              setFormData((prev: formProps) => ({
                 ...prev,
                 selectedBilling: e.target.checked ? "Yearly" : "Monthly",
-              }))
+              }) as formProps)
             }
           />
           <span className="slider round"></span>

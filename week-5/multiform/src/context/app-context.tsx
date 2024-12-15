@@ -41,7 +41,6 @@ export default function FormContextProvider({
       selectedAddOns: [],
     });
     localStorage.removeItem("form-state");
-    console.log(`reset form`, currentStepIndex);
   };
 
   const state: FormContextType = {

@@ -1,8 +1,14 @@
-import { formProps } from "../../types";
+import { formProps} from "../../types";
 import "./finishup.css";
+import { FormContext } from "../../context/form-context";
+import { useContext } from "react";
+
 
 // @ts-ignore
-const FinishUp = ({  formData }: formProps) => {
+const FinishUp = () => {
+
+  const {formData, setFormData} = useContext(FormContext)
+
   const total = formData.selectedAddOns.reduce(
     (sum: number, addOn: { monthlyPrice: number; yearlyPrice: number }) =>
       sum +
@@ -11,13 +17,16 @@ const FinishUp = ({  formData }: formProps) => {
         : addOn.yearlyPrice),
     formData.selectedPlan
       ? formData.selectedBilling === "Monthly"
+        // @ts-ignore
         ? formData.selectedPlan.monthlyPrice
+        // @ts-ignore
         : formData.selectedPlan.yearlyPrice
       : 0
   );
 
   // Select
   const changeBilling = () => {
+    // @ts-ignore
     formData.setFormData((prev: formProps) => ({
       ...prev,
       selectedBilling: prev.selectedBilling === "Monthly" ? "Yearly" : "Monthly",
@@ -30,13 +39,15 @@ const FinishUp = ({  formData }: formProps) => {
       <div className="addon-container">
         <div className="addon-list plan">
           <div>
-            <p>
+            <p> 
+
               {formData.selectedPlan?.name} ({formData.selectedBilling})
             </p>
             <p className="change-link" onClick={changeBilling}>
               Change
             </p>
           </div>
+          
           <p>${formData.selectedBilling === "Monthly" ? `${formData.selectedPlan?.monthlyPrice}/mo` :  `${formData.selectedPlan?.yearlyPrice}/yr`}</p>
         </div>
         <div className="addon-line"></div>

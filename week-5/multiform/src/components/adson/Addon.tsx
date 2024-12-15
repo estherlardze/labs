@@ -1,9 +1,18 @@
 import "./addson.css";
-import { AddonContextType, AddonType } from "../../types";
+import {  AddonType, CuurentStep } from "../../types";
 import { formProps } from "../../types";
+import { FormContext } from "../../context/form-context";
+import { useContext } from "react";
 
-const Addon = ({ currentStep, formData, setFormData }: AddonContextType) => {
+interface AdOnProps{
+  currentStep: CuurentStep
+}
+const Addon = ({ currentStep }: AdOnProps) => {
+
+  const {formData, setFormData} = useContext(FormContext)
+
   return (
+
     <section className="addon">
       {currentStep.addOns?.map((addOn: AddonType) => (
         <div key={addOn.id} className={`addon-card ${formData.selectedAddOns.includes(addOn) ? "selectedAddOn" : ""}`}>
@@ -13,9 +22,11 @@ const Addon = ({ currentStep, formData, setFormData }: AddonContextType) => {
             value={addOn.id}
             onChange={(e) => {
               const isChecked = e.target.checked;
+              // @ts-ignore
               setFormData((prev) => {
                 const updatedAddOns = isChecked
                   ? [...prev.selectedAddOns, addOn]
+                  // @ts-ignore
                   : prev.selectedAddOns.filter((a) => a.id !== addOn.id);
                 return { ...prev, selectedAddOns: updatedAddOns } as formProps;
               });
