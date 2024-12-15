@@ -32,7 +32,7 @@ const Thankyou = () => {
       </p>
       <div className="thankyou-links">
         <button onClick={resetForm} >Reset form</button>
-        <Link href="/" >Back to Home</Link>
+        <Link to="/" >Back to Home</Link>
       </div>
     </div>
   );

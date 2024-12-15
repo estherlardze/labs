@@ -20,7 +20,7 @@ const Main = () => {
   const renderStep = () => {
     switch (currentStepId) {
       case 1:
-        return <UserInfo currentStep={currentStep} />;
+        return <UserInfo  />;
       case 2:
         return <SelectPlan currentStep={currentStep} />;
       case 3:
