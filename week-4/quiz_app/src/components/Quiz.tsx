@@ -5,7 +5,7 @@ import { QuizContext } from "../context/app-context";
 import { filteredQuiz } from "../utils/helper";
 import ScoreCard from "./ScoreCard";
 
-const Quiz = ({ quizTitle, onGoback }: QuizProps) => {
+const Quiz = ({ onGoback }: QuizProps) => {
   const context = useContext<QuizContextType | null>(QuizContext);
 
   if (!context) {
@@ -17,11 +17,16 @@ const Quiz = ({ quizTitle, onGoback }: QuizProps) => {
     setIsButtonClicked,
     isButtonClicked,
     setCheck,
+    quizTitle,
   } = context;
 
-  const [filteredQuestions, setFilteredQuestions] = useState<Question[]>([]);
+  const [filteredQuestions, setFilteredQuestions] = useState<Question[]>(() => {
+    const storedQuestions = sessionStorage.getItem("filteredQuestions");
+    return storedQuestions ? JSON.parse(storedQuestions) : [];
+  });
+  
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(() => {
-    const storedIndex = localStorage.getItem("activeQuestionIndex");
+    const storedIndex = sessionStorage.getItem("activeQuestionIndex");
     return storedIndex ? JSON.parse(storedIndex) : 0;
   });
   const [selectedOption, setSelectedOption] = useState("");
@@ -31,27 +36,39 @@ const Quiz = ({ quizTitle, onGoback }: QuizProps) => {
   );
   const [errormessage, setErrorMessage] = useState("");
   const [score, setScore] = useState(() => {
-    const storedScore = localStorage.getItem("quizScore");
+    const storedScore = sessionStorage.getItem("quizScore");
     return storedScore ? JSON.parse(storedScore) : 0;
   });
 
   useEffect(() => {
-    const quizQuestions = filteredQuiz(quizzes, quizTitle);
-    setFilteredQuestions(quizQuestions);
-  }, [quizzes, quizTitle]);
+    sessionStorage.setItem("quizScore", JSON.stringify(score));
+  }, [score]);
 
   useEffect(() => {
-    localStorage.setItem(
+    sessionStorage.setItem("filteredQuestions", JSON.stringify(filteredQuestions));
+  }, []);
+ 
+
+  useEffect(() => {
+    const storedQuestions = sessionStorage.getItem("filteredQuestions");
+    if (storedQuestions) {
+      setFilteredQuestions(JSON.parse(storedQuestions));
+    }
+  }, []);
+  
+
+  useEffect(() => {
+    sessionStorage.setItem(
       "activeQuestionIndex",
       JSON.stringify(activeQuestionIndex)
     );
   }, [activeQuestionIndex]);
 
-  useEffect(() => {
-    localStorage.setItem("quizScore", JSON.stringify(score));
-  }, [score]);
+ 
 
-  const correct = filteredQuestions[0]?.questions[activeQuestionIndex]?.answer;
+  const correct =
+    filteredQuestions[0]?.questions[activeQuestionIndex]?.answer || "";
+
 
   const onSubmit = () => {
     if (!selectedOption) {
@@ -78,7 +95,7 @@ const Quiz = ({ quizTitle, onGoback }: QuizProps) => {
 
   const handleOptionClick = (id: number, option: string) => {
     setCurrentOptionIndex(id);
-    setSelectedOption(option); // User-selected option
+    setSelectedOption(option);
     setCheck(option === correct);
   };
 
@@ -117,7 +134,8 @@ const Quiz = ({ quizTitle, onGoback }: QuizProps) => {
                   icon={String.fromCharCode(65 + index)}
                   text={option}
                   index={index}
-                  correctAnswer={correctAnswer ?? ''}                  selectedOption={selectedOption}
+                  correctAnswer={correctAnswer ?? ""}
+                  selectedOption={selectedOption}
                   option={option}
                   key={index}
                   isSelected={index === currentOptionIndex}

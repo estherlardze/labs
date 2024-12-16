@@ -1,5 +1,5 @@
 import { createContext, useState } from "react"
-import { View, QuizContextType} from "../types";
+import {  QuizContextType} from "../types";
 import Data from "../data.json"
 
 export const QuizContext = createContext<QuizContextType | null>(null)
@@ -14,6 +14,7 @@ export default function QuizContextProvider({ children }: { children: React.Reac
 
     const [check, setCheck] = useState<boolean | null>(null)
 
+    
     return (
         <QuizContext.Provider value={{
             quizTitle, setQuizTitle,

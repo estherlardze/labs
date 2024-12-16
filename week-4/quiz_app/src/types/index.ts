@@ -16,11 +16,22 @@ export type QuizContextType = {
     setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 
 }
+export type OptionProps = {
+    icon: string;
+    text: string;
+    isSelected: boolean;
+    index: number;
+    isCorrectAnswer: boolean;
+    checkSelOption: boolean;
+    correctAnswer: string;
+    option: string;
+    selectedOption: string;
+    handleOptionClick: (index: number, text: string) => void;
+  };
 
 export type QuizProps = {
     quizTitle: string | null;
     onGoback: () => void;
-    logo: string | null;
 };
 
 export type QuestionsProps = {

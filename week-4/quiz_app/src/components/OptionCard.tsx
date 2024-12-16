@@ -1,19 +1,8 @@
 import { useContext } from "react";
 import { QuizContext } from "../context/app-context";
-import { QuizContextType } from "../types";
+import { QuizContextType, OptionProps } from "../types";
 
-type OptionProps = {
-  icon: string;
-  text: string;
-  isSelected: boolean;
-  index: number;
-  isCorrectAnswer: boolean;
-  checkSelOption: boolean;
-  correctAnswer: string;
-  option: string;
-  selectedOption: string;
-  handleOptionClick: (index: number, text: string) => void;
-};
+
 
 const OptionCard = ({
   icon,

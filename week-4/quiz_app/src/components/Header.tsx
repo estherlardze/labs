@@ -5,7 +5,6 @@ const Header = ({ logo }: { logo: string | null }) => {
 
   function toggleTheme() {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
-    // setDarkMode((prevMode) => !prevMode);
   }
 
   useEffect(() => {

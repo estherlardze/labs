@@ -7,21 +7,20 @@ import Header from "./components/Header";
 
 const App = () => {
   const quizContext = useContext(QuizContext);
-  const [logo, setLogo] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(() => localStorage.getItem("currentPage") || "home");
+  const [currentPage, setCurrentPage] = useState(() => sessionStorage.getItem("currentPage") || "home");
 
-  // Sync with localStorage on page load
+  // Sync with sessionStorage on page load
   useEffect(() => {
-    const storedPage = localStorage.getItem("currentPage");
+    const storedPage = sessionStorage.getItem("currentPage");
     if (storedPage) {
       setCurrentPage(storedPage);
     }
   }, []);
 
-  // Update localStorage when currentPage changes
+  // Update sessionStorage when currentPage changes
   useEffect(() => {
     if (currentPage) {
-      localStorage.setItem("currentPage", currentPage);
+      sessionStorage.setItem("currentPage", currentPage);
     }
   }, [currentPage]);
 
@@ -30,19 +29,15 @@ const App = () => {
       <Header logo={quizContext?.quizTitle || ""}/>
       {currentPage === "home" && (
         <Home
-          onSelectChange={(course: string) => {
+           onSelectChange={(course: string) => {
             quizContext?.setQuizTitle(course);
             setCurrentPage("quiz");
           }}
-          logo={logo}
-          setLogo={setLogo}
         />
       )}
 
       {currentPage === "quiz" && (
         <Quiz
-          logo={logo}
-          quizTitle={quizContext?.quizTitle}
           onGoback={() => setCurrentPage("home")}
         />
       )}
