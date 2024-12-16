@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 
-const Header = ({ logo }: { logo: string | null }) => {
-  const [theme, setTheme] = useState<string>( () => sessionStorage.getItem("theme") || "light");
+const Header = ({ logo }: { logo?: string | null }) => {
+  const [theme, setTheme] = useState<string>(
+    () => sessionStorage.getItem("theme") || "light"
+  );
 
   function toggleTheme() {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
@@ -31,13 +33,8 @@ const Header = ({ logo }: { logo: string | null }) => {
           />
         </svg>
         <label className="switch" htmlFor="toggle">
-          <input
-            type="checkbox"
-            id="toggle"
-            className="checkbox"
-            checked={theme === "dark"}
-            onChange={toggleTheme}
-          />
+        <div role="input-toggle" data-testid="theme-toggle" onClick={toggleTheme}></div>
+
           <span className="slider round"></span>
         </label>
         <svg

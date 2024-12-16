@@ -34,7 +34,7 @@ const Home = ({ onSelectChange }: HomeProp) => {
           <CourseCard
             icon={course.icon}
             text={course.text}
-            onSelectChange={() => handleSubjectSelect(course.text)} // Pass filtered subject
+            onSelectChange={() => handleSubjectSelect(course.text)} 
             key={course.text}
           />
         ))}
