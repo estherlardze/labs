@@ -32,9 +32,18 @@ const Header = ({ logo }: { logo?: string | null }) => {
             fill="#626C7F"
           />
         </svg>
-        <label className="switch" htmlFor="toggle">
-        <div role="input-toggle" data-testid="theme-toggle" onClick={toggleTheme}></div>
-
+        <label
+          className="switch"
+          htmlFor="toggle"
+        >
+          <input
+            type="checkbox"
+            id="toggle"
+            name="toggle"
+            data-testid="checkbox"
+            onChange={toggleTheme}
+            checked={theme === "dark"}
+          />
           <span className="slider round"></span>
         </label>
         <svg
