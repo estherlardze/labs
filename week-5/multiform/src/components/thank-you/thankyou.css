@@ -1,0 +1,33 @@
+.thankyou {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 80%;
+  margin: 80px auto;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+.thankyou-links {
+  display: flex;
+  margin-top: 20px;
+  gap: 10px;
+  align-items: flex-end;
+}
+.thankyou-links button {
+  background-color: var(--denim-color);
+  padding: 5px 20px;
+  color: var(--white-color);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 730px) {
+  .thankyou {
+    margin: 40px auto;
+    justify-content: flex-start;
+  }
+}
