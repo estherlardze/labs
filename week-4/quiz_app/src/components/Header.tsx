@@ -9,6 +9,9 @@ const Header = ({ logo }: { logo?: string | null }) => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   }
 
+
+  console.log(theme);
+
   useEffect(() => {
     sessionStorage.setItem("theme", theme);
     document.body.className = theme;
@@ -32,15 +35,13 @@ const Header = ({ logo }: { logo?: string | null }) => {
             fill="#626C7F"
           />
         </svg>
-        <label
-          className="switch"
-          htmlFor="toggle"
-        >
+        <label className="switch" htmlFor="toggle">
           <input
             type="checkbox"
             id="toggle"
             name="toggle"
-            data-testid="checkbox"
+            role="toggle"
+            data-testid="theme-icon"
             onChange={toggleTheme}
             checked={theme === "dark"}
           />
