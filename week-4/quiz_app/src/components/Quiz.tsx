@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import OptionCard from "./OptionCard";
 import { QuizProps, Question, QuizContextType } from "../types";
 import { QuizContext } from "../context/app-context";
-import { filteredQuiz } from "../utils/helper";
 import ScoreCard from "./ScoreCard";
 
 const Quiz = ({ onGoback }: QuizProps) => {
@@ -12,12 +11,10 @@ const Quiz = ({ onGoback }: QuizProps) => {
     throw new Error("QuizContext is not available");
   }
   const {
-    quizzes,
     setIsCorrect,
     setIsButtonClicked,
     isButtonClicked,
     setCheck,
-    quizTitle,
   } = context;
 
   const [filteredQuestions, setFilteredQuestions] = useState<Question[]>(() => {
@@ -42,6 +39,7 @@ const Quiz = ({ onGoback }: QuizProps) => {
 
   useEffect(() => {
     sessionStorage.setItem("quizScore", JSON.stringify(score));
+
   }, [score]);
 
   useEffect(() => {

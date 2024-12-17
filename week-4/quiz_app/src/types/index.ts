@@ -45,4 +45,10 @@ export type Question = {
     icon: string;
     questions: QuestionsProps[];
 };
+
+
+export type ScoreCardProps = {
+    filteredQuestions: Question[];
+    score: number;
+  }
   

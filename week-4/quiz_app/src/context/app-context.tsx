@@ -17,7 +17,7 @@ export default function QuizContextProvider({ children }: { children: React.Reac
     return (
         <QuizContext.Provider value={{
             quizTitle, setQuizTitle,
-            quizzes,
+            quizzes, setQuizzes,
             isCorrect, setIsCorrect,
             isButtonClicked, setIsButtonClicked,
             check, setCheck,
