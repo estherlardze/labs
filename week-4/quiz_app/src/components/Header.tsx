@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 
-const Header = ({ logo }: { logo: string | null }) => {
-  const [theme, setTheme] = useState<string>( () => sessionStorage.getItem("theme") || "light");
+const Header = ({ logo }: { logo?: string | null }) => {
+  const [theme, setTheme] = useState<string>(
+    () => sessionStorage.getItem("theme") || "light"
+  );
 
   function toggleTheme() {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   }
+
+
+  console.log(theme);
 
   useEffect(() => {
     sessionStorage.setItem("theme", theme);
@@ -34,9 +39,11 @@ const Header = ({ logo }: { logo: string | null }) => {
           <input
             type="checkbox"
             id="toggle"
-            className="checkbox"
-            checked={theme === "dark"}
+            name="toggle"
+            role="toggle"
+            data-testid="theme-icon"
             onChange={toggleTheme}
+            checked={theme === "dark"}
           />
           <span className="slider round"></span>
         </label>
