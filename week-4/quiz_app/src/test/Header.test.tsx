@@ -1,8 +1,6 @@
-import { render, screen, } from '@testing-library/react';
-
-import userEvent from '@testing-library/user-event';
+import { render, screen, fireEvent} from '@testing-library/react';
 import Header from '../components/Header';
-import { it, expect, describe , beforeEach,} from 'vitest'
+import '@testing-library/jest-dom'
 
 
 describe('Header Component', () => {
@@ -15,10 +13,12 @@ describe('Header Component', () => {
     expect(document.body.classList.contains('light')).toBe(true);
   });
 
-  it('switches to dark theme on icon click', async () => {
+  it('switches to dark theme on icon click',  () => {
     render(<Header />);
-    const themeIcon = screen.getAllByTestId('theme-icon')[0];
-    await userEvent.click(themeIcon);
+    const themeIcon = screen.getByTestId('theme-icon');
+    expect(themeIcon).toBeInTheDocument(); // Check that the icon is rendered
+    fireEvent.click(themeIcon);
+    
     expect(document.body.classList.contains('dark')).toBe(true);
     expect(sessionStorage.getItem('theme')).toBe('dark');
   });
@@ -29,11 +29,11 @@ describe('Header Component', () => {
     expect(document.body.classList.contains('dark')).toBe(true);
   });
 
-  it('toggles back to light theme on second click', async () => {
+  it('toggles back to light theme on second click',  () => {
     render(<Header />);
-    const themeIcon = screen.getAllByTestId('theme-icon')[1];
-    await userEvent.click(themeIcon); 
-    await userEvent.click(themeIcon); 
+    const themeIcon = screen.getByTestId('theme-icon');
+     fireEvent.click(themeIcon); 
+     fireEvent.click(themeIcon); 
     expect(document.body.classList.contains('light')).toBe(true);
     expect(sessionStorage.getItem('theme')).toBe('light');
   });

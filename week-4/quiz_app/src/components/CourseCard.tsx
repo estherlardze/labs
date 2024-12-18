@@ -1,12 +1,12 @@
-type CardProps = {
+export type CardProps = {
   icon: string;
   text: string;
   onSelectChange: (subject: string) => void 
 };
 const CourseCard = ({ icon, text, onSelectChange}: CardProps) => {
   return (
-    <div className="course-card" onClick={() => onSelectChange(text)}>
-      <img src={icon} alt={text + " icon"} />
+    <div  className="course-card" onClick={() => onSelectChange(text)}>
+      <img role="img" src={icon} alt={text + " icon"} />
       <p className="course-card__text">{text}</p>
     </div>
   );

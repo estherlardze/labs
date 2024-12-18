@@ -1,19 +1,18 @@
+import { SetStateAction } from "react";
+
 export type View = "home" | "quiz";
 
 export type QuizContextType = {
-    currentPage: string;
-    setCurrentPage: React.Dispatch<React.SetStateAction<View>>;
     quizTitle: string;
     setQuizTitle: React.Dispatch<React.SetStateAction<string>>;
     quizzes: unknown;
+    setQuizzes: React.Dispatch<SetStateAction<{ quizzes: { title: string; icon: string; questions: { question: string; options: string[]; answer: string; }[]; }[]; }>>;
     isCorrect: boolean | null;
     setIsCorrect: React.Dispatch<React.SetStateAction<boolean | null>>;
     isButtonClicked: boolean;
     setIsButtonClicked: React.Dispatch<React.SetStateAction<boolean>>;
     check: boolean | null;
     setCheck: React.Dispatch<React.SetStateAction<boolean | null>>;
-    darkMode: boolean;
-    setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 
 }
 export type OptionProps = {
