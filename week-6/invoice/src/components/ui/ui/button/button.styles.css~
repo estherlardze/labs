@@ -1,0 +1,48 @@
+
+.button{
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+
+    &.rounded{
+        border-radius: 5px;
+    }
+
+    &.rounded-sm{
+        border-radius: 10px;
+    }
+
+    &.rounded-md{
+        border-radius: 15px;
+    }
+
+    &.rounded-lg{
+        border-radius: 20px;
+    }
+
+    &.rounded-full{
+        border-radius: 50%;
+    }
+
+    &.primary{
+        background: #F9FAFE;
+    }
+
+    &.danger{
+        background: #EC5757;
+    }
+
+    &.secondary{
+        background: #373B53;
+    }
+
+    &.default{
+        background: #7C5DFA;
+    }
+}
+
+

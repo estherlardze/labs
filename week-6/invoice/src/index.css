@@ -12,3 +12,29 @@
   --tertiary-dark: #888EB0;  
   --light-pink: #9277FF;      
 }
+h1{
+  text-align: center;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-control{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.form-control input{
+  padding: 0.3em 0.5em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  outline: none;
+  border-radius: 5px;
+}
+.error{
+  color: red;
+}
