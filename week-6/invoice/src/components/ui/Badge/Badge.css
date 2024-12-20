@@ -1,0 +1,49 @@
+:root {
+    --primary-color: #7C5DFA;
+    --secondary-color: #9277FF;
+    --tertiary-color: #7E88C3;
+    --base-black: #0C0E16;
+    --grey: #DFE3FA;
+    --dark-bg: #141625;
+    --light-bg: #F8F8FB;
+    --error-color: #EC5757;
+    --color-orange: #FF8F00;
+    --color-green: #33D69F;
+    --color-dark: #373B53;
+    --base-dark: #252945;
+    --secondary-dark: #1E2139;  
+    --tertiary-dark: #888EB0;  
+    --light-pink: #9277FF;      
+  }
+
+.badge{
+    display: flex;
+    padding: 0.25em 0.4em;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    width: fit-content;
+    border-radius: 5px;
+}
+.badge .dot{
+    background-color: var(--primary-color);
+    margin-bottom: 5px;
+}
+.primary{
+   background-color: rgba(255, 143, 0, 0.1);
+}
+.default{
+    background-color: rgba(51, 214, 159, 0.1);
+}
+.secondary{
+    background-color: rgba(55, 59, 83, 0.1);
+}
+.paid{
+    color: var(--color-green);
+}
+.pending{
+    color: var(--color-orange);
+}
+.draft{
+    color: var(--color-dark);
+}

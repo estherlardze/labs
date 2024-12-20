@@ -1,4 +1,4 @@
-import './icon.styles.css'
+import './Icon.css'
 interface IconProps {
     src: string
     alt: string
@@ -14,7 +14,7 @@ interface IconProps {
 const Icon = ({ src, alt, radius = 'rounded', size = 'sm' }: IconProps) => {
     return (
         <span className={`icon ${size}`}>
-            <img src={src} alt={alt} className={radius} />
+            <img src={src} alt={alt} className={radius} /> 
         </span>
     )
 }

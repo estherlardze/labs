@@ -7,34 +7,30 @@
   --dark-bg: #141625;
   --light-bg: #F8F8FB;
   --error-color: #EC5757;
+  --color-orange: #FF8F00;
+  --color-green: #33D69F;
+  --color-dark: #373B53;
   --base-dark: #252945;
   --secondary-dark: #1E2139;  
   --tertiary-dark: #888EB0;  
   --light-pink: #9277FF;      
 }
-h1{
-  text-align: center;
+
+@font-face {
+  font-family: spartan;
+  src: url("./fonts/spartan-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
 }
 
-.form{
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  align-items: center;
-  justify-content: center;
+@font-face {
+  font-family: spartan;
+  src: url("./fonts/spartan-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
 }
 
-.form-control{
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+body{
+  font-family: spartan, sans-serif;
 }
-.form-control input{
-  padding: 0.3em 0.5em;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  outline: none;
-  border-radius: 5px;
-}
-.error{
-  color: red;
-}
+

@@ -1,65 +1,24 @@
-import "./App.css";
-import { useForm } from "react-hook-form";
-import {DevTool} from '@hookform/devtools'
+import { Heading } from "./components/ui/heading/Heading";
+import Button from "./components/ui/button/Button";
+import Icon from "./components/ui/icon/Icon";
+import { Text } from "./components/ui/text/Text";
+import Avatar from "./components/ui/avatar/Avatar";
+import Badge from "./components/ui/Badge/Badge";
 
-
-type AppProps = {
-  username: string;
-  email: string;
-  channel: string;
-}
-
-function App() {
-  const form = useForm<AppProps>();
-  const { register, handleSubmit, control, formState} = form;
-  const { errors } = formState;
-
-  const onSubmit = (data:AppProps) => {
-    console.log("data", data);
-  };
-
+export const App = () => {
   return (
     <div>
-      <h1>Youtube form</h1>
-
-      <form className="form" noValidate onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-control">
-          <label htmlFor="username">Name</label>
-          <input type="text" id="username" {...register("username", {
-            required: {
-              value: true,
-              message: "Name is required",
-            }
-          })}/>
-          <p className="">{errors.username?.message}</p>
-        </div>
-
-        <div className="form-control">
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" {...register("email", {
-            required: "Email is required",
-          })}/>
-          <p className="error">{errors.email?.message}</p>
-        </div>
-
-        <div className="form-control">
-          <label htmlFor="channel">Channel</label>
-          <input type="text" id="channel" {...register("channel", {
-            required: "Channel is required",
-            pattern: {
-              value: /^[^@]+@[^@]+\.[^@]+$/,
-              message: "Invalid email address",
-            }, 
-          })}/>
-          <p className="error">{errors.channel?.message}</p>
-        </div>
-
-        <button>Submit</button>
-
-      <DevTool control={control}/>
-      </form>
+      <Heading variant="h2">Invoice</Heading>
+      <Button variant="default">Create Invoice</Button>
+      <Icon
+        src="https://via.placeholder.com/150"
+        alt="Placeholder Icon"
+        size="sm"
+        radius="rounded-full"
+      />
+      <Text variant="caption">Hello World</Text>
+      <Avatar src="https://via.placeholder.com/150" alt="Placeholder Avatar" />
+      <Badge variant="primary" color="paid">Badge</Badge>
     </div>
   );
-}
-
-export default App;
+};

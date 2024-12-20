@@ -1,5 +1,5 @@
 import { ReactNode, ButtonHTMLAttributes } from 'react'
-import './button.styles.css'
+import './Button.css'
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode
     variant?: 'default' | 'primary' | 'secondary' | 'danger'
@@ -10,12 +10,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
         | 'rounded-lg'
         | 'rounded-full'
 }
-const Button = ({
-    children,
-    radius = 'rounded',
-    variant = 'default',
-    ...props
-}: ButtonProps) => {
+const Button = ({children, radius ='rounded', variant = 'default', ...props}: ButtonProps) => {
     const className = props.className || ''
     const buttonClass = `button ${variant} ${radius} ${className}`.trim()
 
