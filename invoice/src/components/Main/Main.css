@@ -1,0 +1,58 @@
+.invoice__container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+  }
+  
+  .invoice__card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .invoice__id {
+    font-weight: bold;
+    color: #7c5dfa;
+  }
+  
+  .invoice__date,
+  .invoice__client,
+  .invoice__total {
+    color: #888eb0;
+  }
+  
+  .invoice__total {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .invoice__status {
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+  }
+  
+  .status__paid {
+    background-color: #e9fce9;
+    color: #33d69f;
+  }
+  
+  .status__pending {
+    background-color: #fff8d9;
+    color: #ff8f00;
+  }
+  
+  .invoice__card > span:before {
+    content: '●';
+    margin-right: 6px;
+  }
+  
