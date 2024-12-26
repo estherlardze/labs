@@ -38,11 +38,14 @@
     }
 
     &.secondary{
-        background: #373B53;
+        background: rgba(0, 0, 0, 0.1);
     }
 
     &.default{
         background: #7C5DFA;
+    }
+    &.transparent{
+        background: transparent;
     }
 }
 

@@ -11,7 +11,7 @@ export const Sidebar = () => {
       <img src={logo} alt="app logo" className="logo"/>
 
       <div className="sidebar__avatar">
-        <Button variant="">
+        <Button variant="transparent">
         <img src={moon} alt="moon icon" />
         </Button>
         <div className="sidebar__line"></div>

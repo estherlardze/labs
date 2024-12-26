@@ -24,16 +24,36 @@
     font-weight: 600;
   }
 
-
-
 .header{
     display: flex;
     justify-content: space-between;
     padding: 0 2rem;
     margin: 2rem 0;
+    position: relative;
 }
 .header__filter{
     display: flex;
     gap: 2rem;
     align-items: center;
 }
+.arrow{
+  color: var(--primary-color);
+}
+.filter__card{
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+  position: absolute;
+  top: 40px;
+}
+.filter__card-item{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+

@@ -1,20 +1,20 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
-import Header from "./components/Header/Header";
-import { useState } from "react";
-import Main from "./components/Main/Main";
-import EmptyPage from "./components/EmptyPage/EmptyPage";
+import Home from "./pages/Home";
+import InvoiceDetail from "./pages/DetailPage/InvoiceDetail";
 
 export const App = () => {
-  const [empty, setEmpty] = useState(false);
   return (
-    <main className="App">
-      <Sidebar />
+    <BrowserRouter>
+      <main className="App">
+        <Sidebar />
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/:id" element={<InvoiceDetail />} />
+        </Routes>
+      </main>
+    </BrowserRouter>
+  )
+}
 
-      <section className="main">
-        <Header />
 
-        <div>{empty ? <EmptyPage /> : <Main />}</div>
-      </section>
-    </main>
-  );
-};

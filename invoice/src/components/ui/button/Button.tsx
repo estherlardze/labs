@@ -2,7 +2,7 @@ import { ReactNode, ButtonHTMLAttributes } from 'react'
 import './Button.css'
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode
-    variant?: 'default' | 'primary' | 'secondary' | 'danger'
+    variant?: 'default' | 'primary' | 'secondary' | 'danger' | 'transparent' 
     radius?:
         | 'rounded'
         | 'rounded-sm'
