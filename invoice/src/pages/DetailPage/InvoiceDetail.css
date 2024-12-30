@@ -104,3 +104,14 @@
   border-bottom-right-radius: 10px;
   background-color: #373b53;
 }
+
+@media screen and (max-width: 768px) {
+  .invoice-header {
+    width: 688px;
+    max-width: 100%;
+  }
+  .invoice-container {
+    width: 688px;
+    max-width: 100%;
+  }
+}

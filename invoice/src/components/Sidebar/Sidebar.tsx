@@ -4,6 +4,7 @@ import "./Sidebar.css";
 import Avatar from "../ui/avatar/Avatar";
 import moon from '../../assets/icon-moon.svg'
 import Button from "../ui/button/Button";
+import Icon from "../ui/icon/Icon";
 
 export const Sidebar = () => {
   return (
@@ -12,7 +13,7 @@ export const Sidebar = () => {
 
       <div className="sidebar__avatar">
         <Button variant="transparent">
-        <img src={moon} alt="moon icon" />
+        <Icon size="sm" radius="rounded" src={moon} alt="moon icon" />
         </Button>
         <div className="sidebar__line"></div>
         <Avatar src={image} alt="avatar" size="md"/>

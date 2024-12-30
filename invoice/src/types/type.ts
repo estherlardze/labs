@@ -11,6 +11,8 @@ export type Address = {
     price: number;
     total: number;
   };
+
+  export type InvoiceStatus = "paid" | "pending" | "draft";
   
   export type InvoiceProps = {
     id: string;
@@ -20,7 +22,7 @@ export type Address = {
     paymentTerms: number;
     clientName: string;
     clientEmail: string;
-    status: "paid" | "pending" | "draft";
+    status: InvoiceStatus;
     senderAddress: Address;
     clientAddress: Address;
     items: Item[];

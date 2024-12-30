@@ -1,16 +1,21 @@
 import EmptyPage from "./EmptyPage/EmptyPage";
 import Main from "../components/Main/Main";
-import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Header from "../components/Header/Header";
-import { useState } from "react";
+import { RootState } from "../store";
 
 const Home = () => {
-  const [empty, setEmpty] = useState(false);
+
+  const { invoices } = useSelector((state: RootState) => state.invoices);
+
+  if (invoices.length === 0) {
+    return <EmptyPage />;
+  }
 
   return (
     <section className="main">
       <Header />
-      <div>{empty ? <EmptyPage /> : <Main />}</div>
+      <Main />
     </section>
   );
 };

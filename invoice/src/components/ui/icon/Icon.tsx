@@ -9,6 +9,7 @@ interface IconProps {
         | 'rounded-lg'
         | 'rounded-full'
     size?: 'sm' | 'md' | 'lg'
+    className?: string
 }
 
 const Icon = ({ src, alt, radius = 'rounded', size = 'sm' }: IconProps) => {

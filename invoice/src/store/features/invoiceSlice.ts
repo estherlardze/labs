@@ -1,25 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
-import data from '../../../data.json';
+import data from "../../../data.json";
 import { InvoiceProps } from "../../types/type";
 
 const invoiceSlice = createSlice({
-  name: 'invoice',
+  name: "invoice",
   initialState: {
-    invoices: data.invoices,
-    filteredInvoices: data.invoices,
+    invoices: data.invoices, 
+    overlay: false,
+    filteredInvoices: [] as InvoiceProps[], 
   },
+
   reducers: {
     filterInvoice: (state, action) => {
       if (action.payload.length === 0) {
-        state.filteredInvoices = state.invoices;
+        state.filteredInvoices = [];
       } else {
-        state.filteredInvoices = state.invoices.filter((detail: InvoiceProps) =>
+        // @ts-ignore
+        state.filteredInvoices = state.invoices.filter((detail) =>
           action.payload.includes(detail.status)
         );
       }
+    },
+
+    setOverlay: (state, action) => {
+        state.overlay = action.payload;
     }
-  }
+  },
 });
 
-export const { filterInvoice } = invoiceSlice.actions;
+export const { filterInvoice, setOverlay } = invoiceSlice.actions;
 export default invoiceSlice.reducer;

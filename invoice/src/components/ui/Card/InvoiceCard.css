@@ -65,3 +65,9 @@
   .invoice__arrow{
     color: var(--primary-color);
   }
+
+  .invoice__info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }

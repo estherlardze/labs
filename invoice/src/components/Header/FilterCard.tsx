@@ -25,10 +25,11 @@ const FilterCard = () => {
   const dispatch = useDispatch();
 
   const handleFilterChange = (invoiceType: any) => {
+    // @ts-ignore
     const updatedFilters = selectedFilters.includes(invoiceType)
       ? selectedFilters.filter((type) => type !== invoiceType)
       : [...selectedFilters, invoiceType];
-
+    // @ts-ignore
     setSelectedFilters(updatedFilters);
     dispatch(filterInvoice(updatedFilters));
   };
@@ -40,6 +41,7 @@ const FilterCard = () => {
           <input
             type="checkbox"
             id={item.invoiceType}
+            // @ts-ignore
             checked={selectedFilters.includes(item.invoiceType)}
             onChange={() => handleFilterChange(item.invoiceType)}
           />

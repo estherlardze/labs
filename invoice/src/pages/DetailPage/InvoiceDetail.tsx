@@ -11,25 +11,20 @@ import Address from "./Address";
 const InvoiceDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const invoice = useSelector((state: any) => state.invoices);
-  const item = invoice.find((i: any) => i.id === id);
+  const invoice = useSelector((state: any) => state.invoices.invoices);
+  const item = invoice?.find((i: any) => i.id === id);
 
   const goBack = () => {
     navigate(-1);
   };
 
-  console.log(item);
-
-  if (!item) {
-    return <div>Invoice not found</div>;
-  }
-
   return (
     <section className="invoice-detail">
       <Button variant="transparent" onClick={goBack}>
         <IoIosArrowBack className="goback" size={18} />
-        <Text variant="caption">Goback</Text>
+        <Text variant="caption">Go back</Text>
       </Button>
+
 
       <div className="invoice-header">
         <article className="invoice-detail__status">
@@ -50,14 +45,20 @@ const InvoiceDetail = () => {
           >
             Delete
           </Button>
-          <Button className="invoice-detail__mark" radius="rounded-lg">
+          <Button
+            variant="default"
+            className="invoice-detail__mark"
+            radius="rounded-lg"
+            disabled={item.status === "draft"}
+          >
             Mark as paid
           </Button>
+          <button disabled={item.status === "draft"}>hello</button>
         </article>
       </div>
 
       <section className="invoice-container">
-        <article className="invoice-detail__adrress">
+        <article className="invoice-detail__address">
           <div className="invoice-detail__title">
             <div className="invoice-detail__number">
               <Text variant="description">#</Text>{" "}

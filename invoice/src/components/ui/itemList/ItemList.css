@@ -1,0 +1,11 @@
+.item-list{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.delete-icon{
+    color: #888EB0;
+}

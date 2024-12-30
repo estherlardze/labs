@@ -2,7 +2,6 @@ import "./InvoiceCard.css";
 import { InvoiceProps } from "../../../types/type";
 import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
-import { useSelector } from "react-redux";
 
 interface Props {
   item: InvoiceProps;

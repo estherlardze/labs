@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import InvoiceDetail from "./pages/DetailPage/InvoiceDetail";
 
 export const App = () => {
+
   return (
     <BrowserRouter>
       <main className="App">
