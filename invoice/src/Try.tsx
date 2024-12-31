@@ -67,6 +67,10 @@ function Try() {
                     "The domain is not suppoerted"
                   );
                 },
+
+                notBlacklisted2: (fieldValue) => {
+                  return !fieldValue.endsWith("baddomain.com") || "error";
+                },
               },
             })}
           />
