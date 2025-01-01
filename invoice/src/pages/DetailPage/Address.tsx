@@ -1,8 +1,10 @@
-import { Text } from '../../components/ui/text/Text'
-const Address = ({item}: {item: string}) => {
+import { Text } from "../../components/atom/Text/Text";
+const Address = ({ item }: { item: string }) => {
   return (
-    <Text variant="description" className="invoice-detail__client">{item}</Text>
-  )
-}
+    <Text variant="description" className="invoice-detail__client">
+      {item}
+    </Text>
+  );
+};
 
-export default Address
+export default Address;

@@ -6,7 +6,6 @@ const invoiceSlice = createSlice({
   name: "invoice",
   initialState: {
     invoices: data.invoices, 
-    overlay: false,
     filteredInvoices: [] as InvoiceProps[], 
   },
 
@@ -21,12 +20,8 @@ const invoiceSlice = createSlice({
         );
       }
     },
-
-    setOverlay: (state, action) => {
-        state.overlay = action.payload;
-    }
   },
 });
 
-export const { filterInvoice, setOverlay } = invoiceSlice.actions;
+export const { filterInvoice } = invoiceSlice.actions;
 export default invoiceSlice.reducer;
