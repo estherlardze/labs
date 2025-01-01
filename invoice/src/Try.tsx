@@ -1,5 +1,5 @@
-import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import { useForm } from "react-hook-form";
 
 type AppProps = {
   username: string;
@@ -66,10 +66,6 @@ function Try() {
                     !fieldValue.endsWith("baddomain.com") ||
                     "The domain is not suppoerted"
                   );
-                },
-
-                notBlacklisted2: (fieldValue) => {
-                  return !fieldValue.endsWith("baddomain.com") || "error";
                 },
               },
             })}

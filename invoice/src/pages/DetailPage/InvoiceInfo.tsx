@@ -1,10 +1,10 @@
-import { Text } from "../../components/ui/text/Text";
+import { Text } from "../../components/atom/Text/Text";
 
-const InvoiceInfo = ({item, text}: any) => {
+const InvoiceInfo = ({ item, text }: any) => {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
       <Text variant="description" className="invoice-info__date">
-       {text}
+        {text}
       </Text>
       <Text variant="caption" className="invoice-info__date">
         {item}
@@ -14,5 +14,3 @@ const InvoiceInfo = ({item, text}: any) => {
 };
 
 export default InvoiceInfo;
-
-

@@ -1,0 +1,43 @@
+.input{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 20px;
+}
+.label{
+    color: #7E88C3
+}
+.input--checkbox{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.input input{
+    padding: 10px;
+    border: 1px solid #DFE3FA;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+.input--short{
+    width: 32%;
+}
+.input--medium{
+    width: 49%;
+}
+
+.input--long{
+    width: 214px;
+    max-width: 100%;
+}
+
+.input--mini{
+    width: 46px;
+    max-width: 100%;
+}
+.input--price{
+    width: 100px;
+    max-width: 100%;
+}

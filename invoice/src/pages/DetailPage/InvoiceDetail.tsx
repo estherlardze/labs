@@ -2,9 +2,9 @@ import "./InvoiceDetail.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Text } from "../../components/ui/text/Text";
-import Badge from "../../components/ui/Badge/Badge";
-import Button from "../../components/ui/button/Button";
+import { Text } from "../../components/atom/Text/Text";
+import Badge from "../../components/atom/Badge/Badge";
+import Button from "../../components/atom/Button/Button";
 import InvoiceInfo from "./InvoiceInfo";
 import Address from "./Address";
 
@@ -24,7 +24,6 @@ const InvoiceDetail = () => {
         <IoIosArrowBack className="goback" size={18} />
         <Text variant="caption">Go back</Text>
       </Button>
-
 
       <div className="invoice-header">
         <article className="invoice-detail__status">
@@ -94,10 +93,18 @@ const InvoiceDetail = () => {
           <table>
             <thead>
               <tr>
-                <th><Text variant="description">Item Name</Text></th>
-                <th><Text variant="description">Qty</Text></th>
-                <th><Text variant="description">Price</Text></th>
-                <th><Text variant="description">Total</Text></th>
+                <th>
+                  <Text variant="description">Item Name</Text>
+                </th>
+                <th>
+                  <Text variant="description">Qty</Text>
+                </th>
+                <th>
+                  <Text variant="description">Price</Text>
+                </th>
+                <th>
+                  <Text variant="description">Total</Text>
+                </th>
               </tr>
             </thead>
             <tbody>
