@@ -7,9 +7,12 @@ import Badge from "../../components/atom/Badge/Badge";
 import Button from "../../components/atom/Button/Button";
 import InvoiceInfo from "./InvoiceInfo";
 import Address from "./Address";
+import { useState } from "react";
+import DeleteCard from "../../components/molecule/DeleteCard/DeleteCard";
 
 const InvoiceDetail = () => {
   const navigate = useNavigate();
+  const [openCard, setOpenCard] = useState(false);
   const { id } = useParams();
   const invoice = useSelector((state: any) => state.invoices.invoices);
   const item = invoice?.find((i: any) => i.id === id);
@@ -41,6 +44,7 @@ const InvoiceDetail = () => {
             variant="danger"
             className="invoice-detail__delete"
             radius="rounded-lg"
+            onClick={() => setOpenCard(true)}
           >
             Delete
           </Button>
@@ -109,7 +113,7 @@ const InvoiceDetail = () => {
             </thead>
             <tbody>
               {item.items.map((item: any) => (
-                <tr key={item.id}>
+                <tr key={item.id} >
                   <td>{item.name}</td>
                   <td>{item.quantity}</td>
                   <td>£{item.price}</td>
@@ -125,6 +129,8 @@ const InvoiceDetail = () => {
           <p>£{item.total.toFixed(2)}</p>
         </div>
       </section>
+
+    {openCard && <DeleteCard id={id} /> }
     </section>
   );
 };

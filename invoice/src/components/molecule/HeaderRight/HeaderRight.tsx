@@ -6,7 +6,7 @@ import { setOverlay } from "../../../store/features/overlaySlice";
 import { Text } from "../../atom/Text/Text";
 import { GoPlus } from "react-icons/go";
 import '../../organism/Header/Header.css'
-import FilterCard from "./FilterCard";
+import FilterCard from "../Filter/FilterCard";
 import { RootState } from "../../../store";
 
 
@@ -24,8 +24,8 @@ const HeaderRight = () => {
   };
 
   return (
-    <div className="header__filter">
-      <article>
+    <section className="header__filter">
+      <div>
         <Button variant="transparent" onClick={handleArrowToggle}>
           Filter by status{" "}
           {isArrowDown ? (
@@ -39,12 +39,12 @@ const HeaderRight = () => {
           // @ts-ignore
           <FilterCard invoices={invoices} />
         )}
-      </article>
+      </div>
       <Button radius="rounded-full" onClick={handleOverlayToggle}>
         <GoPlus size={20} className="header__plus" />
         <Text className="header__button-text" variant="p">New Invoice</Text>
       </Button>
-    </div>
+    </section>
   );
 };
 

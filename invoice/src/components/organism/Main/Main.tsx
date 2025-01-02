@@ -21,12 +21,10 @@ const Main = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  console.log(screenSize, "screenSize");
 
   const invoicesToDisplay =
     filteredInvoices.length > 0 ? filteredInvoices : invoices;
 
-  console.log("Invoices to display:", invoicesToDisplay);
 
   const renderCard = (item: any) => {
     if (screenSize < 531) {

@@ -45,6 +45,7 @@ body{
 .main{
   color: black;
   flex: 1;
+  
 }
 
 @media screen and (max-width: 768px) {

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { filterInvoice } from "../../../store/features/invoiceSlice";
 import Input from "../../atom/Input/Input";
 import {data} from '../../../utils/constants'
-
+import '../../organism/Header/Header.css'
 
 const FilterCard = () => {
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -20,7 +20,7 @@ const FilterCard = () => {
     dispatch(filterInvoice(updatedFilters))
   };
 
- 
+ console.log(selectedFilters, "selectedFilters");
 
   return (
     <section className="filter__card">

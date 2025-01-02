@@ -43,13 +43,13 @@
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 10px;
   z-index: 100;
   position: absolute;
-  top: 40px;
+  top: 55px;
 }
 .filter__card-item{
   display: flex;

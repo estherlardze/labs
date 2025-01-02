@@ -7,3 +7,9 @@ export const filterDetailInvoice = (invoice: InvoiceProps[], status: string) => 
 
   return filterdInvoice;
 };
+
+export const deleteInvoice = (invoices: InvoiceProps[], id: string ) => {
+ const DeletedInvoice = invoices.filter((invoice: InvoiceProps) => invoice.id !== id);
+
+ return DeletedInvoice;
+}

@@ -20,8 +20,15 @@ const invoiceSlice = createSlice({
         );
       }
     },
+
+    deleteInvoice: (state, action) => {
+      const id = action.payload;
+      state.invoices = state.invoices.filter((invoice) => invoice.id !== id);
+
+      
+    }
   },
 });
 
-export const { filterInvoice } = invoiceSlice.actions;
+export const { filterInvoice, deleteInvoice } = invoiceSlice.actions;
 export default invoiceSlice.reducer;
