@@ -9,15 +9,17 @@ interface InputProps {
     className?: string
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
     type?: string
+    color?: string
+    size?: string
 }
 
 
-const Input = ({label, id, name, value, className, onChange, checked, type} : InputProps) => {
+const Input = ({label, id, name, value, className, onChange, checked, type, color, size} : InputProps) => {
 
   return (
     <div className={`input ${className}`}>
-      <label htmlFor={id} className='label'>{label}</label>
-      <input type={type} id={id} name={name} value={value} onChange={onChange} checked={checked} />
+      <label htmlFor={id} className={`label ${color}`}>{label}</label>
+      <input type={type} id={id} name={name} value={value} onChange={onChange} checked={checked} className={`${size}`}/>
     </div>
   )
 }

@@ -3,17 +3,17 @@ import { Text } from "../../atom/Text/Text";
 import Button from "../../atom/Button/Button";
 import "./DeleteCard.css";
 import { deleteInvoice } from "../../../store/features/invoiceSlice";
-import { useSelector, useDispatch} from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch} from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 
-const DeleteCard = ({ id }: { id: string | undefined }) => {
-  const invoices = useSelector((state: any) => state.invoices.invoices);
+const DeleteCard = ({handleModalClose}: {handleModalClose: () => void}) => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
+  const handleDelete = (id: string | undefined) => {
     dispatch(deleteInvoice(id));
-    navigate(-1);
+    navigate('/');
   };
 
   return (
@@ -26,14 +26,14 @@ const DeleteCard = ({ id }: { id: string | undefined }) => {
         </Text>
 
         <div className="delete-card__buttons">
-          <Button variant="primary" radius="rounded-lg">
+          <Button variant="primary" radius="rounded-lg" onClick={handleModalClose}>
             Cancel
           </Button>
           <Button
             variant="danger"
             radius="rounded-lg"
             className="delete"
-            onClick={handleDelete}
+            onClick={() => handleDelete(id)}
           >
             Delete
           </Button>

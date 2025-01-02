@@ -3,7 +3,7 @@ import "./Text.css";
 
 interface TextProps {
   children: ReactNode;
-  variant?: "caption" | "description" | 'p' | "span" 
+  variant?: "caption" | "description" | 'p' | "span" | "div"
   className?: string;
 }
 
@@ -14,5 +14,5 @@ export const Text = ({
 }: TextProps) => {
   
 
-  return <p className={`text ${variant} ${className}`}>{children}</p>;
+  return <div className={`text ${variant} ${className}`}>{children}</div>;
 };

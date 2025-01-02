@@ -5,8 +5,9 @@ import { InvoiceProps } from "../../types/type";
 const invoiceSlice = createSlice({
   name: "invoice",
   initialState: {
-    invoices: data.invoices, 
-    filteredInvoices: [] as InvoiceProps[], 
+    invoices: data.invoices,
+    filteredInvoices: [] as InvoiceProps[],
+    currentInvoiceId: ''
   },
 
   reducers: {
@@ -14,7 +15,6 @@ const invoiceSlice = createSlice({
       if (action.payload.length === 0) {
         state.filteredInvoices = [];
       } else {
-        // @ts-ignore
         state.filteredInvoices = state.invoices.filter((detail) =>
           action.payload.includes(detail.status)
         );
@@ -24,9 +24,7 @@ const invoiceSlice = createSlice({
     deleteInvoice: (state, action) => {
       const id = action.payload;
       state.invoices = state.invoices.filter((invoice) => invoice.id !== id);
-
-      
-    }
+    },
   },
 });
 

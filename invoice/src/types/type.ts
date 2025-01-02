@@ -22,10 +22,18 @@ export type Address = {
     paymentTerms: number;
     clientName: string;
     clientEmail: string;
-    status: InvoiceStatus;
+    status: string;
     senderAddress: Address;
     clientAddress: Address;
     items: Item[];
     total: number;
   };
+
+  export type TypesProps = {
+    name:  string, 
+    quantity: number,
+    price: number,
+    total: number
+   
+  }
   

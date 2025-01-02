@@ -1,6 +1,6 @@
 
 .button{
-    padding: 10px 20px;
+    padding: 7px 20px;
     border: none;
     cursor: pointer;
     user-select: none;
@@ -47,6 +47,11 @@
     &.transparent{
         background: transparent;
     }
+}
+
+.disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
 

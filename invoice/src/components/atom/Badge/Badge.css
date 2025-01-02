@@ -18,11 +18,12 @@
 
 .badge{
     display: flex;
-    padding: 0.25em 0.4em;
+    padding: 0.2em 0.4em;
     align-items: center;
     justify-content: center;
     gap: 2px;
     width: fit-content;
+    height: 40px;
     border-radius: 5px;
 }
 .badge .dot{
