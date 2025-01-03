@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data from "../../../data.json";
 import { InvoiceProps } from "../../types/type";
+import { PayloadAction } from "@reduxjs/toolkit";
 
 const invoiceSlice = createSlice({
   name: "invoice",
   initialState: {
     invoices: data.invoices,
     filteredInvoices: [] as InvoiceProps[],
-    currentInvoiceId: ''
   },
 
   reducers: {
-    filterInvoice: (state, action) => {
+    filterInvoice: (state, action:PayloadAction<string[]>) => {
       if (action.payload.length === 0) {
         state.filteredInvoices = [];
       } else {

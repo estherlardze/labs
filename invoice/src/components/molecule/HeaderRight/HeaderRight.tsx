@@ -14,7 +14,6 @@ import "./HeaderRight.css";
 const HeaderRight = () => {
   const [isArrowDown, setIsArrowDown] = useState(false);
   const dispatch = useDispatch();
-  const { invoices } = useSelector((state: RootState) => state.invoices);
   const ismobile = useSelector((state: RootState) => state.screenSize.ismobile);
 
   const handleArrowToggle = () => {
@@ -40,8 +39,7 @@ const HeaderRight = () => {
         </Button>
 
         {isArrowDown && (
-          // @ts-ignore
-          <FilterCard invoices={invoices} />
+          <FilterCard/>
         )}
       </div>
       <Button radius="rounded-full" onClick={handleOverlayToggle}>

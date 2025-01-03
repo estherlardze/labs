@@ -24,8 +24,8 @@ const Invoice = () => {
 
 
   return (
-    <section className="invoice--overlay">
-      <div className="invoice--container">
+    <section className="invoice--overlay" onClick={handleInvoiceClose}>
+      <div className="invoice--container" onClick={(e) => e.stopPropagation()}>
         <Heading variant="h3" className="new-invoice__heading">
           New Invoice
         </Heading>

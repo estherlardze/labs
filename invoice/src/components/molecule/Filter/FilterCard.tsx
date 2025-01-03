@@ -6,7 +6,7 @@ import {data} from '../../../utils/constants'
 import './FilterCard.css'
 
 const FilterCard = () => {
-  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const dispatch = useDispatch();
 
 
@@ -15,7 +15,7 @@ const FilterCard = () => {
       ? selectedFilters.filter((type) => type !== invoiceType)
       : [...selectedFilters, invoiceType];
     setSelectedFilters(updatedFilters);
-    dispatch(filterInvoice(updatedFilters))
+    dispatch(filterInvoice(updatedFilters));
   };
 
 
@@ -30,7 +30,6 @@ const FilterCard = () => {
             className="input--checkbox custom-checkbox"
             color="text-gray"
             size="sm"
-            // @ts-ignore
             checked={selectedFilters.includes(item.invoiceType)}
             onChange={() => handleFilterChange(item.invoiceType)}
           />

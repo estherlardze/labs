@@ -5,23 +5,23 @@ import { useSelector } from "react-redux";
 import { Text } from "../../components/atom/Text/Text";
 import Badge from "../../components/atom/Badge/Badge";
 import Button from "../../components/atom/Button/Button";
-import InvoiceInfo from "./InvoiceInfo";
-import Address from "./Address";
+import InvoiceInfo from "../../components/molecule/InvoiceInfo/InvoiceInfo";
+import Address from "../../components/atom/Address/Address";
 import { useState } from "react";
 import DeleteCard from "../../components/molecule/DeleteCard/DeleteCard";
 import { RootState } from "../../store";
-import { TypesProps } from "../../types/type";
+import { DetailTable } from "../../components/molecule/DetailTable/DetailTable";
 
 const InvoiceDetail = () => {
   const [openCard, setOpenCard] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
-  const invoice = useSelector((state:RootState) => state.invoices.invoices)
+  const invoice = useSelector((state: RootState) => state.invoices.invoices);
   const detailedInvoice = invoice.filter((invoice) => invoice.id === id)[0];
 
- const handleModalClose = () => {
+  const handleModalClose = () => {
     setOpenCard(false);
- }
+  };
 
   return (
     <section className="invoice-detail">
@@ -35,7 +35,9 @@ const InvoiceDetail = () => {
           <Text variant="description" className="invoice-detail__status-text">
             Status
           </Text>
-          <Badge color={detailedInvoice?.status}>{detailedInvoice.status}</Badge>
+          <Badge color={detailedInvoice?.status}>
+            {detailedInvoice?.status}
+          </Badge>
         </article>
 
         <article className="invoice-detail__buttons">
@@ -52,7 +54,9 @@ const InvoiceDetail = () => {
           </Button>
           <Button
             variant="default"
-            className={`invoice-detail__mark ${detailedInvoice.status === "draft" ? "disabled" : ""}`}
+            className={`invoice-detail__mark ${
+              detailedInvoice.status === "draft" ? "disabled" : ""
+            }`}
             radius="rounded-lg"
             disabled={detailedInvoice.status === "draft"}
           >
@@ -94,44 +98,10 @@ const InvoiceDetail = () => {
           </div>
         </section>
 
-        <div className="invoice-table">
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  <Text variant="description">Item Name</Text>
-                </th>
-                <th>
-                  <Text variant="description">Qty</Text>
-                </th>
-                <th>
-                  <Text variant="description">Price</Text>
-                </th>
-                <th>
-                  <Text variant="description">Total</Text>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {detailedInvoice.items.map((item: TypesProps, index: number) => (
-                <tr key={index} >
-                  <td>{item.name}</td>
-                  <td>{item.quantity}</td>
-                  <td>£{item.price}</td>
-                  <td>£{item.total}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div className="amount-due">
-          <p>Amount Due:</p>
-          <p>£{detailedInvoice.total.toFixed(2)}</p>
-        </div>
+        <DetailTable detailedInvoice={detailedInvoice} />
       </section>
 
-    {openCard && <DeleteCard handleModalClose={handleModalClose} /> }
+      {openCard && <DeleteCard handleModalClose={handleModalClose} />}
     </section>
   );
 };
