@@ -1,12 +1,12 @@
 
 .button{
-    padding: 10px;
+    padding: 7px 20px;
     border: none;
     cursor: pointer;
     user-select: none;
     display: flex;
     align-items: center;
-    gap: 0.7rem;
+    gap: 10px;
     background-color: transparent;
 
     &.rounded{
@@ -30,7 +30,7 @@
     }
 
     &.primary{
-        background: #F9FAFE;
+        background: #0C0E16;
     }
 
     &.danger{
@@ -38,7 +38,7 @@
     }
 
     &.secondary{
-        background: rgba(0, 0, 0, 0.1);
+        background: #F9FAFE;
     }
 
     &.default{
@@ -47,6 +47,30 @@
     &.transparent{
         background: transparent;
     }
+}
+.send{
+    color: #fff
+}
+.save{
+    color: #888EB0
+}
+.discard{
+    color: #7E88C3;
+}
+
+.disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+
+
+@media screen and (max-width: 400px){
+    .button{
+        padding: 7px;
+
+    }
+    
 }
 
 

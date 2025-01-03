@@ -5,22 +5,27 @@ import { useSelector } from "react-redux";
 import { Text } from "../../components/atom/Text/Text";
 import Badge from "../../components/atom/Badge/Badge";
 import Button from "../../components/atom/Button/Button";
-import InvoiceInfo from "./InvoiceInfo";
-import Address from "./Address";
+import InvoiceInfo from "../../components/molecule/InvoiceInfo/InvoiceInfo";
+import Address from "../../components/atom/Address/Address";
+import { useState } from "react";
+import DeleteCard from "../../components/molecule/DeleteCard/DeleteCard";
+import { RootState } from "../../store";
+import { DetailTable } from "../../components/molecule/DetailTable/DetailTable";
 
 const InvoiceDetail = () => {
+  const [openCard, setOpenCard] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
-  const invoice = useSelector((state: any) => state.invoices.invoices);
-  const item = invoice?.find((i: any) => i.id === id);
+  const invoice = useSelector((state: RootState) => state.invoices.invoices);
+  const detailedInvoice = invoice.filter((invoice) => invoice.id === id)[0];
 
-  const goBack = () => {
-    navigate(-1);
+  const handleModalClose = () => {
+    setOpenCard(false);
   };
 
   return (
     <section className="invoice-detail">
-      <Button variant="transparent" onClick={goBack}>
+      <Button variant="transparent" onClick={() => navigate(-1)}>
         <IoIosArrowBack className="goback" size={18} />
         <Text variant="caption">Go back</Text>
       </Button>
@@ -30,7 +35,9 @@ const InvoiceDetail = () => {
           <Text variant="description" className="invoice-detail__status-text">
             Status
           </Text>
-          <Badge color={item.status}>{item.status}</Badge>
+          <Badge color={detailedInvoice?.status}>
+            {detailedInvoice?.status}
+          </Badge>
         </article>
 
         <article className="invoice-detail__buttons">
@@ -41,18 +48,20 @@ const InvoiceDetail = () => {
             variant="danger"
             className="invoice-detail__delete"
             radius="rounded-lg"
+            onClick={() => setOpenCard(true)}
           >
             Delete
           </Button>
           <Button
             variant="default"
-            className="invoice-detail__mark"
+            className={`invoice-detail__mark ${
+              detailedInvoice.status === "draft" ? "disabled" : ""
+            }`}
             radius="rounded-lg"
-            disabled={item.status === "draft"}
+            disabled={detailedInvoice.status === "draft"}
           >
             Mark as paid
           </Button>
-          <button disabled={item.status === "draft"}>hello</button>
         </article>
       </div>
 
@@ -61,70 +70,38 @@ const InvoiceDetail = () => {
           <div className="invoice-detail__title">
             <div className="invoice-detail__number">
               <Text variant="description">#</Text>{" "}
-              <Text variant="caption">{item.id}</Text>
+              <Text variant="caption">{detailedInvoice.id}</Text>
             </div>
             <Text variant="description" className="invoice-detail__date">
-              {item.description}
+              {detailedInvoice.description}
             </Text>
           </div>
           <div className="invoice-detail__client">
-            <Address item={item.senderAddress.street} />
-            <Address item={item.senderAddress.city} />
-            <Address item={item.senderAddress.postCode} />
-            <Address item={item.senderAddress.country} />
+            <Address item={detailedInvoice.senderAddress.street} />
+            <Address item={detailedInvoice.senderAddress.city} />
+            <Address item={detailedInvoice.senderAddress.postCode} />
+            <Address item={detailedInvoice.senderAddress.country} />
           </div>
         </article>
 
         <section className="invoice-info">
-          <InvoiceInfo text="Invoice Date" item={item.createdAt} />
-          <InvoiceInfo text="Bill To" item={item.clientName} />
-          <InvoiceInfo text="Sent To" item={item.clientEmail} />
-          <InvoiceInfo text="Payment Due" item={item.paymentDue} />
+          <InvoiceInfo text="Invoice Date" item={detailedInvoice.createdAt} />
+          <InvoiceInfo text="Bill To" item={detailedInvoice.clientName} />
+          <InvoiceInfo text="Sent To" item={detailedInvoice.clientEmail} />
+          <InvoiceInfo text="Payment Due" item={detailedInvoice.paymentDue} />
 
           <div className="invoice-info__address">
-            <Address item={item.clientAddress.street} />
-            <Address item={item.clientAddress.city} />
-            <Address item={item.clientAddress.postCode} />
-            <Address item={item.clientAddress.country} />
+            <Address item={detailedInvoice.clientAddress.street} />
+            <Address item={detailedInvoice.clientAddress.city} />
+            <Address item={detailedInvoice.clientAddress.postCode} />
+            <Address item={detailedInvoice.clientAddress.country} />
           </div>
         </section>
 
-        <div className="invoice-table">
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  <Text variant="description">Item Name</Text>
-                </th>
-                <th>
-                  <Text variant="description">Qty</Text>
-                </th>
-                <th>
-                  <Text variant="description">Price</Text>
-                </th>
-                <th>
-                  <Text variant="description">Total</Text>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {item.items.map((item: any) => (
-                <tr key={item.id}>
-                  <td>{item.name}</td>
-                  <td>{item.quantity}</td>
-                  <td>£{item.price}</td>
-                  <td>£{item.total}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div className="amount-due">
-          <p>Amount Due:</p>
-          <p>£{item.total.toFixed(2)}</p>
-        </div>
+        <DetailTable detailedInvoice={detailedInvoice} />
       </section>
+
+      {openCard && <DeleteCard handleModalClose={handleModalClose} />}
     </section>
   );
 };

@@ -7,6 +7,10 @@
 .label{
     color: #7E88C3
 }
+.text-gray{
+    color: #0C0E16;
+}
+
 .input--checkbox{
     display: flex;
     flex-direction: row-reverse;
@@ -21,6 +25,7 @@
     font-size: 16px;
     outline: none;
 }
+
 .input--short{
     width: 32%;
 }

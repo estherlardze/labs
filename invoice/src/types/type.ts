@@ -12,20 +12,27 @@ export type Address = {
     total: number;
   };
 
-  export type InvoiceStatus = "paid" | "pending" | "draft";
   
   export type InvoiceProps = {
     id: string;
     createdAt: string;
     paymentDue: string;
     description: string;
-    paymentTerms: number;
+    paymentTerms: number | null;
     clientName: string;
     clientEmail: string;
-    status: InvoiceStatus;
+    status: string;
     senderAddress: Address;
     clientAddress: Address;
     items: Item[];
-    total: number;
+    total: number | null;
   };
+
+  export type TypesProps = {
+    name:  string, 
+    quantity: number,
+    price: number,
+    total: number
+   
+  }
   

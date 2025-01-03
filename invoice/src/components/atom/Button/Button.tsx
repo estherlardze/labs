@@ -10,6 +10,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
         | 'rounded-md'
         | 'rounded-lg'
         | 'rounded-full';
+    color?: 'send' | 'discard' | 'save';
     disabled?: boolean;
 }
 
@@ -18,10 +19,11 @@ const Button = ({
     radius = 'rounded',
     variant = 'default',
     disabled = false,
+    color,
     ...props
 }: ButtonProps) => {
     const className = props.className || '';
-    const buttonClass = `button ${variant} ${radius} ${className}`.trim();
+    const buttonClass = `button ${color} ${variant} ${radius} ${className}`.trim();
 
     return (
         <button

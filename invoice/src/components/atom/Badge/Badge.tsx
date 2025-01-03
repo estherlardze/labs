@@ -6,10 +6,10 @@ import './Badge.css';
 interface BadgeProps {
   children: ReactNode;
   variant?: "default" | "primary" | "secondary";
-  color?: "paid" | "pending" | "draft";
+  color?: string;
 }
 
-const Badge = ({ children, variant = "default", color= "paid", ...props }: BadgeProps & HTMLAttributes<HTMLDivElement>) => {
+const Badge = ({ children, variant = "default", color, ...props }: BadgeProps & HTMLAttributes<HTMLDivElement>) => {
   const className = props.className || "";
   const badgeClass = `badge ${variant} ${className} ${color}`.trim();
 

@@ -1,38 +1,40 @@
-import { useState, useEffect } from "react";
+import {  useEffect } from "react";
 import "./Main.css";
 import InvoiceCard from "../../molecule/Card/InvoiceCard";
 import InvoiceCardSc from "../../molecule/Card/InvoiceCardSc";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store";
+import {setScreenSize} from "../../../store/features/screenSizeSlice";
 
 const Main = () => {
   const invoices = useSelector((state: RootState) => state.invoices.invoices);
-  const filteredInvoices = useSelector(
-    (state: RootState) => state.invoices.filteredInvoices
-  );
+  const ismobile = useSelector((state: RootState) => state.screenSize.ismobile);
+  const filteredInvoices = useSelector( (state: RootState) => state.invoices.filteredInvoices);
+  const dispatch = useDispatch();
 
-  const [screenSize, setScreenSize] = useState(window.innerWidth);
 
   useEffect(() => {
-    const handleResize = () => setScreenSize(window.innerWidth);
+    const handleResize = () => {
+      dispatch(setScreenSize(window.innerWidth));
+    }
 
     window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    handleResize()
 
-  console.log(screenSize, "screenSize");
+    return () => window.removeEventListener("resize", handleResize);
+  }, [dispatch]);
+
 
   const invoicesToDisplay =
     filteredInvoices.length > 0 ? filteredInvoices : invoices;
 
-  console.log("Invoices to display:", invoicesToDisplay);
 
   const renderCard = (item: any) => {
-    if (screenSize < 531) {
-      return <InvoiceCardSc item={item} key={item.id} />;
+    if (ismobile) {
+      return <InvoiceCardSc item={item} key={item.id} />
     } else {
-      return <InvoiceCard item={item} key={item.id} />;
+      return <InvoiceCard item={item} key={item.id} />
     }
   };
 

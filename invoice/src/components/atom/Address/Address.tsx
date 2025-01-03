@@ -1,4 +1,4 @@
-import { Text } from "../../components/atom/Text/Text";
+import { Text } from "../Text/Text";
 const Address = ({ item }: { item: string }) => {
   return (
     <Text variant="description" className="invoice-detail__client">

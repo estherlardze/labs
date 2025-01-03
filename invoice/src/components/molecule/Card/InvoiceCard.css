@@ -25,6 +25,7 @@
   .invoice__client,
   .invoice__total {
     color: #888eb0;
+    margin: 5px 0;
   }
   
   .invoice__total {
@@ -70,4 +71,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  }
+
+  .invoice__Link {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .invoice__details{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: 20px;
   }

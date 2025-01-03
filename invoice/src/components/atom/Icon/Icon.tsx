@@ -9,11 +9,12 @@ interface IconProps {
         | 'rounded-md'
         | 'rounded-lg'
         | 'rounded-full'
-    size?: 'sm' | 'md' | 'lg'
+    size?: 'sm' | 'md' | 'lg' | 'xs' 
     className?: string
 }
 
 const Icon = ({ src, alt, radius = 'rounded', size = 'sm' }: IconProps) => {
+    
     return (
         <span className={`icon ${size}`}>
             <img src={src} alt={alt} className={radius} /> 
