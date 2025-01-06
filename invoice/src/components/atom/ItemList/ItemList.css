@@ -1,11 +1,20 @@
-.item-list{
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+.item-list {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.delete-icon{
-    color: #888EB0;
+.delete-icon {
+  color: #888eb0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
 }

@@ -1,7 +1,6 @@
-import { ReactNode, HTMLAttributes } from 'react';
+import { ReactNode, HTMLAttributes } from "react";
 import { GoDotFill } from "react-icons/go";
-import './Badge.css';
-
+import "./Badge.css";
 
 interface BadgeProps {
   children: ReactNode;
@@ -9,14 +8,19 @@ interface BadgeProps {
   color?: string;
 }
 
-const Badge = ({ children, variant = "default", color, ...props }: BadgeProps & HTMLAttributes<HTMLDivElement>) => {
+const Badge = ({
+  children,
+  variant = "default",
+  color,
+  ...props
+}: BadgeProps & HTMLAttributes<HTMLDivElement>) => {
   const className = props.className || "";
   const badgeClass = `badge ${variant} ${className} ${color}`.trim();
 
   return (
     <div {...props} className={badgeClass}>
       <GoDotFill />
-        {children}
+      {children}
     </div>
   );
 };

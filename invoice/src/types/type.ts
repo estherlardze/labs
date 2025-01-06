@@ -52,6 +52,6 @@ export type Address = {
     name?: FieldError;
     quantity?: FieldError;
     price?: FieldError;
-    items?: FieldError;
+    items?: FieldError[];
   };
   

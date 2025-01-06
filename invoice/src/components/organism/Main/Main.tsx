@@ -2,15 +2,18 @@ import {  useEffect } from "react";
 import "./Main.css";
 import InvoiceCard from "../../molecule/Card/InvoiceCard";
 import InvoiceCardSc from "../../molecule/Card/InvoiceCardSc";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import {setScreenSize} from "../../../store/features/screenSizeSlice";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { filterInvoice, selectFilteredInvoices, selectInvoices, selectStatusFilter } from "../../../store/features/invoiceSlice";
 
 const Main = () => {
-  const invoices = useSelector((state: RootState) => state.invoices.invoices);
+  const invoices = useAppSelector(selectInvoices);
   const ismobile = useSelector((state: RootState) => state.screenSize.ismobile);
-  const filteredInvoices = useSelector( (state: RootState) => state.invoices.filteredInvoices);
-  const dispatch = useDispatch();
+  const filteredInvoices = useAppSelector(selectFilteredInvoices);
+  const statusFilter = useAppSelector(selectStatusFilter)
+  const dispatch = useAppDispatch();
 
 
   useEffect(() => {
@@ -26,8 +29,12 @@ const Main = () => {
   }, [dispatch]);
 
 
-  const invoicesToDisplay =
-    filteredInvoices.length > 0 ? filteredInvoices : invoices;
+  // const invoicesToDisplay =
+  //   filteredInvoices.length > 0 ? filteredInvoices : invoices;
+
+  useEffect(() => {
+    dispatch(filterInvoice())
+  }, [statusFilter])
 
 
   const renderCard = (item: any) => {
@@ -40,7 +47,7 @@ const Main = () => {
 
   return (
     <div className="invoice__container">
-      {invoicesToDisplay.map((item) => renderCard(item))}
+      {filteredInvoices.map((item) => renderCard(item))}
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import { generateRandomId } from ".";
+
 export const data = [
   {
     id: 1,
@@ -17,11 +19,11 @@ export const data = [
 ];
 
 export const initialData = {
-  id: "",
-  createdAt:  `${new Date().toISOString().split("T")[0]}`,
+  id: generateRandomId(),
+  createdAt: `${new Date().toISOString().split("T")[0]}`,
   paymentDue: "",
   description: "",
-  paymentTerms: 1, 
+  paymentTerms: 1,
   clientName: "",
   clientEmail: "",
   status: "",
@@ -38,6 +40,5 @@ export const initialData = {
     country: "",
   },
   items: [],
-  total: null, 
+  total: 0,
 };
-

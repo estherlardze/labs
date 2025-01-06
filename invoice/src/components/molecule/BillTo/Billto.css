@@ -1,4 +1,4 @@
-.payment-terms {
+.dropdown {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -44,10 +44,9 @@
       border: none;
     }
 
-    &:hover, &.selected {
+    &:hover,
+    &.selected {
       color: var(--primary-color);
     }
   }
-
-
 }

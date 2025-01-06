@@ -8,7 +8,7 @@ import arrowdown from "../../../assets/icon-arrow-down.svg";
 import calender from "../../../assets/icon-calendar.svg";
 import Button from "../../atom/Button/Button";
 import "./Billto.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Datepicker from "../Datepicker/Datepicker";
 
 const BillTo = () => {
@@ -31,13 +31,12 @@ const BillTo = () => {
   const handleToggleDatePicker = () => {
     setShowDatePicker(!showDatePicker);
   };
-  
+
   const handleDateSelect = (date: string) => {
     setSelectedDate(date);
     setValue("createdAt", date);
     setShowDatePicker(false);
-  }; 
-
+  };
 
   const handleToggleSelect = () => {
     setShowSelect(!showSelect);
@@ -51,6 +50,34 @@ const BillTo = () => {
   const { clientName, clientEmail } = (errors as Errors) ?? {};
   const { street, postCode, city, country } =
     (errors["clientAddress"] as Errors) ?? {};
+
+  useEffect(() => {
+    const disablePopup = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+
+      if (!target.closest(".payment-terms")) {
+        setShowSelect(false);
+      }
+
+      if (!target.closest(".invoice-date")) {
+        setShowDatePicker(false);
+      }
+    };
+
+    document.addEventListener("click", disablePopup);
+    const form = document.getElementsByTagName("form")[0];
+    if (form) {
+      form.addEventListener("click", disablePopup);
+    }
+
+    return () => {
+      document.removeEventListener("click", disablePopup);
+
+      if (form) {
+        form.removeEventListener("click", disablePopup);
+      }
+    };
+  }, []);
 
   return (
     <section>
@@ -126,7 +153,7 @@ const BillTo = () => {
       </div>
 
       <div className="invoice--bill_to-address">
-        <div className="payment-terms">
+        <div className="invoice-date dropdown">
           <label htmlFor="invoiceDate" className="label">
             Invoice Date
           </label>
@@ -141,11 +168,14 @@ const BillTo = () => {
           </Button>
 
           {showDatePicker && (
-            <Datepicker handleSelection={handleDateSelect} selectedDate={selectedDate}/>
+            <Datepicker
+              handleSelection={handleDateSelect}
+              selectedDate={selectedDate}
+            />
           )}
         </div>
 
-        <div className="payment-terms">
+        <div className="payment-terms dropdown">
           <label htmlFor="paymentTerms" className="label">
             Payment Terms
           </label>

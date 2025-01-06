@@ -82,7 +82,7 @@ const Datepicker = ({ selectedDate, handleSelection }: DatePickerProps) => {
   return (
     <section className="datepicker">
       <div className="datepicker--header">
-        <Button variant="transparent" onClick={handlePrevMonth}>
+        <Button variant="transparent" onClick={handlePrevMonth} type="button">
           <Icon src={arrowleft} alt="arrow left" size="xs"/>
         </Button>
 
@@ -90,7 +90,7 @@ const Datepicker = ({ selectedDate, handleSelection }: DatePickerProps) => {
           {months[month]} {year}
         </h2>
 
-        <Button variant="transparent" onClick={handleNextMonth}>
+        <Button variant="transparent" onClick={handleNextMonth} type="button">
           <Icon src={arrowright} alt="arrow right" size="xs"/>
         </Button>
       </div>

@@ -1,19 +1,19 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { filterInvoice } from "../../../store/features/invoiceSlice";
 import { data } from "../../../utils/constants";
 import "./FilterCard.css";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { selectStatusFilter, updateStatusFilter } from "../../../store/features/invoiceSlice";
 
 const FilterCard = () => {
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const statusFilters = useAppSelector(selectStatusFilter)
 
   const handleFilterChange = (invoiceType: string) => {
-    const updatedFilters = selectedFilters.includes(invoiceType)
-      ? selectedFilters.filter((type) => type !== invoiceType)
-      : [...selectedFilters, invoiceType];
-    setSelectedFilters(updatedFilters);
-    dispatch(filterInvoice(updatedFilters));
+    // const updatedFilters = selectedFilters.includes(invoiceType)
+    //   ? selectedFilters.filter((type) => type !== invoiceType)
+    //   : [...selectedFilters, invoiceType];
+    // setSelectedFilters(updatedFilters);
+    // dispatch(filterInvoice(updatedFilters));
+    dispatch(updateStatusFilter(invoiceType));
   };
 
   return (
@@ -26,7 +26,7 @@ const FilterCard = () => {
               type="checkbox"
               className="custom-checkbox"
               id={item.invoiceType}
-              checked={selectedFilters.includes(item.invoiceType)}
+              checked={statusFilters.includes(item.invoiceType)}
               onChange={() => handleFilterChange(item.invoiceType)}
             />
           </div>

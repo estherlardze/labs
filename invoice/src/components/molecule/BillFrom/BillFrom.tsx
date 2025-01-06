@@ -8,7 +8,7 @@ import { Errors } from "../../../types/type";
 const BillFrom = () => {
  const {formState: {errors}} = useFormContext();
 
- console.log("errors", errors)
+// console.log("errors", errors)
 
  const { street, postCode, city, country } = (errors["senderAddress"] as Errors) ?? {};
 
