@@ -17,12 +17,11 @@ const Invoice = () => {
 
   const form = useForm<InvoiceProps>({
     defaultValues: initialData,
+    mode: "onTouched",
   });
 
   const { handleSubmit, control, getValues } = form;
   // const { errors } = formState;
-
-  console.log("dffgdf", getValues());
 
   const onSubmit = (data: InvoiceProps) => {
     console.log("data", data);
@@ -35,15 +34,16 @@ const Invoice = () => {
   return (
     <section className="invoice--overlay" onClick={handleInvoiceClose}>
       <div className="invoice--container" onClick={(e) => e.stopPropagation()}>
-        <Heading variant="h3" className="new-invoice__heading">
-          New Invoice
-        </Heading>
         <FormProvider {...form}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <BillFrom />
-
-            <BillTo />
-            <ItemList />
+            <div className="invoice--form">
+              <Heading variant="h3" className="new-invoice__heading">
+                New Invoice
+              </Heading>
+              <BillFrom />
+              <BillTo />
+              <ItemList />
+            </div>
 
             <Footer handleInvoiceClose={handleInvoiceClose} />
           </form>

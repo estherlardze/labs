@@ -13,7 +13,6 @@
   --base-dark: #252945;
   --secondary-dark: #1E2139;  
   --tertiary-dark: #888EB0;  
-  --light-pink: #9277FF;      
 }
 *{
   box-sizing: border-box;
@@ -50,6 +49,25 @@ body{
   width: 730px;
   max-width: 100%;
   margin: 0 auto;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--grey);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background-color: var(--grey);
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 768px) {

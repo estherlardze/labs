@@ -1,4 +1,3 @@
-import React from "react";
 import "./Input.css";
 import { RegisterOptions, useFormContext } from "react-hook-form";
 interface InputProps {
@@ -10,6 +9,8 @@ interface InputProps {
   color?: string;
   size?: string;
   validation?: RegisterOptions;
+  error?: string;
+  showError?: boolean;
 }
 
 const Input = ({
@@ -21,18 +22,21 @@ const Input = ({
   type,
   size,
   validation,
+  error,
+  showError = false,
 }: InputProps) => {
 
   const {register} = useFormContext()
   return (
     <div className={`input ${className}`}>
-      <label htmlFor={id} className={`label ${color}`}>
+      <label htmlFor={id} className={`label ${error ? "error": ""} ${color}`}>
         {label}
+        {error && showError && <p className="error">{error}</p>}
       </label>
       <input
         type={type}
         id={id}
-        className={`${size}`}
+        className={`${error ? "error": ""} ${size}`}
         {...register (name, validation)}
       />
     </div>

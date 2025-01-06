@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { filterInvoice } from "../../../store/features/invoiceSlice";
-import Input from "../../atom/Input/Input";
 import { data } from "../../../utils/constants";
 import "./FilterCard.css";
 
@@ -21,16 +20,16 @@ const FilterCard = () => {
     <section className="filter__card">
       {data.map((item) => (
         <div className="filter__card-item" key={item.id}>
-          {/* <Input
-            label={item.text}
-            id={item.invoiceType}
-            type="checkbox"
-            className="input--checkbox custom-checkbox"
-            color="text-gray"
-            size="sm"
-            checked={selectedFilters.includes(item.invoiceType)}
-            onChange={() => handleFilterChange(item.invoiceType)}
-          /> */}
+          <div className="input--checkbox ">
+            <label htmlFor={item.invoiceType}>{item.text}</label>
+            <input
+              type="checkbox"
+              className="custom-checkbox"
+              id={item.invoiceType}
+              checked={selectedFilters.includes(item.invoiceType)}
+              onChange={() => handleFilterChange(item.invoiceType)}
+            />
+          </div>
         </div>
       ))}
     </section>

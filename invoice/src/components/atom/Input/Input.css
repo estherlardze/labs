@@ -5,19 +5,20 @@
     margin-bottom: 20px;
 }
 .label{
-    color: #7E88C3
+    color: #7E88C3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
+.label.error{
+color: red;
+}
+
 .text-gray{
     color: #0C0E16;
 }
 
-.input--checkbox{
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-}
+
 .input input{
     padding: 10px;
     border: 1px solid #DFE3FA;
@@ -25,6 +26,9 @@
     font-size: 16px;
     outline: none;
 }
+ .input input.error{
+  border: 2px solid red;
+ }
 
 .input--short{
     width: 32%;

@@ -18,10 +18,10 @@ export const data = [
 
 export const initialData = {
   id: "",
-  createdAt: "",
+  createdAt:  `${new Date().toISOString().split("T")[0]}`,
   paymentDue: "",
   description: "",
-  paymentTerms: null, 
+  paymentTerms: 1, 
   clientName: "",
   clientEmail: "",
   status: "",

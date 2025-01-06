@@ -1,3 +1,6 @@
+import { FieldError } from "react-hook-form";
+
+
 export type Address = {
     street: string;
     city: string;
@@ -35,4 +38,20 @@ export type Address = {
     total: number
    
   }
+
+   export type Errors = {
+    street?: FieldError;
+    postCode?: FieldError;
+    city?: FieldError;
+    country?: FieldError;
+    clientName?: FieldError;
+    clientEmail?: FieldError;
+    createdAt?: FieldError;
+    paymentTerms?: FieldError;
+    description?: FieldError;
+    name?: FieldError;
+    quantity?: FieldError;
+    price?: FieldError;
+    items?: FieldError;
+  };
   
