@@ -30,38 +30,39 @@ const initialState: initialStateType = {
   statusFilter: [],
 };
 
-const invoiceSlice = createSlice({
+const invoiceSlice = createSlice({ 
   name: "invoice",
   initialState,
 
   reducers: {
     filterInvoice: (state) => {
-      // if (action.payload.length === 0) {
-      //   state.filteredInvoices = [];
-      // } else {
-      //   state.filteredInvoices = state.invoices.filter((detail) =>
-      //     action.payload.includes(detail.status)
-      //   );
-      // }
       state.filteredInvoices = !state.statusFilter.length
         ? state.invoices
         : state.invoices.filter((invoice) =>
             state.statusFilter.includes(invoice.status)
           );
     },
+    
+    markAsPaid: (state, action: PayloadAction<string>) => {
+      const id = action.payload;
+      const invoiceIndex = state.invoices.findIndex(
+        (invoice) => invoice.id === id
+      );
+      state.invoices[invoiceIndex].status = "paid";
+    }, 
 
     updateStatusFilter: (state, action: PayloadAction<string>) => {
       const status = action.payload;
       state.statusFilter = state.statusFilter.includes(status)
         ? state.statusFilter.filter((item) => item !== status)
         : [...state.statusFilter, status];
-    },
+    }, 
 
     deleteInvoice: (state, action) => {
       const id = action.payload;
       state.invoices = state.invoices.filter((invoice) => invoice.id !== id);
-    },
-  },
+    }, 
+  }, 
   extraReducers: (builder) => {
     builder.addCase(addInvoice.pending, (state) => {
       state.loading = "pending";
@@ -91,7 +92,7 @@ const invoiceSlice = createSlice({
       state.loading = "failed";
     });
   },
-});
+})
 
 export const selectFilteredInvoices = (state: RootState) =>
   state.invoices.filteredInvoices;
@@ -99,6 +100,6 @@ export const selectInvoices = (state: RootState) => state.invoices.invoices;
 export const selectLoading = (state: RootState) => state.invoices.loading;
 export const selectStatusFilter = (state: RootState) =>
   state.invoices.statusFilter;
-export const { filterInvoice, deleteInvoice, updateStatusFilter } =
+export const { filterInvoice, deleteInvoice, updateStatusFilter, markAsPaid } =
   invoiceSlice.actions;
 export default invoiceSlice.reducer;

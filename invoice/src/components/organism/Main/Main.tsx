@@ -6,10 +6,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import {setScreenSize} from "../../../store/features/screenSizeSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { filterInvoice, selectFilteredInvoices, selectInvoices, selectStatusFilter } from "../../../store/features/invoiceSlice";
+import { filterInvoice, selectFilteredInvoices, selectStatusFilter } from "../../../store/features/invoiceSlice";
 
 const Main = () => {
-  const invoices = useAppSelector(selectInvoices);
   const ismobile = useSelector((state: RootState) => state.screenSize.ismobile);
   const filteredInvoices = useAppSelector(selectFilteredInvoices);
   const statusFilter = useAppSelector(selectStatusFilter)
@@ -18,8 +17,7 @@ const Main = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      dispatch(setScreenSize(window.innerWidth));
-    }
+      dispatch(setScreenSize(window.innerWidth)); }
 
     window.addEventListener("resize", handleResize);
 
@@ -28,13 +26,11 @@ const Main = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [dispatch]);
 
-
-  // const invoicesToDisplay =
-  //   filteredInvoices.length > 0 ? filteredInvoices : invoices;
+ 
 
   useEffect(() => {
     dispatch(filterInvoice())
-  }, [statusFilter])
+  }, [statusFilter, dispatch]);
 
 
   const renderCard = (item: any) => {

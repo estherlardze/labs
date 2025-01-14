@@ -42,6 +42,7 @@ const HeaderRight = () => {
           <FilterCard/>
         )}
       </div>
+      
       <Button radius="rounded-full" onClick={handleOverlayToggle}>
         <div className="plus-icon">
           <Icon src={plusIcon} alt="plus icon" size="xs" radius="rounded-full"/>

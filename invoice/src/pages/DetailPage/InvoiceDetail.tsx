@@ -1,7 +1,7 @@
 import "./InvoiceDetail.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Text } from "../../components/atom/Text/Text";
 import Badge from "../../components/atom/Badge/Badge";
 import Button from "../../components/atom/Button/Button";
@@ -11,17 +11,30 @@ import { useState } from "react";
 import DeleteCard from "../../components/molecule/DeleteCard/DeleteCard";
 import { RootState } from "../../store";
 import { DetailTable } from "../../components/molecule/DetailTable/DetailTable";
+import {markAsPaid} from '../../store/features/invoiceSlice'
+import { setOverlay } from "../../store/features/overlaySlice";
 
 const InvoiceDetail = () => {
   const [openCard, setOpenCard] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
-  const invoice = useSelector((state: RootState) => state.invoices.invoices);
+  const dispatch = useDispatch();
+  const invoice = useSelector((state: RootState) => state.invoices.invoices)
   const detailedInvoice = invoice.filter((invoice) => invoice.id === id)[0];
 
   const handleModalClose = () => {
     setOpenCard(false);
-  };
+  }
+
+  const handleMarkAsPaid = (InvoiceId: string) => {
+    dispatch(markAsPaid(InvoiceId));
+    navigate('/');
+  }
+
+   const handleOverlayToggle = () => {
+      dispatch(setOverlay(true));
+    };
+
 
   return (
     <section className="invoice-detail">
@@ -41,7 +54,7 @@ const InvoiceDetail = () => {
         </article>
 
         <article className="invoice-detail__buttons">
-          <Button variant="secondary" radius="rounded-lg">
+          <Button variant="secondary" radius="rounded-lg" onClick={handleOverlayToggle}>
             Edit
           </Button>
           <Button
@@ -59,6 +72,7 @@ const InvoiceDetail = () => {
             }`}
             radius="rounded-lg"
             disabled={detailedInvoice.status === "draft"}
+            onClick={() => handleMarkAsPaid(id ? id : '')}
           >
             Mark as paid
           </Button>
