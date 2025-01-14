@@ -1,0 +1,81 @@
+
+.button{
+    padding: 7px 20px;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: transparent;
+
+    &.rounded{
+        border-radius: 5px;
+    }
+
+    &.rounded-sm{
+        border-radius: 10px;
+    }
+
+    &.rounded-md{
+        border-radius: 15px;
+    }
+
+    &.rounded-lg{
+        border-radius: 20px;
+    }
+
+    &.rounded-full{
+        border-radius: 50px;
+    }
+
+    &.primary{
+        background: #0C0E16;
+    }
+
+    &.danger{
+        background: #EC5757;
+    }
+
+    &.secondary{
+        background: #F9FAFE;
+    }
+
+    &.default{
+        background: #7C5DFA;
+    }
+    &.transparent{
+        background: transparent;
+    }
+}
+.send{
+    color: #fff
+}
+.save{
+    color: #888EB0
+}
+.discard{
+    color: #7E88C3;
+}
+
+button:disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+
+
+@media screen and (max-width: 400px){
+    .button{
+        padding: 7px;
+
+    }
+    
+}
+
+

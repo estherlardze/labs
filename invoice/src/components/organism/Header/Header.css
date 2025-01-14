@@ -1,0 +1,46 @@
+:root {
+    --primary-color: #7C5DFA;
+    --secondary-color: #9277FF;
+    --tertiary-color: #7E88C3;
+    --base-black: #0C0E16;
+    --grey: #DFE3FA;
+    --dark-bg: #141625;
+    --light-bg: #F8F8FB;
+    --error-color: #EC5757;
+    --base-dark: #252945;
+    --secondary-dark: #1E2139;  
+    --tertiary-dark: #888EB0;  
+    --light-pink: #9277FF;      
+  }
+
+  .header__plus{
+    background-color: var(--light-bg);
+    border-radius: 50%;
+  }
+
+  .header__button-text{
+    font-size: 16px;
+    color: var(--light-bg);
+    font-weight: 600;
+  }
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    margin: 2rem 0;
+    position: relative;
+}
+.header__filter{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 768px) {
+  .header{
+    margin: 1rem 0;
+  }
+}
+

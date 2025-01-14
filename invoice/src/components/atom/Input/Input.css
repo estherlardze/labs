@@ -1,0 +1,52 @@
+.input{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 20px;
+}
+.label{
+    color: #7E88C3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.label.error{
+color: red;
+}
+
+.text-gray{
+    color: #0C0E16;
+}
+
+
+.input input{
+    padding: 10px;
+    border: 1px solid #DFE3FA;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+ .input input.error{
+  border: 2px solid red;
+ }
+
+.input--short{
+    width: 32%;
+}
+.input--medium{
+    width: 49%;
+}
+
+.input--long{
+    width: 214px;
+    max-width: 100%;
+}
+
+.input--mini{
+    width: 46px;
+    max-width: 100%;
+}
+.input--price{
+    width: 100px;
+    max-width: 100%;
+}
