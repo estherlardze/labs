@@ -36,10 +36,19 @@
 body{
   font-family: spartan, sans-serif;
 }
+
 .App{
   background-color: var(--light-bg);
   display: flex;
   gap: 2rem;
+}
+.dark{
+  background-color: var(--base-dark);
+  color: white;
+}
+.light {
+  background-color: var(--light-bg);
+  color: black;
 }
 .main{
   color: black;

@@ -36,7 +36,9 @@
     gap: 2rem;
     align-items: center;
 }
-
+.dark.invoice__title{
+    color: white;
+}
 
 @media screen and (max-width: 768px) {
   .header{

@@ -6,7 +6,7 @@ import InvoiceDetail from "./pages/DetailPage/InvoiceDetail";
 export const App = () => {
   return (
     <BrowserRouter>
-      <main className="bg-body flex flex-col md:flex-row">
+      <main className=" flex flex-col md:flex-row">
         <Sidebar />
         <Routes>
           <Route index element={<Home />} />

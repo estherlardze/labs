@@ -1,5 +1,6 @@
 import Button from "../Button/Button";
 import Icon from "../Icon/Icon";
+import './ToogleTheme.css'
 
 interface Theme {
   mode: "light" | "dark";

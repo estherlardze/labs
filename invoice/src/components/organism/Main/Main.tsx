@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { filterInvoice, selectFilteredInvoices, selectInvoices, selectStatusFilter } from "../../../store/features/invoiceSlice";
 
 const Main = () => {
-  const invoices = useAppSelector(selectInvoices);
+ // const invoices = useAppSelector(selectInvoices);
   const ismobile = useSelector((state: RootState) => state.screenSize.ismobile);
   const filteredInvoices = useAppSelector(selectFilteredInvoices);
   const statusFilter = useAppSelector(selectStatusFilter)

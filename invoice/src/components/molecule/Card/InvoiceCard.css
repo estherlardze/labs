@@ -11,7 +11,10 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-
+.dark .invoice__card {
+  background-color: var(--secondary-dark);
+  color: var(--tertiary-dark);
+}
 .invoice__card:hover {
   border: 1px solid var(--primary-color);
 }

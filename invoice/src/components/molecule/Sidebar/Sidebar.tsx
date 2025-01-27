@@ -3,14 +3,25 @@ import { sidebar, oval, iconMoon, iconSun } from "../../../utils/assets";
 import Avatar from "../../atom/Avatar/Avatar";
 import Icon from "../../atom/Icon/Icon";
 import ToggleTheme from "../../atom/ToggleTheme/ToggleTheme";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 
 export const Sidebar = () => {
   const [changeBg, setChangeBg] = useState(iconSun);
+  const [theme, setTheme] = useState<string>(() => sessionStorage.getItem('theme') ?? 'light');
+
 
   const handleToggleTheme = () => {
     setChangeBg(changeBg === iconMoon ? iconSun : iconMoon);
+    setTheme(theme === "light" ? "dark" : "light");
   };
+
+
+  useEffect(() => {
+    sessionStorage.setItem('theme', theme);
+     document.body.className = theme;
+  }, [theme])
+
 
   return (
     <div className="sidebar">
@@ -24,7 +35,7 @@ export const Sidebar = () => {
 
       <div className="sidebar__avatar">
         <ToggleTheme
-          mode="light"
+          mode="dark"
           src={changeBg}
           alt="moon icon"
           onClick={handleToggleTheme}

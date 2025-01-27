@@ -1,6 +1,5 @@
 import { ReactNode, ButtonHTMLAttributes } from 'react';
 import './Button.css';
-import { useFormContext } from 'react-hook-form';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;

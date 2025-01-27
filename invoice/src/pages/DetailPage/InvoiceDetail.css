@@ -34,6 +34,10 @@
   margin: 20px auto;
   border-radius: 10px;
 }
+.dark .invoice-header{
+  background-color: #373B53;
+  color: white;
+}
 .invoice-detail__buttons {
   display: flex;
   gap: 10px;

@@ -12,7 +12,7 @@ const HeaderLeft = () => {
 
   return (
     <div>
-      <Heading variant="h1" className="h1">
+      <Heading variant="h1" className="h1 invoice__title">
         Invoice
       </Heading>
       {ismobile ? (
