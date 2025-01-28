@@ -1,0 +1,132 @@
+.invoice-detail {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+}
+.goback {
+  color: var(--primary-color);
+  margin-right: -5px;
+}
+.invoice-detail__status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.invoice-detail__number {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+.invoice-detail__mark,
+.invoice-detail__delete {
+  color: #fff;
+}
+
+.invoice-header {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  background-color: #fff;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  width: 730px;
+  max-width: 100%;
+  padding: 20px 10px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+.dark .invoice-header{
+  background-color: #373B53;
+  color: white;
+}
+.invoice-detail__buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.invoice-detail__title {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.invoice-detail__client {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.invoice-detail__adrress {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.invoice-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 730px;
+  max-width: 100%;
+  border-radius: 10px;
+  gap: 20px;
+  justify-content: space-between;
+  background-color: #fff;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.invoice-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+  align-items: flex-end;
+}
+.invoice-info__address {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+}
+
+.invoice-table {
+  background-color: #f9fafe;
+}
+.invoice-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.invoice-table th,
+.invoice-table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.amount-due {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #373b53;
+}
+.invoice-detail__address{
+  display: flex;
+  gap: 5px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .invoice-header {
+    width: 688px;
+    max-width: 100%;
+  }
+  .invoice-container {
+    width: 688px;
+    max-width: 100%;
+  }
+}

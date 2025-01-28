@@ -1,0 +1,33 @@
+.datepicker--header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.datepicker{
+    position: absolute;
+    top:120%;
+    width: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px #00000027;
+    padding: 10px;
+    border-radius: 10px;
+
+    button{
+        padding: 0;
+    }
+}
+
+.datepicker--week{
+    display: flex;
+    gap: 4px;
+    font-weight: bold;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    button{
+        width: 50px;
+        text-align: center ;
+    }
+}

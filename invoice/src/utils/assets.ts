@@ -1,0 +1,16 @@
+export { default as favicon } from '../../src/assets/favicon-32x32.png';
+export { default as iconArrowDown } from '../../src/assets/icon-arrow-down.svg';
+export { default as iconArrowLeft } from '../../src/assets/icon-arrow-left.svg';
+export { default as iconArrowRight } from '../../src/assets/icon-arrow-right.svg';
+export { default as iconCalendar } from '../../src/assets/icon-calendar.svg';
+export { default as iconCheck } from '../../src/assets/icon-check.svg';
+export { default as iconDelete } from '../../src/assets/icon-delete.svg';
+export { default as iconMoon } from '../../src/assets/icon-moon.svg';
+export { default as iconPlus } from '../../src/assets/icon-plus.svg';
+export { default as iconSun } from '../../src/assets/icon-sun.svg';
+export { default as illustrationEmpty } from '../../src/assets/illustration-empty.svg';
+export { default as imageAvatar } from '../../src/assets/image-avatar.jpg';
+export { default as logo } from '../../src/assets/logo.svg';
+export { default as oval } from '../../src/assets/Oval.svg';
+export { default as reactLogo } from '../../src/assets/react.svg';
+export { default as sidebar } from '../../src/assets/sidebar.svg';

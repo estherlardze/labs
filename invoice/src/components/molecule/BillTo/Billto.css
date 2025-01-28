@@ -1,0 +1,52 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  flex: 1;
+}
+
+.selected--payment_terms {
+  padding: 10px;
+  border: solid 1px var(--grey);
+  background: #fff;
+  color: var(--base-black);
+  width: 100%;
+
+  justify-content: space-between;
+
+  img {
+    margin-left: auto;
+  }
+
+  &:hover {
+    border-color: var(--primary-color);
+  }
+}
+
+.custom-select {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  flex-direction: column;
+  position: absolute;
+  top: 120%;
+  background-color: #fff;
+  left: 0;
+  box-shadow: 0 0 10px #00000027;
+
+  button {
+    padding: 10px;
+    width: 100%;
+    border-bottom: 1px solid #dfe3fa;
+
+    &:last-child {
+      border: none;
+    }
+
+    &:hover,
+    &.selected {
+      color: var(--primary-color);
+    }
+  }
+}
