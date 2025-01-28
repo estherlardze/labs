@@ -10,10 +10,10 @@ import { InvoiceProps, Item } from "../../../types/type";
 import { initialData } from "../../../utils/constants";
 import { DevTool } from "@hookform/devtools";
 import { calculatePaymentDue } from "../../../utils";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { useAppDispatch } from "../../../hooks";
 import {
-  addInvoice,
-  selectLoading,
+  // addInvoice,
+ // selectLoading,
 } from "../../../store/features/invoiceSlice";
 
 const Invoice = () => {
@@ -58,9 +58,9 @@ const Invoice = () => {
       data.paymentTerms ?? 1
     );
 
-    dispatch(addInvoice(data)).then(() => {
-      handleInvoiceClose();
-    });
+    // dispatch(addInvoice(data)).then(() => {
+    //   handleInvoiceClose();
+    // });
   };
 
   const handleSaveAsDraft = () => {
@@ -73,9 +73,9 @@ const Invoice = () => {
       data.paymentTerms ?? 1
     );
 
-    dispatch(addInvoice(data)).then(() => {
-      handleInvoiceClose();
-    });
+    // dispatch(addInvoice(data)).then(() => {
+    //   handleInvoiceClose();
+    // });
   };
 
   const handleInvoiceClose = () => {

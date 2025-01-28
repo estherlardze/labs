@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import invoiceSlice from "./features/invoiceSlice";
 import overlaySlice from "./features/overlaySlice";
 import screenSizeSlice from "./features/screenSizeSlice";
+import { postApiSlice } from "./post/PostApiSlice";
 
 
 export const store = configureStore({
@@ -9,6 +10,11 @@ export const store = configureStore({
     invoices: invoiceSlice,
     overlay: overlaySlice,
     screenSize: screenSizeSlice,
+    [postApiSlice.reducerPath]: postApiSlice.reducer,
+  },
+
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(postApiSlice.middleware);
   },
 });
 
