@@ -1,0 +1,65 @@
+
+.button{
+    padding: 7px 20px;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: transparent;
+
+    &.rounded{
+        border-radius: 5px;
+    }
+
+    &.rounded-sm{
+        border-radius: 10px;
+    }
+
+    &.rounded-md{
+        border-radius: 15px;
+    }
+
+    &.rounded-lg{
+        border-radius: 20px;
+    }
+
+    &.rounded-full{
+        border-radius: 50px;
+    }
+
+    &.primary{
+        background: #F9FAFE;
+    }
+
+    &.danger{
+        background: #EC5757;
+    }
+
+    &.secondary{
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    &.default{
+        background: #7C5DFA;
+    }
+    &.transparent{
+        background: transparent;
+    }
+}
+
+.disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+@media screen and (max-width: 400px){
+    .button{
+        padding: 7px;
+
+    }
+    
+}
+
+

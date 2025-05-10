@@ -1,0 +1,18 @@
+.caption{
+    color: #0C0E16;
+}
+.description{
+    color: #7E88C3;
+}
+.span{
+    color: #0C0E16
+}
+.p{
+    color: #fff
+}
+.text{
+    display: flex;
+    align-items: center;
+    gap:5px;
+}
+
